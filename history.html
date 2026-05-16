@@ -9,14 +9,82 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
-    <title>Italian History</title>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Modern+Antiqua&family=Nova+Round&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=TASA+Explorer:wght@400..800&display=swap" rel="stylesheet">
+    <style>
+        nav{
+            grid: nav;
+            position: sticky;
+            top:0px;  
+            height: auto;
+            background-color: #188D47;
+            display: flex;
+            align-items: center;
+            font-family: "Google Sans Flex", sans-serif;
+            z-index: 1000;
+        }
+
+        #judul{
+            font-family: "Italiana", sans-serif;
+            font-size: 60px
+        }
+
+        #logo{
+            height: 60px;
+            width: auto;
+        }
+
+        #navigasi{
+            display: flex;
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        #navigasi li{
+            width: 100px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        #navigasi li a{
+            text-decoration: none;
+            color: white;
+        } 
+
+        #navigasi li:hover{
+            background-color: white;
+        }
+
+        #navigasi li:hover a{
+            color:black;
+        }
+
+        #btn-pass{
+            margin-right: 30px;
+        }
+
+        h1{
+            font-family: "Google Sans Flex", sans-serif;
+        }
+
+        h3{
+            font-family: "Red Hat Display", sans-serif;
+        }
+
+        p{
+            font-family: "Elms Sans", sans-serif;
+        }
+    </style>
 </head>
 <body>
     <nav class="d-  flex justify-content-between">
         <img src="Italy Logo.png" alt="Italy Logo" id="logo">
         <ul id="navigasi">
-            <li><a href="#">Home</a></li>
+            <li><a href="home.html">Home</a></li>
             <li><a href="history.html">History</a></li>
             <li><a href="#">Foods</a></li>
             <li><a href="#">Landmarks</a></li>
