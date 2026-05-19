@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Modern+Antiqua&family=Nova+Round&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=TASA+Explorer:wght@400..800&display=swap"
+            rel="stylesheet">
+        <style>
+        nav{
+        position: sticky;
+        top:0px;  
+        height: auto;
+        background-color: #188D47;
+        display: flex;
+        align-items: center;
+        font-family: "Google Sans Flex", sans-serif;
+        z-index: 1000;
+        }
+
+        #judul{
+        font-family: "Italiana", sans-serif;
+        font-size: 60px
+        }
+
+        #logo{
+        height: 60px; /* Slightly smaller than the nav height to look centered */
+        width: auto;
+        flex-shrink: 0; /* Prevents the logo from being compressed */
+        }
+
+        #navigasi{
+        display: flex;
+        list-style: none;
+        margin-bottom: 0;
+        }
+
+        #navigasi li{
+        width: 100px;
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        transition: background-color 0.3s ease;
+        }
+
+        #navigasi li a{
+        text-decoration: none;
+        color: white;
+        } 
+
+        #navigasi li:hover{
+        background-color: white;
+        }
+
+        #navigasi li:hover a{
+        color:black;
+        }
+
+        #btn-pass{
+        margin-right: 20px;
+        white-space: nowrap; /* Prevents the text from wrapping to multiple lines */
+        flex-shrink: 0; /* Stops the browser from squishing the button on small screens */
+        height: fit-content; /* Keeps the height tidy */
+        padding: 8px 20px; /* Gives the button a consistent, clean shape */
+        }
+
+        h1{
+            font-family: "Google Sans Flex", sans-serif;
+        }
+
+        h3{
+            font-family: "Red Hat Display", sans-serif;
+        }
+
+        p{
+            font-family: "Elms Sans", sans-serif;
+        }
+
+    
+    </style>
+    </head>
+    <body>
+        <nav class="d-flex justify-content-between">
+            <img src="./Italy Logo.png" alt="Italy Logo" id="logo">
+            <ul id="navigasi">
+                <li><a href="../home.html">Home</a></li>
+                <li><a href="#">History</a></li>
+                <li><a href="../food/food.html">Foods</a></li>
+                <li><a href="#">Landmarks</a></li>
+                <li><a href="#">Cultures</a></li>
+            </ul>
+            <button class="btn btn-outline-light" id="btn-pass">Get a Tourist
+                Pass</button>
+        </nav>
+
+        <h1 class="fw-bold text-center m-4">The Heritage of Italy: A Journey
+            Through Time</h1>
+
+        <div class="container-sm">
+            <h3>The Roman Empire Era (27 BC to 476 AD)</h3>
+            <div class="container-sm d-flex gap-lg-5">
+                <p>Step into the absolute genesis of Western civilization and
+                    explore the staggering legacy of the ancient world. The
+                    Roman
+                    Empire officially commenced in 27 BC when Augustus Caesar
+                    rose
+                    to absolute power and transformed the sprawling city of Rome
+                    into the undisputed capital of the globe. For over five
+                    hundred
+                    years, this unstoppable civilization expanded its borders
+                    across
+                    the entirety of Europe, North Africa, and the Middle East.
+                    The
+                    Romans were unparalleled engineers and brilliant urban
+                    planners
+                    who constructed an intricate network of paved roads that
+                    connected distant provinces, massive stone aqueducts that
+                    delivered fresh water to millions, and monumental structures
+                    like the majestic Colosseum and the Pantheon which still
+                    command
+                    absolute awe today. Beyond their physical architecture, the
+                    Romans established complex legal systems and administrative
+                    frameworks that serve as the fundamental blueprint for
+                    modern
+                    Western governments. When your visitors walk through these
+                    impeccably preserved ruins, they are touching the very
+                    stones
+                    that shaped human history, right up until the western
+                    territories eventually succumbed to political shifts and
+                    outside
+                    invasions in 476 AD.</p>
+                <div id="carouselRoman"
+                    class="carousel slide align-self-center carousel-fade"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"
+                            data-bs-interval="3000">
+                            <img src="Roman AD.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Roman Empire Era">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Roman AD 2.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="Roman Architectural Marvels">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Roman AD 3.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Fall of Rome">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-sm">
+            <h3>The Medieval Maritime Era (476 AD to 1350 AD)</h3>
+            <div class="container-sm d-flex gap-lg-5">
+                <div id="carouselMedieval"
+                    class="carousel slide align-self-center carousel-fade"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"
+                            data-bs-interval="3000">
+                            <img src="Medieval.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Roman Empire Era">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Medieval 2.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="Roman Architectural Marvels">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Medieval 3.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Fall of Rome">
+                        </div>
+                    </div>
+                </div>
+                <p>Following the dramatic collapse of Rome, Italy transitioned
+                    into
+                    a deeply fragmented yet incredibly dynamic period
+                    characterized
+                    by towering stone fortresses and massive commercial
+                    expansion.
+                    Between the fifth and fourteenth centuries, the Italian
+                    peninsula evolved into a magnificent mosaic of independent
+                    territories lacking a single unified government. The central
+                    regions became the domain of the Papal States ruled directly
+                    from Rome, while the southern regions and the island of
+                    Sicily
+                    experienced a vibrant blending of cultures as they were
+                    conquered by Byzantine forces, Arab rulers, and eventually
+                    Norman warriors. However, the most spectacular economic
+                    development occurred in the north with the rise of the
+                    powerful
+                    maritime republics. Coastal cities like Venice, Genoa, Pisa,
+                    and
+                    Amalfi built massive naval fleets that completely dominated
+                    global trade routes across the Mediterranean Sea. They
+                    brought
+                    unimaginable wealth, exotic spices, and luxurious silks back
+                    to
+                    Italian shores, creating an era of wealthy merchant sailors
+                    that
+                    perfectly laid the economic groundwork for the breathtaking
+                    cultural explosion that was soon to follow.</p>
+            </div>
+        </div>
+        <div class="container-sm">
+            <h3>The Golden Renaissance Era (1350 AD to 1600 AD)</h3>
+            <div class="container-sm d-flex gap-lg-5">
+
+                <p>Welcome to the most dazzling and intellectually profound
+                    chapter
+                    of human history, where the immense wealth of the merchant
+                    classes birthed a spectacular cultural awakening that
+                    forever
+                    changed the world. Originating in the vibrant heart of
+                    Florence
+                    during the late fourteenth century, the Renaissance was
+                    championed by visionary patrons like the powerful Medici
+                    family
+                    who funded brilliant scholars to revive classical Greek and
+                    Roman knowledge. Throughout the fifteenth and sixteenth
+                    centuries, this explosive intellectual revival spread
+                    rapidly to
+                    other major cultural epicenters like Rome, Milan, and
+                    Venice. It
+                    was an unparalleled golden age of artistic perfection and
+                    scientific discovery that produced legendary visionary
+                    polymaths
+                    such as Leonardo da Vinci, magnificent artists like
+                    Michelangelo, and brilliant political thinkers like Niccolo
+                    Machiavelli. The Renaissance decisively pulled European
+                    society
+                    out of medieval stagnation by introducing groundbreaking
+                    techniques in painting, revolutionary architectural designs,
+                    and
+                    a profound new focus on human potential, turning Italy into
+                    the
+                    ultimate gallery of human triumph.</p>
+                <div id="carouselRenaissance"
+                    class="carousel slide align-self-center carousel-fade"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"
+                            data-bs-interval="3000">
+                            <img src="Renaisans.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Roman Empire Era">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Renaisans 2.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="Roman Architectural Marvels">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Renaisans 3.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Fall of Rome">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-sm">
+            <h3>The Global Conflict Era (1914 AD to 1945 AD)</h3>
+            <div class="container-sm d-flex gap-lg-5">
+                <div id="carouselGlobal"
+                    class="carousel slide align-self-center carousel-fade"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"
+                            data-bs-interval="3000">
+                            <img src="World War.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Roman Empire Era">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="World War 2.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="Roman Architectural Marvels">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="World War 3.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Fall of Rome">
+                        </div>
+                    </div>
+                </div>
+                <p>The dawn of the twentieth century brought unprecedented
+                    challenges and profound transformation to a newly unified
+                    Italian nation, testing the extraordinary resilience of its
+                    people. During the First World War from 1915 to 1918,
+                    Italian
+                    forces engaged in grueling and brutal combat against the
+                    Austro
+                    Hungarian Empire high in the freezing and treacherous peaks
+                    of
+                    the Alps. The severe economic devastation and deep social
+                    unrest
+                    that followed the war paved the way for Benito Mussolini to
+                    seize control and establish a totalitarian fascist
+                    dictatorship
+                    in 1922. This disastrous political shift eventually dragged
+                    the
+                    beautiful peninsula into the immense suffering of the Second
+                    World War alongside the Axis powers. However, the tide
+                    turned
+                    significantly in 1943 with the massive Allied invasion of
+                    Sicily
+                    and the southern regions. This military push, combined with
+                    a
+                    fiercely courageous civilian resistance movement in the
+                    north,
+                    ultimately led to the absolute defeat of the fascist regime
+                    in
+                    1945, proving the unbreakable courage and deeply rooted love
+                    for
+                    freedom held by the Italian citizens.</p>
+            </div>
+        </div>
+        <div class="container-sm">
+            <h3>The Modern Republic Era (1946 AD to Present)</h3>
+            <div class="container-sm d-flex gap-lg-5">
+
+                <p>Emerging from the devastating ashes of global conflict, the
+                    Italian people made a historic and empowering decision in
+                    1946
+                    to officially abolish the monarchy and establish the modern,
+                    democratic Italian Republic. The decades that followed
+                    witnessed
+                    an incredible period of rapid industrial growth and sweeping
+                    social transformation known globally as the economic
+                    miracle.
+                    Northern cities like Milan and Turin transformed into
+                    booming
+                    manufacturing hubs, producing iconic automobiles and highly
+                    coveted luxury goods. Today, this modern era represents the
+                    absolute pinnacle of contemporary elegance, positioning
+                    Italy
+                    proudly as a founding member of the European Union and a
+                    dominant global cultural superpower. It is a nation that
+                    perfectly balances its profound, carefully preserved
+                    historical
+                    heritage with a vibrant, forward looking economy. Modern
+                    visitors are drawn to a breathtaking country that leads the
+                    entire world in high fashion, unparalleled culinary
+                    artistry,
+                    cutting edge design, and a uniquely passionate lifestyle
+                    that
+                    invites everyone to experience the true meaning of the sweet
+                    life.</p>
+                <div id="carouselModern"
+                    class="carousel slide align-self-center carousel-fade"
+                    data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active"
+                            data-bs-interval="3000">
+                            <img src="Modern.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Roman Empire Era">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Modern 2.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="Roman Architectural Marvels">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="3000">
+                            <img src="Modern 3.png" class="d-block w-100"
+                                style="height: fit-content; object-fit: cover;"
+                                alt="The Fall of Rome">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+  font-family: "Elms Sans", sans-serif;
+  font-size: larger;
+}
+
+h3{
+  font-family: "Red Hat Display", sans-serif;
+}
+nav{
+  position: sticky;
+  top:0px;  
+  height: auto;
+  background-color: #188D47;
+  display: flex;
+  align-items: center;
+  font-family: "Google Sans Flex", sans-serif;
+  z-index: 1000;
+}
+
+#judul{
+  font-family: "Italiana", sans-serif;
+  font-size: 60px
+}
+
+#logo{
+  height: 60px; /* Slightly smaller than the nav height to look centered */
+  width: auto;
+  flex-shrink: 0; /* Prevents the logo from being compressed */
+}
+
+#navigasi{
+  display: flex;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+#navigasi li{
+  width: 100px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#navigasi li a{
+  text-decoration: none;
+  color: white;
+} 
+
+#navigasi li:hover{
+  background-color: white;
+}
+
+#navigasi li:hover a{
+  color:black;
+}
+
+#btn-pass{
+  margin-right: 20px;
+  white-space: nowrap; /* Prevents the text from wrapping to multiple lines */
+  flex-shrink: 0; /* Stops the browser from squishing the button on small screens */
+  height: fit-content; /* Keeps the height tidy */
+  padding: 8px 20px; /* Gives the button a consistent, clean shape */
+}
+
+h1 {
+    font-family: "Google Sans Flex", sans-serif;
+}
+
+h3 {
+    font-family: "Red Hat Display", sans-serif;
+}
+
+p {
+    font-family: "Elms Sans", sans-serif;
+}
+
+/*Yang ad bg color trs gada ap ap = placeholder*/
+
+#herofood {
+    background-color: slategrey;
+}
+
+.containerfood {
+    /* background-color: grey; */
+    background-image: url("pizzzza.jpg");
+    background-repeat: repeat;
+    background-color: #8a97a0;
+    background-size: 150px;
+    background-blend-mode: multiply;
+}
+.headerfood{
+    text-align: center;
+}
+.menu-pizza{
+    background-color: darkslategray;
+    margin: 0px 70px;
+    padding: 10px 20px;
+    display: flex;
+}
+.desc{
+    width: 50%;
+}
