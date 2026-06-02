@@ -4,8 +4,71 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="stylefood.css">
-        <script src="script.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            // 1. EFEK MEMBUKA TIRAI HALAMAN
+            setTimeout(() => {
+                document.body.classList.add("page-loaded");
+            }, 800);
 
+            // 2. EFEK MENUTUP TIRAI (SAAT PERPINDAHAN HALAMAN)
+            const navLinks = document.querySelectorAll("a");
+            navLinks.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    const destination = link.getAttribute("href");
+                    if (
+                        destination && 
+                        !destination.startsWith("#") && 
+                        !destination.startsWith("javascript:") &&
+                        !link.classList.contains("navbar-toggler") &&
+                        link.target !== "_blank"
+                    ) {
+                        e.preventDefault(); 
+                        document.body.classList.remove("page-loaded");
+                        setTimeout(() => {
+                            window.location.href = destination;
+                        }, 1000);
+                    }
+                });
+            });
+
+            // 3. EFEK AUTO-CLOSE HAMBURGER YANG FLUID & ULTRA SMOOTH SAAT DI-SCROLL
+            const menuElement = document.getElementById('menuUtama');
+            
+            // Inisialisasi komponen collapse Bootstrap secara programmatik
+            // (Pastikan file bootstrap.bundle.min.js sudah terpasang di head)
+            const bsCollapse = new bootstrap.Collapse(menuElement, { toggle: false });
+            
+            let isScrolling = false;
+
+            window.addEventListener('scroll', () => {
+                // Hanya jalankan logika jika menu hamburger mobile sedang terbuka (punya class 'show')
+                if (menuElement.classList.contains('show') && !isScrolling) {
+                    isScrolling = true;
+
+                    // Tambahkan class kustom untuk meredupkan teks menu secara halus sebelum meluncur menutup
+                    menuElement.style.opacity = '0';
+                    menuElement.style.transform = 'translateY(-10px)';
+                    menuElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+                    // Panggil fungsi hide bawaan Bootstrap Instance agar menutup mengikuti kurva animasi bezier asli
+                    setTimeout(() => {
+                        bsCollapse.hide();
+                    }, 50);
+                }
+            });
+
+            // Kembalikan properti opacity dan transform bawaan setelah menu selesai tertutup sempurna
+            menuElement.addEventListener('hidden.bs.collapse', () => {
+                menuElement.style.opacity = '';
+                menuElement.style.transform = '';
+                menuElement.style.transition = '';
+                isScrolling = false;
+            });
+        });
+        </script>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -22,19 +85,49 @@
             href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap"
             rel="stylesheet">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap"
+            rel="stylesheet">
+
     </head>
     <body>
-        <nav class="d-flex justify-content-between">
-            <img src="./Italy Logo.png" alt="Italy Logo" id="logo">
-            <ul id="navigasi">
-                <li><a href="../home.html">Home</a></li>
-                <li><a href="../history/history.html">History</a></li>
-                <li><a href="#">Foods</a></li>
-                <li><a href="#">Landmarks</a></li>
-                <li><a href="#">Cultures</a></li>
-            </ul>
-            <button class="btn btn-outline-light" id="btn-pass">Get a Tourist
-                Pass</button>
+        <div id="transition-curtain">
+            <div id="page-loader">LOADING...</div>
+            <div class="curtain-side left-side"></div>
+            <div class="curtain-side right-side"></div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
+            <div
+                class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
+                <div class="navbar-brand-mobile">
+                    <a href="#">
+                        <img src="./Italy Logo.png" alt="Italy Logo" id="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#menuUtama"
+                        aria-controls="menuUtama" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <div
+                    class="collapse navbar-collapse justify-content-between w-100"
+                    id="menuUtama">
+                    <ul id="navigasi" class="navbar-nav mx-lg-auto">
+                        <li><a href="../home.html">Home</a></li>
+                        <li><a href="../history/history.html">History</a></li>
+                        <li><a href="#">Foods</a></li>
+                        <li><a href="#">Landmarks</a></li>
+                        <li><a href="#">Cultures</a></li>
+                    </ul>
+                    <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP"
+                        class="btn btn-outline-light d-lg-flex align-items-center"
+                        id="btn-pass">Get a Tourist Pass</a>
+                </div>
+            </div>
         </nav>
 
         <div id="herofood">
@@ -44,17 +137,55 @@
         <main class="containerfood">
             <h1 class="headerfood">PIZZA</h1>
             <div class="menu">
-
                 <div class="menu-pizza">
                     <div class="desc">
                         <h2>Pizza Margherita</h2>
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        <p>According to popular Italian lore, the pizza was created in June 1889 by Neapolitan pizzaiolo Raffaele Esposito. Margherita relies on a perfect, creamy balance of melted cheese, bright tomato acidity, and fresh herbs.</p>
 
                     </div>
                     <div class="menu-image">
-                        <img src="./margherita-pizza.jpg">
+                        <img id="menuimg1" src="margherita-pizza.jpg">
+                        <p class="image-cap">Pizza Margherita</p>
                     </div>
-
+                </div>
+                <div class="menu-pizza">
+                    <hr class="pizzahr">
+                </div>
+                <div class="menu-pizza">
+                    <div class="menu-image">
+                        <img id="menuimg2" src="marinara.png">
+                        <p class="image-cap">Pizza Marinara</p>
+                    </div>
+                    <div class="desc text-end">
+                        <h2>Pizza Marinara</h2>
+                        <p> Is one of the oldest, most traditional styles of Neapolitan pizza from Naples, Italy. Despite the name sounding like it contains seafood, it features absolutely no cheese and no fish. Instead, it relies on a few high-quality, plant-based pantry staples to create an intensely flavorful, naturally dairy-free dish.</p>
+                    </div>
+                </div>
+                <div class="menu-pizza">
+                    <hr class="pizzahr">
+                </div>
+                <div class="menu-pizza">
+                    <div class="submenu">
+                        <div class="submenu-image">
+                        </div>
+                        <div class="submenu-desc">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        </div>
+                    </div>
+                    <div class="submenu" id="centersubmenu">
+                        <div class="submenu-image">
+                        </div>
+                        <div class="submenu-desc">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        </div>
+                    </div>
+                    <div class="submenu">
+                        <div class="submenu-image">
+                        </div>
+                        <div class="submenu-desc">
+                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             top ten menus oat

@@ -10,32 +10,36 @@ p {
 h3{
   font-family: "Red Hat Display", sans-serif;
 }
-nav{
-  position: sticky;
-  top:0px;  
+nav {
   height: auto;
   background-color: #188D47;
+  font-family: "Google Sans Flex", sans-serif;
+    }
+
+.navbar-brand-mobile {
+  padding: 0;
   display: flex;
   align-items: center;
-  font-family: "Google Sans Flex", sans-serif;
-  z-index: 1000;
-}
+    }
 
-#judul{
+#judul {
   font-family: "Italiana", sans-serif;
-  font-size: 60px
-}
+  font-size: 60px;
+    }
 
 #logo{
-  height: 60px; /* Slightly smaller than the nav height to look centered */
-  width: auto;
-  flex-shrink: 0; /* Prevents the logo from being compressed */
+  height: 60px;      
+  width: auto;       
+  object-fit: cover; 
+  display: block;
+  flex-shrink: 0;
 }
 
 #navigasi{
   display: flex;
   list-style: none;
   margin-bottom: 0;
+  padding-left: 0;
 }
 
 #navigasi li{
@@ -45,13 +49,17 @@ nav{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
   transition: background-color 0.3s ease;
 }
 
 #navigasi li a{
   text-decoration: none;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 } 
 
 #navigasi li:hover{
@@ -63,11 +71,11 @@ nav{
 }
 
 #btn-pass{
+  white-space: nowrap;
+  flex-shrink: 0;
+  height: fit-content;
+  padding: 8px 20px;
   margin-right: 20px;
-  white-space: nowrap; /* Prevents the text from wrapping to multiple lines */
-  flex-shrink: 0; /* Stops the browser from squishing the button on small screens */
-  height: fit-content; /* Keeps the height tidy */
-  padding: 8px 20px; /* Gives the button a consistent, clean shape */
 }
 
 .hero{
@@ -81,6 +89,9 @@ nav{
   position: relative;
 }
 
+.hero-intext{
+  margin-left: 15px;
+}
 .hero-texts{
   grid-area: 1 / 1;
   display: flex;
@@ -101,8 +112,6 @@ nav{
   
   background-color: rgba(0, 0, 0, 0.5); 
   backdrop-filter: blur(40px);                       
-
-  
   
   mask-image: linear-gradient(to right, 
     rgba(0, 0, 0, 0.95) 0%,    
@@ -132,17 +141,11 @@ nav{
   display: block;
 }
 
-main{
-  background-color: white;
-}
 
 .opening{
-
   padding: 70px 200px;
   background-color: #F5E6D3;
   background-image: url('op-backdrop.jpg');
-  
- 
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
@@ -153,36 +156,63 @@ main{
 }
 
 .openingbg{
-
   max-height: 80px;
   width: auto;
 }
 
 .topics-container{
-  margin: 80px;
+  margin: 80px 0px;
 }
 
 .topic{
   padding:20px;
-  background-color: white;
-  transition:fade 0.5s ease;
+  position: relative;
+  margin: 30px 10px;
 }
 
-.topic:hover{
-  border-radius: 5px;
-  background: linear-gradient(to right, #F5E6D3, white);
+#Home-History{
+  margin-right: 80px;
+  padding:30px;
+  background-color:white;
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.history-content{
+  position: relative;
+  z-index: 2;
+}
+
+.history-bg{
+  position: absolute;
+  margin:0px;
+  /* border-radius: 5px; */
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #D4A373, white);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+#Home-History:hover > .history-bg{
+  opacity: 1;
 }
 
 .events{
   display: flex;
-  gap: 20px;
+  gap: 20px;  
   width: 100%;
   max-width: 100%;
-  overflow: scroll;
+  overflow-x: scroll;
+  scrollbar-color: white transparent;
+  scrollbar-width: thin;
 }
 
 .event-card{
-  width: 20vw;
+  width: 15%;
   margin-bottom: 10px;
   background-color: white;
   border-radius: 5px;
@@ -204,13 +234,222 @@ main{
 
 .events::-webkit-scrollbar-track:horizontal{
   margin-top: 10px;
-  height: 5px;
-  background:linear-gradient(to left, white,#F5E6D3);
-  border-radius: 50px;
 }
-.events::-webkit-scrollbar-thumb:horizontal{
-  border-radius:50px;
-  margin-top: 10px;
-  height: 10px;
-  background-color: #188D47;
+
+#Home-Food{
+  padding: 35px;
+  background-color: #D4A373;
+  margin: 0px;
+  display: grid;
+}
+
+.food-content{
+  width: 30%;
+  text-align: justify;
+
+}
+
+#Home-Landmarks{
+  padding: 35px;
+  background-color: #c76d53;
+  margin: 0px;
+  display: grid;
+}
+
+.landmarks-content{
+  width: 100%;
+  text-align: justify;
+}
+
+.landmark-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.landmark-card{
+  overflow: hidden;
+  border-radius: 18px;
+  min-height: 170px;
+  transition: transform 0.35s ease;
+}
+
+.landmark-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+.landmark-card:hover img{
+  transform: scale(1.06);
+}
+
+.landmark-card:hover ~ .landmark-card img{
+  transform: scale(1.08);
+}
+
+.landmark-card:hover ~ .landmark-card{
+  transform: translateY(-2px);
+}
+
+@media (max-width: 991px) {
+  .landmark-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .landmark-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+#Home-Social{
+  padding: 35px;
+  background-color: #6A7D45;
+  margin: 0px;
+  display: grid;
+}
+
+.social-content{
+  width: 30%;
+  text-align: justify;
+
+}
+
+footer{
+  padding:30px;
+  background-color: #c76d53;
+  
+}
+
+/* --- SYSTEM TRANSISI HALAMAN TIRAI --- */
+#transition-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999; 
+    pointer-events: none; 
+    display: flex;
+}
+
+.curtain-side {
+    width: 50%;
+    height: 100%;
+    background-color: #188D47; /* Warna hijau navbar kamu */
+    /* Menggunakan kurva bezier 'Quintic' (1.0s) agar pembukaannya terasa berat & mewah */
+    transition: transform 1.0s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+#page-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Italiana", serif;
+    font-size: 50px;
+    letter-spacing: 6px;
+    z-index: 100000;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+/* Sembunyikan teks loader sesaat sebelum tirai terbuka */
+body.page-loaded #page-loader {
+    opacity: 0;
+}
+
+/* Posisi Awal Tirai Menutup */
+.left-side { transform: translateX(0); }
+.right-side { transform: translateX(0); }
+
+/* Posisi Tirai Membuka ke Samping luar layar */
+body.page-loaded .left-side { transform: translateX(-100%); }
+body.page-loaded .right-side { transform: translateX(100%); }
+
+/* Animasi drop-down bawaan Bootstrap agar seimbang dengan kelembutan tirai */
+.collapsing {
+    transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+@media (max-width: 991px) {
+  .navbar-brand-mobile {
+      display: flex;
+      width: 100%;
+      height: 60px; 
+      justify-content: space-between;
+      align-items: center;
+      /* DIUBAH KE 0: Agar logo mobile juga mengisi penuh tanpa terganjal padding */
+      padding: 0; 
+      background-color: #188D47;
+  }
+
+  /* LOGO MOBILE: Ikut full mengikuti tinggi navbar 60px */
+  #logo {
+      height: 60px; 
+      margin-left: 0; 
+  }
+
+  /* Memberikan margin kanan khusus pada tombol hamburger agar tidak menempel ke tepi layar */
+  .navbar-toggler {
+      margin-right: 15px;
+  }
+
+  .navbar-collapse {
+      background-color: #188D47;
+      padding: 10px 20px 20px 20px;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(-15px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .navbar-collapse.show {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  #navigasi {
+      flex-direction: column !important;
+      width: 100% !important;
+      margin-top: 10px !important;
+      margin-left: 0 !important; /* TAMBAHKAN INI: Agar di HP posisinya kembali normal mentok ke kiri */
+      gap: 8px !important;
+  }
+
+  #navigasi li {
+      width: 100%;
+      height: auto;
+      margin-bottom: 6px;
+      align-items: flex-start;
+  }
+
+  #navigasi li a {
+      justify-content: flex-start;
+      font-size: 18px;
+      padding: 8px 10px;
+      width: 100%;
+  }
+
+  #navigasi li:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+  }
+  #navigasi li:hover a {
+      color: white;
+  }
+
+  #btn-pass {
+      margin: 20px 0 10px 0;
+      width: 100%;
+      text-align: center;
+      display: block;
+      padding: 10px 20px;
+  }
 }

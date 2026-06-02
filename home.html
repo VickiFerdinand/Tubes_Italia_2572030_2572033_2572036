@@ -6,6 +6,72 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Italia_2572030_2572033_2572036</title>
         <script src="script.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+            // 1. EFEK MEMBUKA TIRAI HALAMAN
+            setTimeout(() => {
+                document.body.classList.add("page-loaded");
+            }, 800);
+
+            // 2. EFEK MENUTUP TIRAI (SAAT PERPINDAHAN HALAMAN)
+            const navLinks = document.querySelectorAll("a");
+            navLinks.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    const destination = link.getAttribute("href");
+                    if (
+                        destination && 
+                        !destination.startsWith("#") && 
+                        !destination.startsWith("javascript:") &&
+                        !link.classList.contains("navbar-toggler") &&
+                        link.target !== "_blank"
+                    ) {
+                        e.preventDefault(); 
+                        document.body.classList.remove("page-loaded");
+                        setTimeout(() => {
+                            window.location.href = destination;
+                        }, 1000);
+                    }
+                });
+            });
+
+            // 3. EFEK AUTO-CLOSE HAMBURGER YANG FLUID & ULTRA SMOOTH SAAT DI-SCROLL
+            const menuElement = document.getElementById('menuUtama');
+            
+            // Inisialisasi komponen collapse Bootstrap secara programmatik
+            // (Pastikan file bootstrap.bundle.min.js sudah terpasang di head)
+            const bsCollapse = new bootstrap.Collapse(menuElement, { toggle: false });
+            
+            let isScrolling = false;
+
+            window.addEventListener('scroll', () => {
+                // Hanya jalankan logika jika menu hamburger mobile sedang terbuka (punya class 'show')
+                if (menuElement.classList.contains('show') && !isScrolling) {
+                    isScrolling = true;
+
+                    // Tambahkan class kustom untuk meredupkan teks menu secara halus sebelum meluncur menutup
+                    menuElement.style.opacity = '0';
+                    menuElement.style.transform = 'translateY(-10px)';
+                    menuElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+                    // Panggil fungsi hide bawaan Bootstrap Instance agar menutup mengikuti kurva animasi bezier asli
+                    setTimeout(() => {
+                        bsCollapse.hide();
+                    }, 50);
+                }
+            });
+
+            // Kembalikan properti opacity dan transform bawaan setelah menu selesai tertutup sempurna
+            menuElement.addEventListener('hidden.bs.collapse', () => {
+                menuElement.style.opacity = '';
+                menuElement.style.transform = '';
+                menuElement.style.transition = '';
+                isScrolling = false;
+            });
+        });
+        </script>
+        
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -17,20 +83,46 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
             rel="stylesheet">
+
     </head>
 
     <body>
-        <nav class="d-flex justify-content-between">
-            <img src="Italy Logo.png" alt="Italy Logo" id="logo">
-            <ul id="navigasi">
-                <li><a href="#">Home</a></li>
-                <li><a href="./history/history.html">History</a></li>
-                <li><a href="./food/food.html">Foods</a></li>
-                <li><a href="#">Landmarks</a></li>
-                <li><a href="#">Cultures</a></li>
-            </ul>
-            <button class="btn btn-outline-light" id="btn-pass">Get a Tourist
-                Pass</button>
+        <div id="transition-curtain">
+            <div id="page-loader">LOADING...</div>
+            <div class="curtain-side left-side"></div>
+            <div class="curtain-side right-side"></div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
+            <div
+                class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
+                <div class="navbar-brand-mobile">
+                    <a href="#">
+                        <img src="./Italy Logo.png" alt="Italy Logo" id="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#menuUtama"
+                        aria-controls="menuUtama" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+
+                <div
+                    class="collapse navbar-collapse justify-content-between w-100"
+                    id="menuUtama">
+                    <ul id="navigasi" class="navbar-nav mx-lg-auto">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="./history/history.html">History</a></li>
+                        <li><a href="./food/food.html">Foods</a></li>
+                        <li><a href="#">Landmarks</a></li>
+                        <li><a href="#">Cultures</a></li>
+                    </ul>
+                    <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP"
+                        class="btn btn-outline-light d-lg-flex align-items-center"
+                        id="btn-pass">Get a Tourist Pass</a>
+                </div>
+            </div>
         </nav>
 
         <div class="hero">
@@ -75,85 +167,124 @@
                     where absolute beauty surrounds them at every
                     turn.</p>
             </div>
-           
 
             <div class="topics-container">
-                <div class="topic">
-                    <h3>The Great History Of Italy</h3>
-                    <p>Step across the threshold of time and explore the
-                        magnificent foundations of Western civilization.
-                        Wander through impeccably preserved ruins, majestic
-                        medieval castles, and grand palazzos that tell
-                        the epic story of ancient empires and legendary
-                        dynasties.</p>
-                    <div class="events">
-                        <div class="event-card" id="history">
-                            <a href=""><img src="romanEmpire.png" alt="roman empire"></a>
-                            <div class="event-text">
-                                <h5><a href>Roman Empire</a></h5>
-                                <p>Uh... (tell something smart?)</p>
-                            </div>
+                <section class="topic" id="Home-History">
+                    <div class="history-bg"></div>
+                    <div class="history-content">
+                        <h3>The Great History Of Italy</h3>
+                        <p>Step across the threshold of time and explore the
+                            magnificent foundations of Western civilization.
+                            Wander through impeccably preserved ruins, majestic
+                            medieval castles, and grand palazzos that tell
+                            the epic story of ancient empires and legendary
+                            dynasties.</p>
+                        <div class="events">
+                            <div class="event-card" id="history">
+                                <a href="history/history.html#RE"><img
+                                        src="romanEmpire.png"
+                                        alt="roman empire"></a>
+                                <div class="event-text">
+                                    <h5><a href="history/history.html#RE">Roman
+                                            Empire</a></h5>
+                                    <p>Uh... (tell something smart?)</p>
+                                </div>
 
-                        </div>
-                        <div class="event-card">
-                            <a href><img src alt></a>
-                            <div class="event-text">
-                                <h5><a href>Middle Ages</a></h5>
-                                <p>Uh... (tell something smart?)</p>
+                            </div>
+                            <div class="event-card">
+                                <a href="history/history.html#Md"><img src
+                                        alt></a>
+                                <div class="event-text">
+                                    <h5><a href="history/history.html#Md">Middle
+                                            Ages</a></h5>
+                                    <p>Uh... (tell something smart?)</p>
+                                </div>
+                            </div>
+                            <div class="event-card">
+                                <a href="history/history.html#Rn"><img
+                                        src="renaissance.jpg"
+                                        alt="renaissance"></a>
+                                <div class="event-text">
+                                    <h5><a
+                                            href="history/history.html#Rn">Renaissance</a></h5>
+                                    <p>Uh... (tell something smart?)</p>
+                                </div>
+                            </div>
+                            <div class="event-card">
+                                <a href="history/history.html#GC"><img
+                                        src="ww.jpg" alt="world war"></a>
+                                <div class="event-text">
+                                    <h5><a href="history/history.html#GC">World
+                                            wars</a></h5>
+                                    <p>Uh... (tell something smart?)</p>
+                                </div>
+                            </div>
+                            <div class="event-card">
+                                <a href="history/history.html#MR"><img src
+                                        alt></a>
+                                <div class="event-text">
+                                    <h5><a href="history/history.html#MR">Modern
+                                            Days</a></h5>
+                                    <p>Uh... (tell something smart?)</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="event-card">
-                            <a href><img src="renaissance.jpg" alt="renaissance"></a>
-                            <div class="event-text">
-                                <h5><a href>Renaissance</a></h5>
-                                <p>Uh... (tell something smart?)</p>
-                            </div>
-                        </div>
-                        <div class="event-card">
-                            <a href><img src="ww.jpg" alt="world war"></a>
-                            <div class="event-text">
-                                <h5><a href>World wars</a></h5>
-                                <p>Uh... (tell something smart?)</p>
-                            </div>
-                        </div>
-                        <div class="event-card">
-                            <a href><img src alt></a>
-                            <div class="event-text">
-                                <h5><a href>Modern Days</a></h5>
-                                <p>Uh... (tell something smart?)</p>
-                            </div>
-                        </div>
+                        <a href="history/history.html">Learn More</a>
                     </div>
-                    <a href="history.html">Learn More</a>
-                </div>
+                </section>
 
-                <div class="topic">
-                    <h3>The Exquisite Taste of Italy</h3>
-                    <p>Indulge in the ultimate culinary journey. Savor world
-                        class dining, premium coastal wines, and
-                        authentic local flavors crafted with absolute passion
-                        and perfection.</p>
-                    <a href>Learn More</a>
-                </div>
+                <section class="topic" id="Home-Food">
+                    <div class="topic-bg"></div>
+                    <div class="food-content">
+                        <h3>The Exquisite Taste of Italy</h3>
+                        <p>Indulge in the ultimate culinary journey. Savor world
+                            class dining, premium coastal wines, and
+                            authentic local flavors crafted with absolute
+                            passion
+                            and perfection.</p>
+                        <a href>Learn More</a>
+                    </div>
+                </section>
 
-                <div class="topic">
-                    <h3>Landmarks</h3>
-                    <p>Discover the breathtaking monuments that define the most
-                        beautiful country on earth. Marvel at
-                        architectural masterpieces and iconic views that will
-                        leave you absolutely speechless.</p>
-                    <a href>Learn More</a>
-                </div>
+                <section class="topic" id="Home-Landmarks">
+                    <div class="topic-bg"></div>
+                    <div class="landmarks-content">
+                        <h3>Landmarks</h3>
+                        <p>Discover the breathtaking monuments that define the
+                            most
+                            beautiful country on earth. Marvel at
+                            architectural masterpieces and iconic views that
+                            will
+                            leave you absolutely speechless.</p>
+                        <div class="landmark-grid">
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=900&q=80" alt="Venice"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" alt="Rome"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=900&q=80" alt="Pisa Tower"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1531206715517-5c0ba38b2460?auto=format&fit=crop&w=900&q=80" alt="Italian Street"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?auto=format&fit=crop&w=900&q=80" alt="Italian Landmark"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80" alt="Venice City"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1527118736192-b5f4aa0b1068?auto=format&fit=crop&w=900&q=80" alt="Venice Canal"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Roman Ruins"></div>
+                            <div class="landmark-card"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80" alt="Renaissance Architecture"></div>
+                        </div>
+                        <a href>Learn More</a>
+                    </div>
+                </section>
 
-                <div class="topic">
-                    <h3>Social</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Pariatur, sit dolores aperiam corporis quas
-                        tenetur sint minus, ratione quae explicabo itaque fugit
-                        voluptatem accusamus commodi quasi inventore
-                        laudantium similique praesentium?</p>
-                    <a href>Learn More</a>
-                </div>
+                <section class="topic" id="Home-Social">
+                    <div class="social-bg"></div>
+                    <div class="social-content">
+                        <h3>Social</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit.
+                            Pariatur, sit dolores aperiam corporis quas
+                            tenetur sint minus, ratione quae explicabo itaque
+                            fugit
+                            voluptatem accusamus commodi quasi inventore
+                            laudantium similique praesentium?</p>
+                        <a href>Learn More</a>
+                    </div>
+                </section>
             </div>
 
         </main>
