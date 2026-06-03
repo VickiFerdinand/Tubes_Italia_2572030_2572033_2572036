@@ -67,6 +67,49 @@
                 isScrolling = false;
             });
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".era-section");
+        const nodes = document.querySelectorAll(".timeline-node");
+        
+        // Fungsi utama untuk menggerakkan garis dan menyalakan titik
+        const updateTimeline = () => {
+            let scrollY = window.scrollY;
+            // Hitung total area yang bisa di-scroll
+            let docHeight = document.body.scrollHeight - window.innerHeight;
+            
+            // Hitung persentase scroll (0 sampai 100)
+            let progressPercent = (scrollY / docHeight) * 100;
+            
+            // Tembakkan nilai persentase ke CSS! 
+            // Ini ajaib karena CSS akan otomatis merubah "Height" di desktop dan "Width" di mobile
+            document.documentElement.style.setProperty('--scroll-progress', `${progressPercent}%`);
+
+            // Deteksi user sedang berada di section/era yang mana
+            let currentSection = "";
+            sections.forEach(section => {
+                // Aktifkan titik ketika layar sudah menyentuh setengah bagian atas section
+                const sectionTop = section.offsetTop - (window.innerHeight / 2);
+                if (scrollY >= sectionTop) {
+                    currentSection = section.getAttribute("id");
+                }
+            });
+
+            // Nyalakan warna titik jika ID section cocok dengan data-target di HTML
+            nodes.forEach(node => {
+                node.classList.remove("active");
+                if (node.getAttribute("data-target") === currentSection) {
+                    node.classList.add("active");
+                }
+            });
+        };
+
+        // Panggil fungsi setiap kali user men-scroll
+        window.addEventListener("scroll", updateTimeline);
+        
+        // Panggil satu kali saat web pertama kali dibuka (untuk mengatasi error jika user refresh di tengah halaman)
+        updateTimeline();
+    });
         </script>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -80,6 +123,10 @@
             rel="stylesheet">
 
         <style>
+
+        :root {
+            --scroll-progress: 0%; 
+        }    
         body{
           padding: 0;
           margin: 0;
@@ -281,6 +328,96 @@
         /* Posisi Tirai Membuka Samping */
         body.page-loaded .left-side { transform: translateX(-100%); }
         body.page-loaded .right-side { transform: translateX(100%); }
+
+        #timeline-container {
+            position: fixed;
+            top: 50%;
+            right: 30px; 
+            transform: translateY(-50%);
+            height: 60vh;
+            width: 6px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #timeline-base {
+            position: absolute;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        #timeline-progress {
+            position: absolute;
+            top: 0;
+            width: 4px;
+            height: var(--scroll-progress); /* Mengisi ke BAWAH */
+            background: linear-gradient(to bottom, #59ff00, #ff0404);
+            border-radius: 10px;
+            z-index: 2;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        #timeline-nodes-wrapper {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .timeline-node {
+            width: 20px;
+            height: 20px;
+            background-color: #222;
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+        }
+
+        .timeline-node::before {
+            content: attr(title);
+            position: absolute;
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-family: "Google Sans Flex", sans-serif;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-node:hover::before {
+            opacity: 1;
+        }
+
+        .timeline-node.active {
+            background-color: #59ff00;
+            border-color: #fff;
+            transform: scale(1.5);
+            box-shadow: 0 0 15px #59ff00, 0 0 30px #59ff00;
+        }
+
+
         @media (max-width: 991px) {
             .navbar-brand-mobile {
                 display: flex;
@@ -380,6 +517,55 @@
 
             h3 { font-size: 20px; }
             p { text-align: justify; font-size: 16px; }
+
+            #timeline-container {
+                top: auto;
+                bottom: 0; 
+                right: 0;
+                left: 0;
+                transform: none;
+                width: 100%;
+                height: 50px; /* Area sentuh yang nyaman di HP */
+                flex-direction: row;
+                padding: 0 15px;
+                /* Tambahkan gradient hitam tipis di bawah agar timeline selalu terbaca walau background putih */
+                background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); 
+            }
+
+            #timeline-base {
+                top: 50%;
+                left: 15px;
+                transform: translateY(-50%);
+                width: calc(100% - 30px);
+                height: 4px;
+            }
+
+            #timeline-progress {
+                top: 50%;
+                left: 15px;
+                transform: translateY(-50%);
+                height: 4px; /* Tinggi menjadi konstan (tipis) */
+                width: var(--scroll-progress); /* Mengisi ke KANAN */
+                background: linear-gradient(to right, #59ff00, #ff0404);
+            }
+
+            #timeline-nodes-wrapper {
+                top: 50%;
+                left: 15px;
+                transform: translateY(-50%);
+                width: calc(100% - 30px);
+                height: auto;
+                flex-direction: row; 
+            }
+
+            /* Pindahkan Tooltip ke atas tombol saat di HP */
+            .timeline-node::before {
+                right: auto;
+                left: 50%;
+                top: -35px;
+                transform: translateX(-50%);
+            }
+
         }
         </style>
     </head>
@@ -390,12 +576,29 @@
             <div class="curtain-side right-side"></div>
         </div>
 
+        <div id="timeline-container">
+            <div id="timeline-base"></div>
+            <div id="timeline-progress"></div>
+            <div id="timeline-nodes-wrapper">
+                <a href="#RE" class="timeline-node" data-target="RE"
+                    title="Roman Empire"></a>
+                <a href="#Md" class="timeline-node" data-target="Md"
+                    title="Medieval Era"></a>
+                <a href="#Rn" class="timeline-node" data-target="Rn"
+                    title="Renaissance"></a>
+                <a href="#GC" class="timeline-node" data-target="GC"
+                    title="Global Conflict"></a>
+                <a href="#MR" class="timeline-node" data-target="MR"
+                    title="Modern Republic"></a>
+            </div>
+        </div>
+
         <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
             <div
                 class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
                 <div class="navbar-brand-mobile">
                     <a href="#">
-                        <img src="./Italy Logo.png" alt="Italy Logo" id="logo">
+                        <img src="Italy Logo.png" alt="Italy Logo" id="logo">
                     </a>
                     <button class="navbar-toggler" type="button"
                         data-bs-toggle="collapse" data-bs-target="#menuUtama"
@@ -412,8 +615,8 @@
                         <li><a href="../home.html">Home</a></li>
                         <li><a href="#">History</a></li>
                         <li><a href="../food/food.html">Foods</a></li>
-                        <li><a href="#">Landmarks</a></li>
-                        <li><a href="#">Cultures</a></li>
+                        <li><a href="../landmark/landmark.html">Landmarks</a></li>
+                        <li><a href="../Cultures/Cultures.html">Cultures</a></li>
                     </ul>
                     <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP"
                         class="btn btn-outline-light d-lg-flex align-items-center"

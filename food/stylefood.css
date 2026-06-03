@@ -93,7 +93,40 @@ p {
 /*Yang ad bg color trs gada ap ap = placeholder*/
 
 #herofood {
-  background-color: slategrey;
+    background-color: slategrey;
+    height: 150px;
+    
+    /* Tambahan untuk menjaga agar teks tetap di depan dan blur tidak keluar batas */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Memisahkan background ke pseudo-element agar teks tidak ikut ter-blur */
+#herofood::before {
+    content: "";
+    position: absolute;
+    
+    /* Nilai minus (-5px) mencegah area transparan di pinggiran gambar akibat efek blur */
+    top: -5px; 
+    left: -5px; 
+    right: -5px; 
+    bottom: -5px;
+    
+    background-image: url(pictures/foodbanner.png);
+    
+    /* 1. Agar gambar melebar penuh dan tidak looping */
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    /* 2. Menggeser posisi gambar lebih ke atas */
+    /* Ubah angka 30% ini. Semakin mendekati 0%, gambar akan semakin ke atas */
+    background-position: center 30%; 
+    
+    /* 3. Menambahkan slight blur */
+    filter: blur(3px); /* Ubah angka 3px untuk mengatur tingkat keburaman */
+    
+    z-index: -1; /* Memastikan background ini berada di belakang teks */
 }
 
 .containerfood {
@@ -104,6 +137,11 @@ p {
   background-blend-mode: multiply;
 
 }
+#bannertext{
+  text-align: center;
+  font-family: "Qwigley", cursive;
+  font-size: 75px ;
+}
 .headerfood{
   text-align: center;
   color: white;
@@ -113,7 +151,7 @@ p {
   background-color: #491811;
   background-image: url();
   border-radius: 5px;
-  margin: 5% 20%;
+  margin: 5% 15%;
 }
 .menu-pizza{
   margin: 0px 50px;
@@ -124,24 +162,41 @@ p {
   color: white;
     width: 50%;
     flex: 1;
+    text-align: justify;
+}
+#menu-desc1{
+  margin-right: 40px;
+  text-align: justify;
+}
+#menu-desc2{
+  margin-left: 40px;
+  text-align: justify;
 }
 .menu-image{
   flex: 1;
-  background-image: url(high-quality-white-paper-texture-background-seamless-square-te_463999-4602.png);
+  background-image: url(pictures/high-quality-white-paper-texture-background-seamless-square-te_463999-4602.png);
   /* padding: 2px 2px 2px 2px; */
   align-items: center;
   text-align: left;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 0 10px;
+}
+#menu-paper1{
+  position: relative;
+    z-index: 10;
+    margin-right: -120px;
+}
+#menu-paper2{
+  position: relative;
+    z-index: 10;
+    margin-left: -120px;
 }
 .image-cap{
   font-size: 50px;
   font-weight: 0;
   font-family: "Qwigley", cursive;
   margin: 0;
-  
 }
 #menuimg1{
   max-height: 270px;
