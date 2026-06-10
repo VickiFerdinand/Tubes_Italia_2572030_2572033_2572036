@@ -3,96 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landmarks</title>
-    
-    <link rel="stylesheet" href="stylelandmark.css">
-    <script src="script.js"></script>
+    <title>Landmarks | The Heritage of Italy</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylelandmark.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Modern+Antiqua&family=Nova+Round&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=TASA+Explorer:wght@400..800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Membuka Tirai
-            setTimeout(() => { document.body.classList.add("page-loaded"); }, 800);
-
-            // Menutup Tirai saat pindah halaman
-            const navLinks = document.querySelectorAll("a");
-            navLinks.forEach(link => {
-                link.addEventListener("click", (e) => {
-                    const destination = link.getAttribute("href");
-                    if (destination && !destination.startsWith("#") && !destination.startsWith("javascript:") && !link.classList.contains("navbar-toggler") && link.target !== "_blank") {
-                        e.preventDefault(); 
-                        document.body.classList.remove("page-loaded");
-                        setTimeout(() => { window.location.href = destination; }, 1000);
-                    }
-                });
-            });
-
-            // Auto-close Hamburger Menu
-            const menuElement = document.getElementById('menuUtama');
-            const bsCollapse = new bootstrap.Collapse(menuElement, { toggle: false });
-            let statusScrollKebawah = false;
-
-            window.addEventListener('scroll', () => {
-                if (menuElement.classList.contains('show') && !statusScrollKebawah) {
-                    statusScrollKebawah = true;
-                    menuElement.style.opacity = '0';
-                    menuElement.style.transform = 'translateY(-10px)';
-                    menuElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                    setTimeout(() => { bsCollapse.hide(); }, 50);
-                }
-            });
-
-            menuElement.addEventListener('hidden.bs.collapse', () => {
-                menuElement.style.opacity = '';
-                menuElement.style.transform = '';
-                menuElement.style.transition = '';
-                statusScrollKebawah = false;
-            });
-        });
-    </script>
-
-    <style>
-        body { margin: 0; padding: 0; }
-        
-        #transition-curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; pointer-events: none; display: flex; }
-        .curtain-side { width: 50%; height: 100%; background-color: #188D47; transition: transform 1.0s cubic-bezier(0.85, 0, 0.15, 1); }
-        #page-loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: rgba(255, 255, 255, 0.8); font-family: "Italiana", serif; font-size: 50px; letter-spacing: 6px; z-index: 100000; opacity: 1; transition: opacity 0.4s ease; }
-        body.page-loaded #page-loader { opacity: 0; }
-        .left-side { transform: translateX(0); }
-        .right-side { transform: translateX(0); }
-        body.page-loaded .left-side { transform: translateX(-100%); }
-        body.page-loaded .right-side { transform: translateX(100%); }
-
-        nav { height: auto; background-color: #188D47; font-family: "Google Sans Flex", sans-serif; }
-        .navbar-brand-mobile { padding: 0; display: flex; align-items: center; }
-        #logo { height: 60px; width: auto; object-fit: cover; display: block; flex-shrink: 0; }
-        #navigasi { display: flex; list-style: none; margin-bottom: 0; padding-left: 0; }
-        #navigasi li { width: 100px; height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: background-color 0.3s ease; }
-        #navigasi li a { text-decoration: none; color: white; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; } 
-        #navigasi li:hover { background-color: white; }
-        #navigasi li:hover a { color: black; }
-        #btn-pass { white-space: nowrap; flex-shrink: 0; height: fit-content; padding: 8px 20px; margin-right: 20px; }
-
-        @media (max-width: 991px) {
-            .navbar-brand-mobile { display: flex; width: 100%; height: 60px; justify-content: space-between; align-items: center; padding: 0; background-color: #188D47; }
-            #logo { height: 60px; margin-left: 0; }
-            .navbar-toggler { margin-right: 15px; }
-            .navbar-collapse { background-color: #188D47; padding: 10px 20px 20px 20px; width: 100%; opacity: 0; transform: translateY(-15px); transition: opacity 0.35s ease, transform 0.35s ease; }
-            .navbar-collapse.show { opacity: 1; transform: translateY(0); }
-            #navigasi { flex-direction: column !important; width: 100% !important; margin-top: 10px !important; margin-left: 0 !important; gap: 8px !important; }
-            #navigasi li { width: 100%; height: auto; margin-bottom: 6px; align-items: flex-start; }
-            #navigasi li a { justify-content: flex-start; font-size: 18px; padding: 8px 10px; width: 100%; }
-            #navigasi li:hover { background-color: rgba(255, 255, 255, 0.15); border-radius: 8px; }
-            #navigasi li:hover a { color: white; }
-            #btn-pass { margin: 20px 0 10px 0; width: 100%; text-align: center; display: block; padding: 10px 20px; }
-        }
-    </style>
+    <script src="jslandmark.js" defer></script>
 </head>
 <body>
     <div id="transition-curtain">
@@ -107,7 +27,7 @@
                 <a href="#">
                     <img src="../Italy Logo.png" alt="Italy Logo" id="logo">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama" aria-controls="menuUtama" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -126,11 +46,159 @@
     </nav>
 
     <main>
-        
-    </main>
+        <section class="hero-landmark">
+            <img src="pompei.webp" alt="Italy Landmarks" class="hero-bg">
+            <div class="hero-content reveal-up">
+                <h1>Iconic Landmarks</h1>
+                <p>Discover the monuments that shaped human history.</p>
+            </div>
+        </section>
 
-    <footer>
-        
-    </footer>
+        <section class="container py-5 reveal-up px-3 px-md-auto" id="interactive-map-section">
+            <div class="row align-items-center rounded-5 shadow-lg p-4 p-lg-5 mx-2 mx-md-0" style="background-color: #46462A;">
+                <div class="col-lg-5 mb-4 mb-lg-0 text-center text-lg-start">
+                    <h2 class="display-6 fw-bold mb-3" style="font-family: 'Italiana', serif; color: #F5E6D3;">Explore by Region</h2>
+                    <p class="mb-4" style="font-family: 'Elms Sans', sans-serif; color: #F3E3B2; opacity: 0.9;">Click on the glowing pins across the map of Italy to instantly discover breathtaking landmarks located in that specific city.</p>
+                </div>
+                <div class="col-lg-7 text-center">
+                    <div class="map-wrapper mx-auto position-relative d-inline-block" style="max-width: 350px;">
+                        <img src="Map of Italy.webp" alt="Map of Italy" class="img-fluid w-100" style="mix-blend-mode: screen; filter: grayscale(100%) brightness(1.5);">
+
+                        <div class="map-pin" style="top: 16%; left: 50%;" data-target="venice" title="Venice"></div>
+                        <div class="map-pin" style="top: 40%; left: 44%;" data-target="florence" title="Florence"></div>
+                        <div class="map-pin" style="top: 37%; left: 34%;" data-target="pisa" title="Pisa"></div>
+                        <div class="map-pin" style="top: 47%; left: 51%;" data-target="rome" title="Rome"></div>
+                        <div class="map-pin" style="top: 85%; left: 63%;" data-target="sicily" title="Sicily"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container py-5">
+            <div class="d-flex justify-content-center mb-5 reveal-up" id="filter-section-target">
+                <ul class="nav nav-pills gap-2 filter-nav">
+                    <li><button class="nav-link" data-filter="all">All</button></li>
+                    <li><button class="nav-link" data-filter="rome">Rome</button></li>
+                    <li><button class="nav-link" data-filter="venice">Venice</button></li>
+                    <li><button class="nav-link" data-filter="florence">Florence</button></li>
+                    <li><button class="nav-link" data-filter="pisa">Pisa</button></li>
+                    <li><button class="nav-link" data-filter="sicily">Sicily</button></li>
+                </ul>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-lg-8 item rome reveal-up">
+                    <a href="#" class="card-vs large">
+                        <img src="Colosseo_2020.webp" alt="Colosseum">
+                        <div class="overlay-vs">
+                            <h4>The Colosseum</h4>
+                            <p class="lokasi">Rome, Italy</p>
+                            <p class="deskripsi">A monumental ancient amphitheater and an enduring symbol of Imperial Rome's architectural engineering.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 item venice reveal-up">
+                    <a href="#" class="card-vs small">
+                        <img src="rialto bridge.webp" alt="Rialto Bridge">
+                        <div class="overlay-vs">
+                            <h4>Rialto Bridge</h4>
+                            <p class="lokasi">Venice, Italy</p>
+                            <p class="deskripsi">The oldest and most iconic stone bridge crossing the magnificent Grand Canal.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 item pisa reveal-up">
+                    <a href="#" class="card-vs small">
+                        <img src="pisa tower.webp" alt="Leaning Tower of Pisa">
+                        <div class="overlay-vs">
+                            <h4>Leaning Tower of Pisa</h4>
+                            <p class="lokasi">Pisa, Italy</p>
+                            <p class="deskripsi">World-famous for its nearly four-degree lean, this freestanding bell tower is a marvel of medieval architecture.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-8 item rome reveal-up">
+                    <a href="#" class="card-vs large">
+                        <img src="pantheon.webp" alt="Pantheon">
+                        <div class="overlay-vs">
+                            <h4>Pantheon</h4>
+                            <p class="lokasi">Rome, Italy</p>
+                            <p class="deskripsi">A former Roman temple featuring the world's largest unreinforced concrete dome.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-6 item florence reveal-up">
+                    <a href="#" class="card-vs medium">
+                        <img src="ponte vecchio.webp" alt="Ponte Vecchio">
+                        <div class="overlay-vs">
+                            <h4>Ponte Vecchio</h4>
+                            <p class="lokasi">Florence, Italy</p>
+                            <p class="deskripsi">A medieval stone closed-spandrel arch bridge noted for still having shops built along it.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-6 item florence reveal-up">
+                    <a href="#" class="card-vs medium">
+                        <img src="uffizi gallery.webp" alt="Uffizi Gallery">
+                        <div class="overlay-vs">
+                            <h4>Uffizi Gallery</h4>
+                            <p class="lokasi">Florence, Italy</p>
+                            <p class="deskripsi">A prominent art museum located adjacent to the Piazza della Signoria in the Historic Centre of Florence.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-8 item sicily reveal-up">
+                    <a href="#" class="card-vs large">
+                        <img src="greek theathre.webp" alt="Greek Theatre">
+                        <div class="overlay-vs">
+                            <h4>Greek Theatre</h4>
+                            <p class="lokasi">Taormina, Sicily</p>
+                            <p class="deskripsi">An ancient Greek theatre in Taormina offering stunning views of Mount Etna and the sea.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 item rome reveal-up">
+                    <a href="#" class="card-vs small">
+                        <img src="spanish step.webp" alt="Spanish Steps">
+                        <div class="overlay-vs">
+                            <h4>Spanish Steps</h4>
+                            <p class="lokasi">Rome, Italy</p>
+                            <p class="deskripsi">A monumental stairway of 135 steps built with French diplomat Étienne Gueffier's bequeathed funds.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 item rome reveal-up">
+                    <a href="#" class="card-vs small">
+                        <img src="trevi fountain.webp" alt="Trevi Fountain">
+                        <div class="overlay-vs">
+                            <h4>Trevi Fountain</h4>
+                            <p class="lokasi">Rome, Italy</p>
+                            <p class="deskripsi">The largest Baroque fountain in the city and one of the most famous fountains in the world.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-8 item venice reveal-up">
+                    <a href="#" class="card-vs large">
+                        <img src="doge pallace.webp" alt="Doge's Palace">
+                        <div class="overlay-vs">
+                            <h4>Doge's Palace</h4>
+                            <p class="lokasi">Venice, Italy</p>
+                            <p class="deskripsi">A masterpiece of Gothic architecture, the palace is an impressive structure created in Venetian Gothic style.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 col-lg-8 mx-auto item florence reveal-up">
+                    <a href="#" class="card-vs medium">
+                        <img src="piazzele michaelangelo.webp" alt="Piazzale Michelangelo">
+                        <div class="overlay-vs">
+                            <h4>Piazzale Michelangelo</h4>
+                            <p class="lokasi">Florence, Italy</p>
+                            <p class="deskripsi">A square with a panoramic view of Florence, dedicated to the Renaissance sculptor Michelangelo.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>

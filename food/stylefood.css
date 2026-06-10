@@ -1,350 +1,96 @@
-body{
-  padding: 0;
-  margin: 0;
-}
-p {
-  font-family: "Elms Sans", sans-serif;
-  font-size: larger;
-}
+body { margin: 0; padding: 0; background-color: #F5E6D3; color: #310F10; font-family: "Elms Sans", sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-h3{
-  font-family: "Red Hat Display", sans-serif;
-}
-nav {
-  height: auto;
-  background-color: #188D47;
-  font-family: "Google Sans Flex", sans-serif;
-}
+#transition-curtain { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99999; pointer-events: none; display: flex; }
+.curtain-side { width: 50%; height: 100%; background-color: #188D47; transition: transform 1.0s cubic-bezier(0.85, 0, 0.15, 1); }
+#page-loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #F5E6D3; font-family: "Italiana", serif; font-size: 50px; letter-spacing: 6px; z-index: 100000; opacity: 1; transition: opacity 0.4s ease; }
+body.page-loaded #page-loader { opacity: 0; }
+.left-side, .right-side { transform: translateX(0); }
+body.page-loaded .left-side { transform: translateX(-100%); }
+body.page-loaded .right-side { transform: translateX(100%); }
 
-.navbar-brand-mobile {
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
+.navbar-brand-mobile { padding: 0; display: flex; align-items: center; }
+#logo { height: 60px; width: auto; object-fit: cover; display: block; flex-shrink: 0; }
+#navigasi { display: flex; list-style: none; margin-bottom: 0; padding-left: 0; }
+#navigasi li { width: 100px; height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: background-color 0.3s ease; }
+#navigasi li a { text-decoration: none; color: white; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-family: "Google Sans Flex", sans-serif; } 
+#navigasi li:hover { background-color: white; }
+#navigasi li:hover a { color: #188D47; }
+#btn-pass { white-space: nowrap; flex-shrink: 0; height: fit-content; padding: 8px 20px; margin-right: 20px; background-color: transparent; border: 1px solid white; color: white; transition: 0.3s; font-family: "Google Sans Flex", sans-serif; }
+#btn-pass:hover { background-color: white; color: #188D47; }
 
-#judul {
-  font-family: "Italiana", sans-serif;
-  font-size: 60px;
-}
+#herofood { position: relative; height: 50vh; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background-color: #310F10; }
+.hero-bg { position: absolute; top: -15%; left: 0; width: 100%; height: 130%; object-fit: cover; z-index: 0; filter: brightness(0.5); will-change: transform; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(49,15,16,0.3), rgba(49,15,16,0.7)); z-index: 1; }
+.hero-content { position: relative; z-index: 2; text-align: center; }
+.hero-subtitle { font-family: "Qwigley", cursive; font-size: 50px; color: #D4A373; display: block; margin-bottom: -15px; transform: rotate(-5deg); text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+#bannertext { font-family: "Italiana", serif; font-size: 70px; color: #F5E6D3; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
 
-#logo{
-  height: 60px;      
-  width: auto;       
-  object-fit: cover; 
-  display: block;
-  flex-shrink: 0;
-}
+.food-sidebar { background: #FFFFFF; padding: 30px 25px; border-radius: 25px; box-shadow: 0 20px 40px rgba(49,15,16,0.06); top: 120px !important; }
+.food-sidebar h3 { font-family: "Italiana", serif; font-size: 32px; color: #800020; margin-bottom: 25px; text-align: center; border-bottom: 1px solid #D4A373; padding-bottom: 15px; }
+#menuSampingMakanan { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+#menuSampingMakanan a { text-decoration: none; color: #46462A; display: flex; align-items: center; gap: 15px; padding: 15px 20px; border-radius: 15px; font-family: "Google Sans Flex", sans-serif; font-weight: 600; font-size: 16px; background: transparent; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); border: 1px solid transparent; }
+#menuSampingMakanan a:hover { background: #F5E6D3; transform: translateX(8px); }
+#menuSampingMakanan a.kategoriAktif { background: #800020; color: #F5E6D3; box-shadow: 0 10px 20px rgba(128,0,32,0.2); transform: scale(1.05); border-color: #800020; }
+#menuSampingMakanan a span { font-size: 22px; }
 
-#navigasi{
-  display: flex;
-  list-style: none;
-  margin-bottom: 0;
-  padding-left: 0;
-}
+.bagianMakanan { scroll-margin-top: 100px; margin-bottom: 100px; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.judulMakanan { font-family: "Qwigley", cursive; font-size: 90px; color: #800020; margin-bottom: 0; line-height: 0.8; }
+.introMakanan { font-family: "Google Sans Flex", sans-serif; font-size: 18px; color: #6A7D45; max-width: 600px; margin: 0 auto; font-weight: 500; }
 
-#navigasi li{
-  width: 100px;
-  height: 60px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s ease;
-}
+.elegan-card { display: flex; align-items: center; gap: 50px; margin-bottom: 80px; }
+.elegan-card.reverse { flex-direction: row-reverse; }
 
-#navigasi li a{
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-} 
+.wadahGambarMakanan { flex: 1; position: relative; padding: 20px; }
+.blob-bg { position: absolute; top: 0; left: 0; right: 20px; bottom: 20px; background: #D4A373; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; z-index: 0; opacity: 0.4; transition: all 0.8s ease; }
+.blob-bg.alt { background: #6A7D45; border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; left: 20px; right: 0; }
+.elegan-card:hover .blob-bg { transform: scale(1.05) rotate(5deg); border-radius: 50%; }
 
-#navigasi li:hover{
-  background-color: white;
-}
+.wadahGambarMakanan img { position: relative; z-index: 1; width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 25px 50px rgba(49,15,16,0.2); transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.elegan-card:hover .wadahGambarMakanan img { transform: translateY(-15px) scale(1.03); }
 
-#navigasi li:hover a{
-  color:black;
-}
+.infoMakanan { flex: 1; background: #FFFFFF; padding: 50px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.04); position: relative; z-index: 2; margin-left: -80px; transition: transform 0.4s ease; border: 1px solid rgba(212, 163, 115, 0.3); }
+.elegan-card.reverse .infoMakanan { margin-left: 0; margin-right: -80px; }
+.elegan-card:hover .infoMakanan { transform: translateY(-5px); box-shadow: 0 20px 45px rgba(0,0,0,0.08); }
 
-#btn-pass{
-  white-space: nowrap;
-  flex-shrink: 0;
-  height: fit-content;
-  padding: 8px 20px;
-  margin-right: 20px;
-}
+.infoMakanan .asal { font-family: "Google Sans Flex", sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: #D4A373; font-weight: 700; display: block; margin-bottom: 10px; }
+.infoMakanan h2 { font-family: "Italiana", serif; font-size: 40px; color: #310F10; margin-bottom: 15px; }
+.infoMakanan p { font-size: 17px; line-height: 1.8; color: #46462A; margin-bottom: 25px; }
 
-h1 {
-  font-family: "Google Sans Flex", sans-serif;
-}
+.tagBahan { display: flex; flex-wrap: wrap; gap: 10px; }
+.tagBahan span { background: #fdfbf7; color: #800020; border: 1px solid #eaddcf; padding: 6px 16px; border-radius: 30px; font-family: "Google Sans Flex", sans-serif; font-size: 13px; font-weight: 600; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
 
-h3 {
-  font-family: "Red Hat Display", sans-serif;
-}
-
-p {
-  font-family: "Elms Sans", sans-serif;
-}
-
-/*Yang ad bg color trs gada ap ap = placeholder*/
-
-#herofood {
-    background-color: slategrey;
-    height: 150px;
-    
-    /* Tambahan untuk menjaga agar teks tetap di depan dan blur tidak keluar batas */
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-}
-
-/* Memisahkan background ke pseudo-element agar teks tidak ikut ter-blur */
-#herofood::before {
-    content: "";
-    position: absolute;
-    
-    /* Nilai minus (-5px) mencegah area transparan di pinggiran gambar akibat efek blur */
-    top: -5px; 
-    left: -5px; 
-    right: -5px; 
-    bottom: -5px;
-    
-    background-image: url(pictures/foodbanner.png);
-    
-    /* 1. Agar gambar melebar penuh dan tidak looping */
-    background-size: cover;
-    background-repeat: no-repeat;
-    
-    /* 2. Menggeser posisi gambar lebih ke atas */
-    /* Ubah angka 30% ini. Semakin mendekati 0%, gambar akan semakin ke atas */
-    background-position: center 30%; 
-    
-    /* 3. Menambahkan slight blur */
-    filter: blur(3px); /* Ubah angka 3px untuk mengatur tingkat keburaman */
-    
-    z-index: -1; /* Memastikan background ini berada di belakang teks */
-}
-
-.containerfood {
-  /* background-color: grey; */
-  background-image: url();
-  background-repeat: repeat;
-  background-size: 150px;
-  background-blend-mode: multiply;
-
-}
-#bannertext{
-  text-align: center;
-  font-family: "Qwigley", cursive;
-  font-size: 75px ;
-}
-.headerfood{
-  text-align: center;
-  color: white;
-}
-.menu{
-  padding: 20px 0px;
-  background-color: #491811;
-  background-image: url();
-  border-radius: 5px;
-  margin: 5% 15%;
-}
-.menu-pizza{
-  margin: 0px 50px;
-  padding: 5px 10px;
-  display: flex;
-}
-.desc{
-  color: white;
-    width: 50%;
-    flex: 1;
-    text-align: justify;
-}
-#menu-desc1{
-  margin-right: 40px;
-  text-align: justify;
-}
-#menu-desc2{
-  margin-left: 40px;
-  text-align: justify;
-}
-.menu-image{
-  flex: 1;
-  background-image: url(pictures/high-quality-white-paper-texture-background-seamless-square-te_463999-4602.png);
-  /* padding: 2px 2px 2px 2px; */
-  align-items: center;
-  text-align: left;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-#menu-paper1{
-  position: relative;
-    z-index: 10;
-    margin-right: -120px;
-}
-#menu-paper2{
-  position: relative;
-    z-index: 10;
-    margin-left: -120px;
-}
-.image-cap{
-  font-size: 50px;
-  font-weight: 0;
-  font-family: "Qwigley", cursive;
-  margin: 0;
-}
-#menuimg1{
-  max-height: 270px;
-  width: auto;
-  margin: 10px 10px;
-}
-#menuimg2{
-  max-height: 270px;
-  width: 400px;
-  margin-top: 10px;
-}
-.pizzahr{
-  background-color: white;
-  height: 2px;
-  border: 0;
-  width: 100%;
-  opacity: 100;
-}
-.submenu{
-  color: white;
-  padding: 4px 28px;
-  text-align: justify;
-  font-size: 14px;
-}
-#centersubmenu{
-  border-left: solid white 3px;
-  border-right: solid white 3px;
-}
-
-#transition-curtain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 99999; 
-            pointer-events: none; 
-            display: flex;
-        }
-
-        .curtain-side {
-            width: 50%;
-            height: 100%;
-            background-color: #188D47; 
-            /* DURASI DIUBAH KE 1.0s: Menggunakan kurva bezier 'Quintic' agar pembukaannya terasa berbobot */
-            transition: transform 1.0s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        /* Animasi teks tulisan loading di tengah tirai */
-        #page-loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: rgba(255, 255, 255, 0.8);
-            font-family: "Italiana", serif;
-            font-size: 50px;
-            letter-spacing: 6px;
-            z-index: 100000;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
-
-        /* Sembunyikan teks loader sesaat sebelum tirai terbuka */
-        body.page-loaded #page-loader {
-            opacity: 0;
-        }
-
-        /* Posisi Tirai Menutup */
-        .left-side { transform: translateX(0); }
-        .right-side { transform: translateX(0); }
-
-        /* Posisi Tirai Membuka Samping */
-        body.page-loaded .left-side { transform: translateX(-100%); }
-        body.page-loaded .right-side { transform: translateX(100%); }
+.elemenMuncul { opacity: 0; transform: translateY(60px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.elemenMuncul.tampil { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 991px) {
-  .navbar-brand-mobile {
-      display: flex;
-      width: 100%;
-      height: 60px; 
-      justify-content: space-between;
-      align-items: center;
-      /* DIUBAH KE 0: Agar logo mobile juga mengisi penuh tanpa terganjal padding */
-      padding: 0; 
-      background-color: #188D47;
-  }
-
-  /* LOGO MOBILE: Ikut full mengikuti tinggi navbar 60px */
-  #logo {
-      height: 60px; 
-      margin-left: 0; 
-  }
-
-  /* Memberikan margin kanan khusus pada tombol hamburger agar tidak menempel ke tepi layar */
-  .navbar-toggler {
-      margin-right: 15px;
-  }
-
-  .navbar-collapse {
-      background-color: #188D47;
-      padding: 10px 20px 20px 20px;
-      width: 100%;
-      opacity: 0;
-      transform: translateY(-15px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
-  }
-
-  .navbar-collapse.show {
-      opacity: 1;
-      transform: translateY(0);
-  }
-
-  #navigasi {
-      flex-direction: column !important;
-      width: 100% !important;
-      margin-top: 10px !important;
-      margin-left: 0 !important; /* TAMBAHKAN INI: Agar di HP posisinya kembali normal mentok ke kiri */
-      gap: 8px !important;
-  }
-
-  #navigasi li {
-      width: 100%;
-      height: auto;
-      margin-bottom: 6px;
-      align-items: flex-start;
-  }
-
-  #navigasi li a {
-      justify-content: flex-start;
-      font-size: 18px;
-      padding: 8px 10px;
-      width: 100%;
-  }
-
-  #navigasi li:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-  }
-  #navigasi li:hover a {
-      color: white;
-  }
-
-  #btn-pass {
-      margin: 20px 0 10px 0;
-      width: 100%;
-      text-align: center;
-      display: block;
-      padding: 10px 20px;
-  }
+    .navbar-brand-mobile { display: flex; width: 100%; height: 60px; justify-content: space-between; align-items: center; padding: 0; }
+    #logo { height: 60px; margin-left: 0; }
+    .navbar-toggler { margin-right: 15px; }
+    .navbar-collapse { padding: 10px 20px 20px 20px; width: 100%; opacity: 0; transform: translateY(-15px); transition: opacity 0.35s ease, transform 0.35s ease; }
+    .navbar-collapse.show { opacity: 1; transform: translateY(0); }
+    #navigasi { flex-direction: column; width: 100%; margin-top: 10px; margin-left: 0; gap: 8px; }
+    #navigasi li { width: 100%; height: auto; margin-bottom: 6px; align-items: flex-start; }
+    #navigasi li a { justify-content: flex-start; font-size: 18px; padding: 8px 10px; width: 100%; }
+    #btn-pass { margin: 20px 0 10px 0; width: 100%; text-align: center; display: block; padding: 10px 20px; }
+    
+    #herofood { height: 50vh; min-height: 250px; }
+    #bannertext { font-size: 45px; padding: 0 20px; }
+    .hero-subtitle { font-size: 40px; }
+    
+    .food-sidebar-container { padding: 0; margin-bottom: 40px; background: transparent; }
+    .food-sidebar { background: #EADDCC; padding: 15px 0; border: none; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); top: 60px !important; border-radius: 0; }
+    .food-sidebar h3 { display: none; }
+    #menuSampingMakanan { display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 12px; padding: 5px 20px; margin: 0; }
+    #menuSampingMakanan::-webkit-scrollbar { display: none; }
+    #menuSampingMakanan a { white-space: nowrap; padding: 10px 20px; background: #FFFDF9; border: 1px solid #D4A373; border-radius: 50px; color: #46462A; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); flex-shrink: 0; }
+    #menuSampingMakanan a.kategoriAktif { background: #800020; color: #F5E6D3; border-color: #800020; transform: none; }
+    
+    .elegan-card, .elegan-card.reverse { flex-direction: column; gap: 0; margin-bottom: 40px; background: #FFFFFF; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid rgba(212, 163, 115, 0.3); padding: 0; }
+    .wadahGambarMakanan { padding: 0; width: 100%; height: 250px; border-radius: 20px 20px 0 0; }
+    .wadahGambarMakanan img { height: 100%; border-radius: 20px 20px 0 0; box-shadow: none; }
+    .blob-bg { display: none; }
+    .infoMakanan, .elegan-card.reverse .infoMakanan { margin: 0; padding: 25px; text-align: left; box-shadow: none; border: none; background: transparent; border-radius: 0 0 20px 20px; }
+    .tagBahan { justify-content: flex-start; }
+    .section-header { text-align: center; }
 }

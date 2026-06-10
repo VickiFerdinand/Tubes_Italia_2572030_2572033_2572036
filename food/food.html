@@ -1,193 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="stylefood.css">
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!--<script>
-            document.addEventListener("DOMContentLoaded", () => {
-            // 1. EFEK MEMBUKA TIRAI HALAMAN
-            setTimeout(() => {
-                document.body.classList.add("page-loaded");
-            }, 800);
-            // 2. EFEK MENUTUP TIRAI (SAAT PERPINDAHAN HALAMAN)
-            const navLinks = document.querySelectorAll("a");
-            navLinks.forEach(link => {
-                link.addEventListener("click", (e) => {
-                    const destination = link.getAttribute("href");
-                    if (
-                        destination && 
-                        !destination.startsWith("#") && 
-                        !destination.startsWith("javascript:") &&
-                        !link.classList.contains("navbar-toggler") &&
-                        link.target !== "_blank"
-                    ) {
-                        e.preventDefault(); 
-                        document.body.classList.remove("page-loaded");
-                        setTimeout(() => {
-                            window.location.href = destination;
-                        }, 1000);
-                    }
-                });
-            });
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foods | The Heritage of Italy</title>
 
-            // 3. EFEK AUTO-CLOSE HAMBURGER YANG FLUID & ULTRA SMOOTH SAAT DI-SCROLL
-            const menuElement = document.getElementById('menuUtama');
-            
-            // Inisialisasi komponen collapse Bootstrap secara programmatik
-            // (Pastikan file bootstrap.bundle.min.js sudah terpasang di head)
-            const bsCollapse = new bootstrap.Collapse(menuElement, { toggle: false });
-            
-            let isScrolling = false;
+    <link rel="stylesheet" href="stylefood.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Qwigley&display=swap" rel="stylesheet">
 
-            window.addEventListener('scroll', () => {
-                // Hanya jalankan logika jika menu hamburger mobile sedang terbuka (punya class 'show')
-                if (menuElement.classList.contains('show') && !isScrolling) {
-                    isScrolling = true;
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scriptfood.js" defer></script>
+</head>
+<body>
+    <div id="transition-curtain">
+        <div id="page-loader">LOADING...</div>
+        <div class="curtain-side left-side"></div>
+        <div class="curtain-side right-side"></div>
+    </div>
 
-                    // Tambahkan class kustom untuk meredupkan teks menu secara halus sebelum meluncur menutup
-                    menuElement.style.opacity = '0';
-                    menuElement.style.transform = 'translateY(-10px)';
-                    menuElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-
-                    // Panggil fungsi hide bawaan Bootstrap Instance agar menutup mengikuti kurva animasi bezier asli
-                    setTimeout(() => {
-                        bsCollapse.hide();
-                    }, 50);
-                }
-            });
-
-            // Kembalikan properti opacity dan transform bawaan setelah menu selesai tertutup sempurna
-            menuElement.addEventListener('hidden.bs.collapse', () => {
-                menuElement.style.opacity = '';
-                menuElement.style.transform = '';
-                menuElement.style.transition = '';
-                isScrolling = false;
-            });
-        });
-        </script>-->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Modern+Antiqua&family=Nova+Round&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=TASA+Explorer:wght@400..800&display=swap"
-            rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap"
-            rel="stylesheet">
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Qwigley&display=swap"
-            rel="stylesheet">
-
-    </head>
-    <body>
-        <!--<div id="transition-curtain">
-            <div id="page-loader">LOADING...</div>
-            <div class="curtain-side left-side"></div>
-            <div class="curtain-side right-side"></div>
-        </div>-->
-        <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
-            <div
-                class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
-                <div class="navbar-brand-mobile">
-                    <a href="#">
-                        <img src="./Italy Logo.png" alt="Italy Logo" id="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#menuUtama"
-                        aria-controls="menuUtama" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-
-                <div
-                    class="collapse navbar-collapse justify-content-between w-100"
-                    id="menuUtama">
-                    <ul id="navigasi" class="navbar-nav mx-lg-auto">
-                        <li><a href="../home.html">Home</a></li>
-                        <li><a href="../history/history.html">History</a></li>
-                        <li><a href="#">Foods</a></li>
-                        <li><a href="../landmark/landmark.html">Landmarks</a></li>
-                        <li><a href="../Cultures/Cultures.html">Cultures</a></li>
-                    </ul>
-                    <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP"
-                        class="btn btn-outline-light d-lg-flex align-items-center"
-                        id="btn-pass">Get a Tourist Pass</a>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top" style="background-color: #188D47;">
+        <div class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
+            <div class="navbar-brand-mobile">
+                <a href="#">
+                    <img src="../Italy Logo.png" alt="Italy Logo" id="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-        </nav>
 
-        <div id="herofood">
-            <h2 id="bannertext">Experience Exquisite Italian Taste<h2>
+            <div class="collapse navbar-collapse justify-content-between w-100" id="menuUtama" style="background-color: #188D47;">
+                <ul id="navigasi" class="navbar-nav mx-lg-auto">
+                    <li><a href="../home.html">Home</a></li>
+                    <li><a href="../history/history.html">History</a></li>
+                    <li><a href="#">Foods</a></li>
+                    <li><a href="../landmark/landmark.html">Landmarks</a></li>
+                    <li><a href="../Cultures/Cultures.html">Cultures</a></li>
+                </ul>
+                <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP" class="btn btn-outline-light d-lg-flex align-items-center" id="btn-pass">Get a Tourist Pass</a>
+            </div>
         </div>
+    </nav>
 
-        <main class="containerfood">
-            <h1 class="headerfood">PIZZA</h1>
-            <div class="menu">
-                <div class="menu-pizza">
-                    <div class="desc" id="menu-desc1">
-                        <h2>Pizza Margherita</h2>
-                        <p>According to popular Italian lore, the pizza was created in June 1889 by Neapolitan pizzaiolo Raffaele Esposito. Margherita relies on a perfect, creamy balance of melted cheese, bright tomato acidity, and fresh herbs.</p>
+    <header id="herofood">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">La Dolce Vita</span>
+            <h2 id="bannertext">Exquisite Italian Taste</h2>
+        </div>
+    </header>
 
-                    </div>
-                    <div class="menu-image" id="menu-paper1">
-                        <img id="menuimg1" src="pictures/margherita-pizza.jpg">
-                        <p class="image-cap">Pizza Margherita</p>
-                    </div>
+    <main class="container py-5">
+        <div class="row gx-lg-5">
+            <aside class="col-lg-3 col-12 food-sidebar-container">
+                <div class="food-sidebar sticky-top">
+                    <h3 class="d-none d-lg-block">Italian Menu</h3>
+                    <ul id="menuSampingMakanan">
+                        <li><a href="#pizza" class="kategoriAktif"><span>🍕</span> Pizza</a></li>
+                        <li><a href="#pasta"><span>🍝</span> Pasta</a></li>
+                        <li><a href="#risotto"><span>🍚</span> Risotto</a></li>
+                        <li><a href="#gelato"><span>🍨</span> Gelato</a></li>
+                        <li><a href="#desserts"><span>🍰</span> Desserts</a></li>
+                        <li><a href="#coffee"><span>☕</span> Coffee</a></li>
+                    </ul>
                 </div>
-                <div class="menu-pizza">
-                    <hr class="pizzahr">
-                </div>
-                <div class="menu-pizza" id="menu-paper2">
-                    <div class="menu-image">
-                        <img id="menuimg2" src="pictures/marinara.png">
-                        <p class="image-cap">Pizza Marinara</p>
-                    </div>
-                    <div class="desc" id="menu-desc2">
-                        <h2 class="text-end">Pizza Marinara</h2>
-                        <p> Is one of the oldest, most traditional styles of Neapolitan pizza from Naples, Italy. Despite the name sounding like it contains seafood, it features absolutely no cheese and no fish. Instead, it relies on a few high-quality, plant-based pantry staples to create an intensely flavorful, naturally dairy-free dish.</p>
-                    </div>
-                </div>
-                <div class="menu-pizza">
-                    <hr class="pizzahr">
-                </div>
-                <div class="menu-pizza">
-                    <div class="submenu">
-                        <div class="submenu-image">
-                        </div>
-                        <div class="submenu-desc">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        </div>
-                    </div>
-                    <div class="submenu" id="centersubmenu">
-                        <div class="submenu-image">
-                        </div>
-                        <div class="submenu-desc">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        </div>
-                    </div>
-                    <div class="submenu">
-                        <div class="submenu-image">
-                        </div>
-                        <div class="submenu-desc">
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </main>
+            </aside>
 
-    </body>
+            <section class="col-lg-9 col-12 mt-4 mt-lg-0 main-food-content">
+                
+                <div id="pizza" class="bagianMakanan">
+                    <div class="section-header elemenMuncul">
+                        <h1 class="judulMakanan">Pizza</h1>
+                        <p class="introMakanan">Originating from Naples, pizza has transcended borders to become a universal symbol of culinary excellence.</p>
+                    </div>
+                    
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80" alt="Margherita"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Naples, Italy</span><h2>Pizza Margherita</h2>
+                            <p>Legend has it that this masterpiece was crafted in 1889 to honor the Queen of Italy. Its colors mirror the Italian flag.</p>
+                            <div class="tagBahan"><span>Tomato</span><span>Mozzarella</span><span>Basil</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=800&q=80" alt="Marinara"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Naples, Italy</span><h2>Pizza Marinara</h2>
+                            <p>One of the oldest Neapolitan pizzas, cherished for its humble ingredients and bold, pure Mediterranean flavors.</p>
+                            <div class="tagBahan"><span>Tomato</span><span>Garlic</span><span>Oregano</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80" alt="Diavola"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Calabria, Italy</span><h2>Pizza Diavola</h2>
+                            <p>The "Devil's Pizza" brings the heat with spicy Calabrian salami and fiery chili flakes over a classic cheese base.</p>
+                            <div class="tagBahan"><span>Spicy Salami</span><span>Chili</span><span>Mozzarella</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Quattro Formaggi"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Campania, Italy</span><h2>Quattro Formaggi</h2>
+                            <p>A cheese lover's dream combining four distinct Italian cheeses, traditionally served without tomato sauce (pizza bianca).</p>
+                            <div class="tagBahan"><span>Gorgonzola</span><span>Parmesan</span><span>Fontina</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Pizza_capricciosa.jpg" alt="Capricciosa"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Rome, Italy</span><h2>Pizza Capricciosa</h2>
+                            <p>A beautiful chaos of scattered ingredients including artichoke hearts, baked ham, mushrooms, and olives.</p>
+                            <div class="tagBahan"><span>Artichoke</span><span>Ham</span><span>Olives</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="pasta" class="bagianMakanan">
+                    <div class="section-header elemenMuncul">
+                        <h1 class="judulMakanan">Pasta</h1>
+                        <p class="introMakanan">The heart and soul of Italian dining, featuring hundreds of distinct regional shapes and rich sauces.</p>
+                    </div>
+
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=800&q=80" alt="Carbonara"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Rome, Italy</span><h2>Spaghetti Carbonara</h2>
+                            <p>Authentic carbonara uses absolutely no cream; the silky texture comes entirely from the emulsion of egg yolks and hard cheese.</p>
+                            <div class="tagBahan"><span>Guanciale</span><span>Pecorino</span><span>Egg</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&w=800&q=80" alt="Bolognese"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Bologna, Italy</span><h2>Tagliatelle al Ragù</h2>
+                            <p>Known globally as Bolognese, this rich, slow-cooked meat sauce is traditionally served with wide tagliatelle ribbons, never spaghetti.</p>
+                            <div class="tagBahan"><span>Beef</span><span>Pancetta</span><span>Tomato</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80" alt="Pesto"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Genoa, Italy</span><h2>Trofie al Pesto</h2>
+                            <p>A vibrant, fresh sauce pounded in a marble mortar, combining sweet Genoese basil, pine nuts, garlic, and rich olive oil.</p>
+                            <div class="tagBahan"><span>Basil</span><span>Pine Nuts</span><span>Olive Oil</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?auto=format&fit=crop&w=800&q=80" alt="Cacio e Pepe"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Rome, Italy</span><h2>Cacio e Pepe</h2>
+                            <p>A minimalist masterpiece requiring perfect technique to melt Pecorino Romano cheese and black pepper into a flawless creamy sauce.</p>
+                            <div class="tagBahan"><span>Pecorino</span><span>Black Pepper</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=800&q=80" alt="Aglio e Olio"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Naples, Italy</span><h2>Spaghetti Aglio e Olio</h2>
+                            <p>The ultimate late-night Italian meal. Garlic gently toasted in high-quality extra virgin olive oil, tossed with parsley and chili.</p>
+                            <div class="tagBahan"><span>Garlic</span><span>Olive Oil</span><span>Parsley</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="risotto" class="bagianMakanan">
+                    <div class="section-header elemenMuncul">
+                        <h1 class="judulMakanan">Risotto</h1>
+                        <p class="introMakanan">A luxurious, creamy rice dish from Northern Italy, cooked slowly with broth to velvety perfection.</p>
+                    </div>
+
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.services.kitchenstories.io/0Cuo0aCLEYGvZMw96qNfGPIWrvc=/3840x0/filters:quality(85)/images.kitchenstories.io/wagtailOriginalImages/R1790_final_photo_1.jpg" alt="Risotto alla Milanese"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Milan, Italy</span><h2>Risotto alla Milanese</h2>
+                            <p>Famed for its vibrant golden color and earthy aroma, this Milanese specialty relies on precious saffron strands and rich beef broth.</p>
+                            <div class="tagBahan"><span>Arborio Rice</span><span>Saffron</span><span>Parmesan</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://tigullio-star.it/wp-content/uploads/2025/10/Risotto-ai-funghi-con-ricotta-tartufo-e-pepe-nero-Tigullio-1.png" alt="Risotto ai Funghi"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Piedmont, Italy</span><h2>Risotto ai Funghi</h2>
+                            <p>A comforting, earthy dish made with wild Porcini mushrooms, butter, and a splash of dry white wine.</p>
+                            <div class="tagBahan"><span>Porcini</span><span>White Wine</span><span>Butter</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=800&q=80" alt="Risotto al Nero"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Venice, Italy</span><h2>Risotto al Nero di Seppia</h2>
+                            <p>A visually striking, jet-black risotto colored and flavored with fresh cuttlefish ink, offering a deep oceanic taste.</p>
+                            <div class="tagBahan"><span>Cuttlefish Ink</span><span>Squid</span><span>Garlic</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9ZEzLQcKUz3e6g2E8bSqz7RXBnyoqV1Wytg&s" alt="Risotto alla Zucca"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Mantua, Italy</span><h2>Risotto alla Zucca</h2>
+                            <p>A sweet and savory autumnal favorite combining roasted pumpkin, sage, and sharp cheese.</p>
+                            <div class="tagBahan"><span>Pumpkin</span><span>Sage</span><span>Parmesan</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80" alt="Risotto ai Frutti"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Campania, Italy</span><h2>Risotto ai Frutti di Mare</h2>
+                            <p>A coastal celebration packed with fresh mussels, clams, shrimp, and calamari simmered in a light tomato-infused broth.</p>
+                            <div class="tagBahan"><span>Seafood</span><span>Tomato</span><span>Parsley</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gelato" class="bagianMakanan">
+                    <div class="section-header elemenMuncul">
+                        <h1 class="judulMakanan">Gelato</h1>
+                        <p class="introMakanan">Denser, smoother, and intensely flavorful. Gelato is an artisanal craft in Italy.</p>
+                    </div>
+
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://www.passionandcooking.com/wp-content/uploads/2015/03/Gelato-pistacchio-IMG_0332.jpg" alt="Pistachio"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Sicily, Italy</span><h2>Gelato al Pistacchio</h2>
+                            <p>Authentic pistachio gelato is never bright green, but a dull, earthy olive color, made from prized Bronte pistachios.</p>
+                            <div class="tagBahan"><span>Bronte Pistachios</span><span>Milk</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://veggieideas.co.uk/wp-content/uploads/2022/07/DSC02978.jpg" alt="Stracciatella"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Bergamo, Italy</span><h2>Stracciatella</h2>
+                            <p>A smooth milk-based gelato with fine, irregular shards of dark chocolate drizzled in during the freezing process.</p>
+                            <div class="tagBahan"><span>Fior di Latte</span><span>Dark Chocolate</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=800&q=80" alt="Nocciola"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Piedmont, Italy</span><h2>Gelato alla Nocciola</h2>
+                            <p>Rich and nutty, crafted from world-renowned roasted hazelnuts from the Piedmont region.</p>
+                            <div class="tagBahan"><span>Hazelnuts</span><span>Cream</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=800&q=80" alt="Limone"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Amalfi, Italy</span><h2>Sorbetto al Limone</h2>
+                            <p>A dairy-free, refreshingly tart and sweet sorbet made using massive, fragrant lemons from the Amalfi coast.</p>
+                            <div class="tagBahan"><span>Amalfi Lemons</span><span>Water</span><span>Sugar</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://www.tavolartegusto.it/wp/wp-content/uploads/2023/05/sorbetto-alla-fragola.jpg" alt="Fragola"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Rome, Italy</span><h2>Sorbetto alla Fragola</h2>
+                            <p>Intensely fruity strawberry sorbet capturing the pure essence of freshly picked summer berries.</p>
+                            <div class="tagBahan"><span>Strawberries</span><span>Lemon Juice</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="desserts" class="bagianMakanan">
+                    <div class="section-header elemenMuncul">
+                        <h1 class="judulMakanan">Desserts</h1>
+                        <p class="introMakanan">The perfect sweet finale to an Italian feast.</p>
+                    </div>
+
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="./pictures/tiramisu.jpg" alt="Tiramisu"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Veneto, Italy</span><h2>Tiramisù</h2>
+                            <p>Balancing the bitterness of strong espresso with the creamy sweetness of whipped mascarpone cheese layered with ladyfingers.</p>
+                            <div class="tagBahan"><span>Mascarpone</span><span>Espresso</span><span>Cocoa</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80" alt="Cannoli"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Sicily, Italy</span><h2>Cannoli Siciliani</h2>
+                            <p>Crispy, blistered pastry tubes filled to order with sweet, creamy ricotta cheese and dotted with chocolate chips or candied fruit.</p>
+                            <div class="tagBahan"><span>Ricotta</span><span>Pastry</span><span>Chocolate</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://static01.nyt.com/images/2023/08/10/multimedia/LH-Panna-Cotta-wczm/LH-Panna-Cotta-wczm-threeByTwoLargeAt2X.jpg" alt="Panna Cotta"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Piedmont, Italy</span><h2>Panna Cotta</h2>
+                            <p>Literally "cooked cream," this wobbly, delicate dessert is set with gelatin and often topped with warm berry compote or caramel.</p>
+                            <div class="tagBahan"><span>Cream</span><span>Vanilla Bean</span><span>Berries</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://www.foodandwine.com/thmb/Hby9wBBAtjo8WOzwrmKXhdfQTzA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Sfogliatelle-FT-RECIPE1222-f5ae520a60c745f8ac83f7519432d904.jpg" alt="Sfogliatelle"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Naples, Italy</span><h2>Sfogliatelle</h2>
+                            <p>A shell-shaped pastry boasting incredibly thin, crunchy layers, filled with a warm, citrus-scented semolina and ricotta mixture.</p>
+                            <div class="tagBahan"><span>Ricotta</span><span>Semolina</span><span>Citrus</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://www.foodandwine.com/thmb/GKN9maes3U3t0tkJPcImmB9KM1Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/zeppole-with-lemon-pastry-cream-FT-RECIPE0125-2f38c46c8dbc4f28857d0252800d181f.jpeg" alt="Zeppole"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Rome, Italy</span><h2>Zeppole</h2>
+                            <p>Deep-fried dough balls covered in powdered sugar, often filled with custard or chocolate cream, traditionally eaten on St. Joseph's Day.</p>
+                            <div class="tagBahan"><span>Fried Dough</span><span>Sugar</span><span>Custard</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="coffee" class="bagianMakanan">
+                    <div class="section-header elemenMuncul">
+                        <h1 class="judulMakanan">Coffee Culture</h1>
+                        <p class="introMakanan">In Italy, coffee is not just a drink; it is a rapid, daily ritual deeply woven into the social fabric.</p>
+                    </div>
+
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80" alt="Espresso"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Turin, Italy</span><h2>Caffè Espresso</h2>
+                            <p>Consumed quickly while standing at the bar, a true Italian espresso is short, strong, and topped with a thick, hazelnut-colored crema.</p>
+                            <div class="tagBahan"><span>Dark Roast</span><span>Crema</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80" alt="Cappuccino"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Milan, Italy</span><h2>Cappuccino</h2>
+                            <p>Perfectly balanced thirds of espresso, steamed milk, and milk foam. Strictly ordered only before 11:00 AM by locals.</p>
+                            <div class="tagBahan"><span>Espresso</span><span>Steamed Milk</span><span>Foam</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://upload.wikimedia.org/wikipedia/commons/e/e3/Macchiato_FourBarrel.jpg" alt="Macchiato"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Rome, Italy</span><h2>Caffè Macchiato</h2>
+                            <p>Meaning "stained" or "marked," this is a standard espresso shot cut with just a small dash of frothy milk to soften the edge.</p>
+                            <div class="tagBahan"><span>Espresso</span><span>Dash of Milk</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card reverse elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg alt"></div><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Ristretto"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Naples, Italy</span><h2>Ristretto</h2>
+                            <p>A "restricted" shot made with the same amount of coffee grounds but half the water, resulting in a highly concentrated, sweeter syrup.</p>
+                            <div class="tagBahan"><span>Fine Grind</span><span>Less Water</span></div>
+                        </div>
+                    </div>
+                    <div class="kartuMakanan elegan-card elemenMuncul">
+                        <div class="wadahGambarMakanan"><div class="blob-bg"></div><img src="https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?auto=format&fit=crop&w=800&q=80" alt="Affogato"></div>
+                        <div class="infoMakanan">
+                            <span class="asal">Florence, Italy</span><h2>Affogato al Caffè</h2>
+                            <p>Blurring the line between beverage and dessert: a scoop of vanilla gelato "drowned" in a shot of hot espresso.</p>
+                            <div class="tagBahan"><span>Espresso</span><span>Vanilla Gelato</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+</body>
+</html>
