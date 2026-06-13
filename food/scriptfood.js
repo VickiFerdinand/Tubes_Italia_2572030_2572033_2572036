@@ -1,82 +1,57 @@
-window.addEventListener('load', () => { document.body.classList.add("page-loaded"); });
-setTimeout(() => { document.body.classList.add("page-loaded"); }, 800);
+$(document).ready(function () {
 
-document.addEventListener("DOMContentLoaded", () => {
-    const navs = document.querySelectorAll("a");
-    navs.forEach(a => {
-        a.addEventListener("click", (e) => {
-            const href = a.getAttribute("href");
-            if (href && href.startsWith("#")) {
-                e.preventDefault();
-                const trg = document.getElementById(href.substring(1));
-                if (trg) window.scrollTo({ top: trg.offsetTop - 120, behavior: 'smooth' });
-                return;
+    setTimeout(function () {
+        $("body").addClass("page-loaded");
+    }, 800);
+
+    $("a").on("click", function (e) {
+        let destination = $(this).attr("href");
+
+        if (destination && destination.startsWith("#")) {
+            e.preventDefault();
+            let trg = $(destination);
+            if (trg.length) {
+                $('html, body').animate({
+                    scrollTop: trg.offset().top - 120
+                }, 500);
             }
-            if (href && !href.startsWith("javascript:") && !a.classList.contains("navbar-toggler") && a.target !== "_blank") {
-                e.preventDefault();
-                document.body.classList.remove("page-loaded");
-                setTimeout(() => { window.location.href = href; }, 1000);
+            return;
+        }
+
+        if (destination && !destination.startsWith("javascript:") && !$(this).hasClass("navbar-toggler") && $(this).attr("target") !== "_blank") {
+            e.preventDefault();
+            $("body").removeClass("page-loaded");
+            setTimeout(function () {
+                window.location.href = destination;
+            }, 1000);
+        }
+    });
+
+    $(window).on("scroll", function () {
+        let scrollY = $(window).scrollTop();
+        let windowHeight = $(window).height();
+
+        let menuUtama = $("#menuUtama");
+        if (menuUtama.hasClass("show")) {
+            menuUtama.collapse('hide');
+        }
+
+        $(".bagianMakanan").each(function () {
+            let sectionTop = $(this).offset().top - 200;
+            if (scrollY >= sectionTop) {
+                let id = $(this).attr("id");
+                $("#menuSampingMakanan a").removeClass("kategoriAktif");
+                $("#menuSampingMakanan a[href='#" + id + "']").addClass("kategoriAktif");
+            }
+        });
+
+        $(".elemenMuncul").each(function () {
+            let position = $(this).offset().top;
+            if (scrollY > position - windowHeight + 100) {
+                $(this).addClass("tampil");
             }
         });
     });
 
-    const menu = document.getElementById('menuUtama');
-    if (menu && typeof bootstrap !== 'undefined') {
-        const bsCol = new bootstrap.Collapse(menu, { toggle: false });
-        let isScrl = false;
-        window.addEventListener('scroll', () => {
-            if (menu.classList.contains('show') && !isScrl) {
-                isScrl = true;
-                menu.style.opacity = '0';
-                menu.style.transform = 'translateY(-10px)';
-                menu.style.transition = 'all 0.3s ease';
-                setTimeout(() => { bsCol.hide(); }, 50);
-            }
-        });
-        menu.addEventListener('hidden.bs.collapse', () => {
-            menu.style.cssText = '';
-            isScrl = false;
-        });
-    }
-
-    const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) {
-        window.addEventListener('scroll', () => {
-            heroBg.style.transform = `translate3d(0, ${window.scrollY * 0.4}px, 0)`;
-        });
-    }
-
-    const els = document.querySelectorAll('.elemenMuncul');
-    if (els.length > 0 && typeof IntersectionObserver !== 'undefined') {
-        const obs = new IntersectionObserver((es, o) => {
-            es.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('tampil');
-                    o.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
-        els.forEach(el => obs.observe(el));
-    }
-
-    const secs = document.querySelectorAll('.bagianMakanan');
-    const links = document.querySelectorAll('#menuSampingMakanan a');
-    if (secs.length > 0 && links.length > 0) {
-        window.addEventListener('scroll', () => {
-            let cur = '';
-            secs.forEach(s => {
-                if (scrollY >= (s.offsetTop - 200)) cur = s.getAttribute('id');
-            });
-            links.forEach(l => {
-                l.classList.remove('kategoriAktif');
-                if (cur && l.getAttribute('href').includes(cur)) {
-                    l.classList.add('kategoriAktif');
-                    if (window.innerWidth < 992) {
-                        const wrap = document.getElementById('menuSampingMakanan');
-                        wrap.scrollTo({ left: l.offsetLeft - (wrap.offsetWidth / 2) + (l.offsetWidth / 2), behavior: 'smooth' });
-                    }
-                }
-            });
-        });
-    }
+    $(window).trigger("scroll");
 });

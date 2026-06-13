@@ -1,3 +1,59 @@
+document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+        document.body.classList.add("page-loaded");
+    }, 800);
+
+    const navLinks = document.querySelectorAll("a");
+    navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+            const destination = link.getAttribute("href");
+            if (
+                destination &&
+                !destination.startsWith("#") &&
+                !destination.startsWith("javascript:") &&
+                !link.classList.contains("navbar-toggler") &&
+                link.target !== "_blank"
+            ) {
+                e.preventDefault();
+                document.body.classList.remove("page-loaded");
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 1000);
+            }
+        });
+    });
+
+
+    const menuElement = document.getElementById('menuUtama');
+    const bsCollapse = new bootstrap.Collapse(menuElement, { toggle: false });
+
+    let isScrolling = false;
+
+    window.addEventListener('scroll', () => {
+
+        if (menuElement.classList.contains('show') && !isScrolling) {
+            isScrolling = true;
+
+            menuElement.style.opacity = '0';
+            menuElement.style.transform = 'translateY(-10px)';
+            menuElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+
+            setTimeout(() => {
+                bsCollapse.hide();
+            }, 50);
+        }
+    });
+
+
+    menuElement.addEventListener('hidden.bs.collapse', () => {
+        menuElement.style.opacity = '';
+        menuElement.style.transform = '';
+        menuElement.style.transition = '';
+        isScrolling = false;
+    });
+});
+
+
 const heroSlides = document.querySelectorAll('.hero-img .hero-slide');
 let heroIndex = 0;
 
@@ -15,7 +71,6 @@ function nextHeroSlide() {
 showHeroSlide(heroIndex);
 setInterval(nextHeroSlide, 4500);
 
-// Array berisi seluruh data landmark yang akan langsung ditampilkan bersamaan
 const allLandmarks = [
     { 
         title: "Roman Colosseum", 
@@ -54,7 +109,6 @@ const allLandmarks = [
     }
 ];
 
-// Fungsi merender semua kartu secara instan ketika load awal
 function renderAllCards() {
     const container = document.getElementById('landmark-cards-container');
     
@@ -71,25 +125,24 @@ function renderAllCards() {
     `).join('');
 }
 
-// Logika tombol panah kanan (geser ke kanan semulus lebar card + gap)
+
 function slideRight() {
     const slider = document.querySelector('.gallery-side');
     // Geser sejauh 350px (lebar card 320px + gap 30px)
     slider.scrollLeft += 350; 
 }
 
-// Logika tombol panah kiri (geser ke kiri)
+
 function slideLeft() {
     const slider = document.querySelector('.gallery-side');
     slider.scrollLeft -= 350;
 }
 
-// Jalankan fungsi render begitu halaman web selesai dibuka
+
 document.addEventListener("DOMContentLoaded", () => {
     renderAllCards();
 });
 
-// --- CAROUSEL CULTURES SECTION ---
 const socialSlides = document.querySelectorAll('.social-carousel .social-slide');
 let socialIndex = 0;
 
@@ -104,9 +157,8 @@ function nextSocialSlide() {
     showSocialSlide(socialIndex);
 }
 
-// Menjalankan fungsi carousel hanya jika elemennya ada
+
 if (socialSlides.length > 0) {
     showSocialSlide(socialIndex);
-    // Ganti gambar setiap 4.5 detik (4500 milidetik)
     setInterval(nextSocialSlide, 4500); 
 }

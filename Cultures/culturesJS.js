@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Membuka Tirai
     setTimeout(() => { document.body.classList.add("page-loaded"); }, 800);
 
-    // Menutup Tirai saat pindah halaman
+  
     const navLinks = document.querySelectorAll("a");
     navLinks.forEach(link => {
         link.addEventListener("click", (e) => {

@@ -367,7 +367,7 @@ a {
   display: inline-block;
   padding: 10px 24px;
   background-color: #000;
-  color: #fff !important;
+  color: #fff;
   text-decoration: none;
   border-radius: 30px;
   font-weight: bold;
@@ -427,7 +427,6 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Terpapas sempurna mengikuti rasio kotak */
   display: block;
   transition: transform 0.35s ease, filter 0.35s ease;
 }
@@ -437,7 +436,6 @@ a {
   filter: brightness(1.05) saturate(1.08);
 }
 
-/* --- POLA SUSUNAN CO-ORDINATE BENTO (Saling Mengunci Tanpa Celah) --- */
 .food-card:nth-child(1) {
   grid-column: span 3;
   grid-row: span 2;
@@ -493,17 +491,15 @@ a {
   grid-row: span 1;
 }
 
-/* --- EFEK FADE OUT DI UJUNG KIRI DAN KANAN LAYAR --- */
 .bento-fade-left,
 .bento-fade-right {
   position: absolute;
   top: 0;
   height: 100%;
   width: 15%;
-  /* Lebar area degradasi/fade */
   z-index: 5;
   pointer-events: none;
-  /* Klik tembus ke gambar di bawahnya */
+
 }
 
 .bento-fade-left {
@@ -520,7 +516,6 @@ a {
 /* --- RESPONSIVITAS SMARTPHONE (MOBILE) --- */
 @media (max-width: 767px) {
   #Home-Food {
-    /* Tinggi ketat untuk smartphone (60-70% layar) */
     height: 65vh;
     max-height: 70vh;
     min-height: 60vh;
@@ -528,7 +523,7 @@ a {
 
   .food-content-overlay {
     width: 85%;
-    /* Lebih lebar di HP agar teks terbaca jelas */
+  
     padding: 20px;
     border-radius: 16px;
   }
@@ -542,7 +537,7 @@ a {
     margin-bottom: 15px;
   }
 
-  /* Grid disesuaikan menjadi 8 kolom rapat di HP */
+
   .food-grid {
     grid-template-columns: repeat(8, 1fr);
     grid-auto-rows: calc(65vh / 3);
@@ -551,7 +546,7 @@ a {
     left: -10%;
   }
 
-  /* Atur ulang pecahan bento khusus layar kecil agar gambar sisa langsung terpotong rapi */
+  
   .food-card:nth-child(1) {
     grid-column: span 3;
     grid-row: span 1;
@@ -593,11 +588,10 @@ a {
   }
 }
 
-/* --- CONTAINER LANDMARK --- */
+
 #Home-Landmarks {
   background-color: #fcf8f2;
   height: 100vh;
-  /* PC: 100% tinggi layar penuh */
   width: 100%;
   display: flex;
   align-items: center;
@@ -609,13 +603,11 @@ a {
 .landmarks-container {
   display: grid;
   grid-template-columns: 380px 1fr;
-  /* Skema kolom kiri dan kanan */
   gap: 60px;
   width: 100%;
   align-items: center;
 }
 
-/* --- NAVIGASI KIRI --- */
 .nav-side {
   display: flex;
   flex-direction: column;
@@ -665,16 +657,13 @@ a {
   transform: translateY(-2px) scale(1.04);
 }
 
-/* --- GALERI SLIDER KANAN (EQUAL HEIGHT) --- */
 .gallery-side {
   width: 100%;
   overflow-x: auto;
   scroll-behavior: smooth;
-  /* Membuat efek pergeseran kartu menjadi halus */
   padding-bottom: 25px;
 }
 
-/* Sembunyikan scrollbar bawaan browser agar estetik */
 .gallery-side::-webkit-scrollbar {
   display: none;
 }
@@ -688,7 +677,6 @@ a {
   display: flex;
   gap: 30px;
   align-items: stretch;
-  /* MEMAKSA SEMUANYA MEMILIKI TINGGI CARD YANG SAMA RATA */
 }
 
 .landmark-card {
@@ -708,7 +696,6 @@ a {
   transform: translateY(-5px);
 }
 
-/* Mengunci Gambar Agar Sejajar Penuh */
 .card-img-wrapper {
   width: 100%;
   height: 260px;
@@ -719,7 +706,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Terpotong rapi menyesuaikan kotak */
+
 }
 
 .card-body {
@@ -727,7 +714,7 @@ a {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* Mendorong konten bawah agar sejajar */
+
 }
 
 .card-body h4 {
@@ -744,18 +731,16 @@ a {
   margin: 0;
 }
 
-/* --- TAMPILAN HANDPHONE (80% TINGGI SCREEN) --- */
+
 @media (max-width: 991px) {
   #Home-Landmarks {
     height: 80vh;
-    /* Tepat 80% tinggi layar HP */
     padding: 40px 24px;
     align-items: center;
   }
 
   .landmarks-container {
     grid-template-columns: 1fr;
-    /* Menumpuk vertikal antara teks dan card */
     gap: 35px;
   }
 
@@ -777,11 +762,10 @@ a {
   }
 }
 
-/* --- TAMPILAN RESPONSIVE (80% SCREEN UNTUK HP) --- */
+
 @media (max-width: 991px) {
   #Home-Landmarks {
     height: 80vh;
-    /* Tepat 80% Layar HP */
     padding: 40px 20px;
     align-items: flex-start;
     overflow-y: auto;
@@ -809,7 +793,7 @@ a {
 
   .italy-macro-map {
     grid-template-columns: repeat(5, 1fr);
-    /* Tetap rapi dalam grid */
+  
   }
 
   .gallery-side {
@@ -836,7 +820,7 @@ a {
   width: 100%;
   height: 100%;
   z-index: 1;
-  /* Pastikan berada di belakang teks */
+
 }
 
 .social-slide {
@@ -844,7 +828,7 @@ a {
   inset: 0;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
-  /* Transisi fade yang mulus */
+
 }
 
 .social-slide.active {
@@ -857,23 +841,19 @@ a {
   object-fit: cover;
   display: block;
   filter: brightness(0.85);
-  /* Sedikit digelapkan agar kotak hijau lebih mencolok */
+ 
 }
 
 .social-content {
   position: relative;
   z-index: 2;
-  /* Pastikan berada di atas background */
   width: 40%;
   min-width: 320px;
   background-color: #6A7D45;
-  /* Warna hijau olive */
   padding: 40px;
   border-radius: 16px;
-  /* Ujung yang membulat */
   text-align: left;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  /* Efek bayangan (depth) */
 }
 
 .social-content h3 {
@@ -891,7 +871,7 @@ footer {
   background-color: #c76d53;
 }
 
-/* --- SYSTEM TRANSISI HALAMAN TIRAI --- */
+
 #transition-curtain {
   position: fixed;
   top: 0;
@@ -907,8 +887,6 @@ footer {
   width: 50%;
   height: 100%;
   background-color: #188D47;
-  /* Warna hijau navbar kamu */
-  /* Menggunakan kurva bezier 'Quintic' (1.0s) agar pembukaannya terasa berat & mewah */
   transition: transform 1.0s cubic-bezier(0.85, 0, 0.15, 1);
 }
 
@@ -926,12 +904,10 @@ footer {
   transition: opacity 0.4s ease;
 }
 
-/* Sembunyikan teks loader sesaat sebelum tirai terbuka */
 body.page-loaded #page-loader {
   opacity: 0;
 }
 
-/* Posisi Awal Tirai Menutup */
 .left-side {
   transform: translateX(0);
 }
@@ -940,7 +916,6 @@ body.page-loaded #page-loader {
   transform: translateX(0);
 }
 
-/* Posisi Tirai Membuka ke Samping luar layar */
 body.page-loaded .left-side {
   transform: translateX(-100%);
 }
@@ -949,9 +924,8 @@ body.page-loaded .right-side {
   transform: translateX(100%);
 }
 
-/* Animasi drop-down bawaan Bootstrap agar seimbang dengan kelembutan tirai */
 .collapsing {
-  transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -962,18 +936,15 @@ body.page-loaded .right-side {
     height: 60px;
     justify-content: space-between;
     align-items: center;
-    /* DIUBAH KE 0: Agar logo mobile juga mengisi penuh tanpa terganjal padding */
     padding: 0;
     background-color: #188D47;
   }
 
-  /* LOGO MOBILE: Ikut full mengikuti tinggi navbar 60px */
   #logo {
     height: 60px;
     margin-left: 0;
   }
 
-  /* Memberikan margin kanan khusus pada tombol hamburger agar tidak menempel ke tepi layar */
   .navbar-toggler {
     margin-right: 15px;
   }
@@ -993,12 +964,12 @@ body.page-loaded .right-side {
   }
 
   #navigasi {
-    flex-direction: column !important;
-    width: 100% !important;
-    margin-top: 10px !important;
-    margin-left: 0 !important;
-    /* TAMBAHKAN INI: Agar di HP posisinya kembali normal mentok ke kiri */
-    gap: 8px !important;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0;
+
+    gap: 8px;
   }
 
   #navigasi li {

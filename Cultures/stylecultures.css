@@ -1,6 +1,6 @@
 
 body {
-    background-color: #fcf8f2; /* Warna dasar krem lembut */
+    background-color: #fcf8f2; 
 }
 
 .title-italiana {
@@ -8,7 +8,7 @@ body {
     font-weight: normal;
 }
 
-/* --- HERO SECTION --- */
+
 .culture-hero {
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ body {
     right: -20px;
     width: 100%;
     height: 100%;
-    background-color: #188D47; /* Aksen hijau web Anda */
+    background-color: #188D47; 
     z-index: -1;
     border-radius: 12px;
 }
@@ -62,12 +62,12 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* --- CULTURE STORIES (ALTERNATING) --- */
+
 .culture-stories {
     padding: 60px 10%;
     display: flex;
     flex-direction: column;
-    gap: 120px; /* Jarak besar antar cerita */
+    gap: 120px; 
     margin-bottom: 100px;
 }
 
@@ -78,7 +78,7 @@ body {
     position: relative;
 }
 
-/* Membalik urutan untuk layout berselang-seling */
+
 .story-row.reverse {
     flex-direction: row-reverse;
 }
@@ -99,21 +99,19 @@ body {
 }
 
 .story-img-box:hover img {
-    transform: scale(1.05); /* Efek zoom halus saat di-hover */
+    transform: scale(1.05); 
 }
 
-/* Kotak Teks yang Overlap (Bertumpuk) dengan gambar */
+
 .story-text-box {
     width: 50%;
     padding: 50px;
     border-radius: 16px;
     z-index: 5;
-    /* Teknik Overlap: Menarik kotak ke arah gambar */
     margin-left: -10%; 
     box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
 
-/* Overlap untuk yang di sebelah kiri (reverse) */
 .story-row.reverse .story-text-box {
     margin-left: 0;
     margin-right: -10%;
@@ -130,7 +128,7 @@ body {
     line-height: 1.7;
 }
 
-/* --- WARNA BOX --- */
+
 .bg-beige {
     background-color: #F5E6D3;
     color: #333;
@@ -143,15 +141,13 @@ body {
     background-color: #ffffff;
     color: #333;
 }
-/* =========================================
-   ARTS SPOTLIGHT (DARK MUSEUM GALLERY)
-   ========================================= */
+
 
 .arts-spotlight {
-    background-color: #1a1a1a; /* Warna hitam elegan/museum gelap */
+    background-color: #1a1a1a; 
     color: #ffffff;
     padding: 100px 10%;
-    margin: 80px 0; /* Memberi jarak dari section sebelumnya */
+    margin: 80px 0; 
 }
 
 .arts-intro {
@@ -161,7 +157,7 @@ body {
 }
 
 .text-gold {
-    color: #d4af37; /* Warna aksen emas */
+    color: #d4af37; 
     font-size: 50px;
     margin-bottom: 20px;
 }
@@ -173,12 +169,12 @@ body {
     line-height: 1.6;
 }
 
-/* --- INTERACTIVE ART CARDS --- */
+
 .art-gallery-container {
     display: flex;
     justify-content: center;
     gap: 30px;
-    flex-wrap: wrap; /* Agar responsif di layar kecil */
+    flex-wrap: wrap; 
 }
 
 .art-card {
@@ -192,7 +188,6 @@ body {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Membuat kartu tengah sedikit turun ke bawah agar terlihat dinamis (staggered) */
 .art-card.staggered {
     margin-top: 40px; 
 }
@@ -201,7 +196,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s ease; /* Transisi zoom gambar yang pelan */
+    transition: transform 0.7s ease; 
     filter: brightness(0.8);
 }
 
@@ -210,26 +205,26 @@ body {
     filter: brightness(1);
 }
 
-/* --- OVERLAY TEXT YANG MUNCUL SAAT DI-HOVER --- */
+
 .art-card-overlay {
     position: absolute;
-    bottom: -100%; /* Sembunyikan teks di bawah kartu */
+    bottom: -100%; 
     left: 0;
     width: 100%;
     height: auto;
     padding: 40px 30px 30px 30px;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0) 100%);
-    transition: bottom 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Efek slide yang mulus */
+    transition: bottom 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
     color: white;
 }
 
 .art-card:hover .art-card-overlay {
-    bottom: 0; /* Munculkan teks saat di-hover */
+    bottom: 0; 
 }
 
 .art-card-overlay h3 {
     font-size: 28px;
-    color: #d4af37; /* Emas */
+    color: #d4af37; 
     margin-bottom: 10px;
 }
 
@@ -240,15 +235,11 @@ body {
     color: #e0e0e0;
 }
 
-/* =========================================
-   AUTOMOTIVE TECHNOLOGY SECTION
-   ========================================= */
-
 .tech-automotive {
-    background-color: #0a0a0b; /* Hitam pekat aspal */
+    background-color: #0a0a0b; 
     color: #ffffff;
     padding: 100px 10%;
-    border-top: 4px solid #cc0000; /* Aksen Racing Red di atas section */
+    border-top: 4px solid #cc0000; 
 }
 
 .tech-header {
@@ -270,7 +261,6 @@ body {
     color: #a0a0a0;
 }
 
-/* --- TIMELINE GRID --- */
 .timeline-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -287,7 +277,7 @@ body {
 
 .timeline-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(204, 0, 0, 0.15); /* Cahaya merah berpendar saat di-hover */
+    box-shadow: 0 20px 40px rgba(204, 0, 0, 0.15); 
     border-color: #cc0000;
 }
 
@@ -301,7 +291,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(40%) contrast(1.2); /* Efek dramatis sedikit hitam putih */
+    filter: grayscale(40%) contrast(1.2); 
     transition: filter 0.4s ease, transform 0.5s ease;
 }
 
@@ -313,7 +303,7 @@ body {
 }
 
 .timeline-card:hover .timeline-img-box img {
-    filter: grayscale(0%) contrast(1.1); /* Warna asli muncul saat di-hover */
+    filter: grayscale(0%) contrast(1.1); 
     transform: scale(1.05);
 }
 
@@ -326,7 +316,7 @@ body {
     font-family: 'Google Sans Flex', sans-serif;
     font-weight: 700;
     font-size: 14px;
-    color: #cc0000; /* Merah Ferrari */
+    color: #cc0000; 
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -347,7 +337,6 @@ body {
 }
 
 
-/* --- RESPONSIVE MOBILE --- */
 @media (max-width: 991px) {
     #bannertitle{
         font-size: 50px;
@@ -363,10 +352,9 @@ body {
     }
 
     .art-card.staggered {
-        margin-top: 0; /* Matikan efek naik-turun di mode HP agar rapi */
+        margin-top: 0; 
     }
 
-    /* Di HP, teks selalu dimunculkan sedikit agar user tahu ada deskripsi */
     .art-card-overlay {
         bottom: 0; 
         background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%);
@@ -377,7 +365,7 @@ body {
     }
     
     .timeline-container {
-        grid-template-columns: 1fr; /* Menjadi 1 kolom memanjang di HP */
+        grid-template-columns: 1fr; 
         gap: 30px;
     }
     
@@ -395,10 +383,9 @@ body {
     }
 
     .art-card.staggered {
-        margin-top: 0; /* Matikan efek naik-turun di mode HP agar rapi */
+        margin-top: 0; 
     }
 
-    /* Di HP, teks selalu dimunculkan sedikit agar user tahu ada deskripsi */
     .art-card-overlay {
         bottom: 0; 
         background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 0) 100%);

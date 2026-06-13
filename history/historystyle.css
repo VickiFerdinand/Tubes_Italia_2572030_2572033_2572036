@@ -1,436 +1,299 @@
-:root {
-            --scroll-progress: 0%; 
-        }    
-        body{
-          padding: 0;
-          margin: 0;
-          background: linear-gradient(to right, #6fc641 0%, #ffffff 50%, #c94545 100%);
-        }
-        p {
-          font-family: "Elms Sans", sans-serif;
-          font-size: larger;
-        }
+* { 
+    margin: 0; 
+    padding: 0; 
+}
 
-        h3{
-          font-family: "Red Hat Display", sans-serif;
-        }
-        
-        nav {
-            height: auto;
-            background-color: #188D47;
-            font-family: "Google Sans Flex", sans-serif;
-        }
+body { 
+    background: linear-gradient(to right, #6fc641 0%, #ffffff 50%, #c94545 100%); 
+    overflow-x: hidden; 
+}
 
-        .navbar-brand-mobile {
-            padding: 0;
-            display: flex;
-            align-items: center;
-        }
-        #judul {
-            font-family: "Italiana", sans-serif;
-            font-size: 60px;
-        }
+p { 
+    font-family: "Elms Sans", sans-serif; 
+    font-size: larger; 
+}
 
-        #logo {
-            height: 60px;      
-            width: auto;       
-            object-fit: cover; 
-            display: block;
-            flex-shrink: 0;
-        }
-  
-        #navigasi {
-            display: flex;
-            list-style: none;
-            margin-bottom: 0;
-            padding-left: 0;
-        }
+h3 { 
+    font-family: "Red Hat Display", sans-serif; 
+}
 
-        #navigasi li {
-            width: 100px;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
+/* === BAGIAN NAVBAR & TIRAI === */
+#transition-curtain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999; 
+    display: flex;
+}
 
-        #navigasi li a {
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        } 
+body.page-loaded #transition-curtain {
+    visibility: hidden;
+    transition: visibility 0s 0.8s;
+}
 
-        #navigasi li:hover {
-            background-color: white;
-        }
+.curtain-side {
+    width: 50%;
+    height: 100%;
+    background-color: #188D47; 
+    transition: transform 0.8s ease;
+}
 
-        #navigasi li:hover a {
-            color: black;
-        }
+#page-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-family: "Italiana", serif;
+    font-size: 50px;
+    letter-spacing: 6px;
+    z-index: 100000;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
 
-        #btn-pass {
-            white-space: nowrap;
-            flex-shrink: 0;
-            height: fit-content;
-            padding: 8px 20px;
-            margin-right: 20px;
-        }
+body.page-loaded #page-loader { 
+    opacity: 0; 
+}
 
-        img {
-            height: 100%;
-            width: 100%;
-        }
+.left-side { 
+    transform: translateX(0); 
+}
 
-        .era-section {
-            width: 100%;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            box-shadow: inset 0px 40px 60px rgba(0, 0, 0, 0.8), 
-                        inset 0px -40px 60px rgba(0, 0, 0, 0.8);
-        }
+.right-side { 
+    transform: translateX(0); 
+}
 
-        .parallax-bg {
-            width: 100%;
-            height: 100%;
-            background-attachment: fixed; 
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            filter: brightness(0.4); 
-        }
+body.page-loaded .left-side { 
+    transform: translateX(-100%); 
+}
 
-        .content-box {
-            background-color: transparent;
-            backdrop-filter: blur(8px);
-            border: none;
-            box-shadow: none;
-            border-radius: 16px;
-            max-width: 900px;
-            color: white; 
-        }
+body.page-loaded .right-side { 
+    transform: translateX(100%); 
+}
 
-        #judul-container {
-            max-width: 950px;
-            padding: 25px 40px;
-            background: linear-gradient(135deg, rgb(255, 255, 255));
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border-radius: 20px;
-            border: 1px solid rgba(200, 200, 200, 0.4);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
-            animation: fadeInDown 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-            text-align: center;
-        }
+nav {
+    height: auto;
+    background-color: #188D47;
+    font-family: "Google Sans Flex", sans-serif;
+}
 
-        #judulnav {
-            font-family: "Italiana", serif;
-            font-size: 48px;
-            font-weight: bold;
-            margin: 0;
-            background: linear-gradient(to right, #59ff00 0%, #59ff00 40%, #ffffff 50%, #ffffff 60%, #ff0404 100%);
-            background-size: 200% auto;
-            color: transparent;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: shine 4s linear infinite;
-        }
+.navbar-brand-mobile {
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
 
-        @keyframes fadeInDown {
-            0% { opacity: 0; transform: translateY(-40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
+#logo {
+    height: 60px;      
+    width: auto;       
+    object-fit: contain; 
+    display: block;
+    flex-shrink: 0;
+}
 
-        @keyframes shine {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
-        }
+#navigasi {
+    display: flex;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
 
-        .collapsing {
-            transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+#navigasi li {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
 
-        #transition-curtain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 99999; 
-            pointer-events: none; 
-            display: flex;
-        }
+#navigasi li a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+} 
 
-        .curtain-side {
-            width: 50%;
-            height: 100%;
-            background-color: #188D47; 
-            transition: transform 1.0s cubic-bezier(0.85, 0, 0.15, 1);
-        }
+#navigasi li:hover {
+    background-color: white;
+}
 
-        #page-loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: rgba(255, 255, 255, 0.8);
-            font-family: "Italiana", serif;
-            font-size: 50px;
-            letter-spacing: 6px;
-            z-index: 100000;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
+#navigasi li:hover a {
+    color: black;
+}
 
-        body.page-loaded #page-loader {
-            opacity: 0;
-        }
-
-        .left-side { transform: translateX(0); }
-        .right-side { transform: translateX(0); }
-
-        body.page-loaded .left-side { transform: translateX(-100%); }
-        body.page-loaded .right-side { transform: translateX(100%); }
-
-        #timeline-container {
-            position: fixed;
-            top: 50%;
-            right: 30px; 
-            transform: translateY(-50%);
-            height: 60vh;
-            width: 6px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #timeline-base {
-            position: absolute;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            z-index: 1;
-        }
-
-        #timeline-progress {
-            position: absolute;
-            top: 0;
-            width: 4px;
-            height: var(--scroll-progress); /* Mengisi ke BAWAH */
-            background: linear-gradient(to bottom, #59ff00, #ff0404);
-            border-radius: 10px;
-            z-index: 2;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        #timeline-nodes-wrapper {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 3;
-        }
-
-        .timeline-node {
-            width: 20px;
-            height: 20px;
-            background-color: #222;
-            border: 3px solid rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-        }
-
-        .timeline-node::before {
-            content: attr(title);
-            position: absolute;
-            right: 35px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-family: "Google Sans Flex", sans-serif;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .timeline-node:hover::before {
-            opacity: 1;
-        }
-
-        .timeline-node.active {
-            background-color: #59ff00;
-            border-color: #fff;
-            transform: scale(1.5);
-            box-shadow: 0 0 15px #59ff00, 0 0 30px #59ff00;
-        }
+#btn-pass {
+    white-space: nowrap;
+    flex-shrink: 0;
+    height: fit-content;
+    padding: 8px 20px;
+    margin-right: 20px;
+}
 
 
-        @media (max-width: 991px) {
-            .navbar-brand-mobile {
-                display: flex;
-                width: 100%;
-                height: 60px; 
-                justify-content: space-between;
-                align-items: center;
-                padding: 0; 
-                background-color: #188D47;
-            }
+#judul { 
+    font-family: "Italiana", sans-serif; 
+    font-size: 60px; 
+}
 
-            
-            #logo {
-                height: 60px; 
-                margin-left: 0; 
-            }
+.era-section {
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0px 40px 60px rgba(0, 0, 0, 0.8), 
+                inset 0px -40px 60px rgba(0, 0, 0, 0.8);
+}
 
-    
-            .navbar-toggler {
-                margin-right: 15px;
-            }
+.parallax-bg {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.4); 
+}
 
-            .navbar-collapse {
-                background-color: #188D47;
-                padding: 10px 20px 20px 20px;
-                width: 100%;
-                opacity: 0;
-                transform: translateY(-15px);
-                transition: opacity 0.35s ease, transform 0.35s ease;
-            }
+.content-box {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: none;
+    border-radius: 16px;
+    max-width: 900px;
+    color: white; 
+}
 
-            .navbar-collapse.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
+#judul-container {
+    max-width: 950px;
+    padding: 25px 40px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
 
-            #navigasi {
-                flex-direction: column;
-                width: 100%;
-                margin-top: 10px;
-                margin-left: 0; 
-                gap: 8px;
-            }
+#judulnav {
+    font-family: "Italiana", serif;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+    color: #188D47;
+}
 
-            #navigasi li {
-                width: 100%;
-                height: auto;
-                margin-bottom: 6px;
-                align-items: flex-start;
-            }
 
-            #navigasi li a {
-                justify-content: flex-start;
-                font-size: 18px;
-                padding: 8px 10px;
-                width: 100%;
-            }
 
-            #navigasi li:hover {
-                background-color: rgba(255, 255, 255, 0.15);
-                border-radius: 8px;
-            }
-            #navigasi li:hover a {
-                color: white;
-            }
+@media (min-width: 992px) {
+    #navigasi { 
+        margin-left: 140px; 
+    }
+}
 
-            #btn-pass {
-                margin: 20px 0 10px 0;
-                width: 100%;
-                text-align: center;
-                display: block;
-                padding: 10px 20px;
-            }
+@media (max-width: 991px) {
+    .navbar-brand-mobile {
+        display: flex;
+        width: 100%;
+        height: 60px; 
+        justify-content: space-between;
+        align-items: center;
+        padding: 0; 
+        background-color: #188D47;
+    }
 
-            .parallax-bg {
-                background-attachment: scroll;
-                background-position: center center;
-            }
+    #logo { 
+        height: 60px; 
+        margin-left: 0; 
+    }
 
-            #judul-container {
-                margin: 25px 15px;
-                padding: 20px 15px;
-                max-width: calc(100% - 30px);
-            }
+    .navbar-toggler { 
+        margin-right: 15px; 
+    }
 
-            #judulnav {
-                font-size: 24px;
-                line-height: 1.4;
-                filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.6));
-            }
+    .navbar-collapse {
+        background-color: #188D47;
+        padding: 10px 20px 20px 20px;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(-15px);
+        transition: all 0.3s ease;
+    }
 
-            .content-box {
-                margin: 0 15px;
-                padding: 20px;
-            }
+    .navbar-collapse.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-            h3 { font-size: 20px; }
-            p { text-align: justify; font-size: 12px; }
+    #navigasi {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0; 
+        gap: 8px;
+    }
 
-            #timeline-container {
-                top: auto;
-                bottom: 0; 
-                right: 0;
-                left: 0;
-                transform: none;
-                width: 100%;
-                height: 50px; 
-                flex-direction: row;
-                padding: 0 15px;
-                background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); 
-            }
+    #navigasi li {
+        width: 100%;
+        height: auto;
+        margin-bottom: 6px;
+        align-items: flex-start;
+    }
 
-            #timeline-base {
-                top: 50%;
-                left: 15px;
-                transform: translateY(-50%);
-                width: calc(100% - 30px);
-                height: 4px;
-            }
+    #navigasi li a {
+        justify-content: flex-start;
+        font-size: 18px;
+        padding: 8px 10px;
+        width: 100%;
+    }
 
-            #timeline-progress {
-                top: 50%;
-                left: 15px;
-                transform: translateY(-50%);
-                height: 4px; 
-                width: var(--scroll-progress); 
-                background: linear-gradient(to right, #59ff00, #ff0404);
-            }
+    #navigasi li:hover { 
+        background-color: rgba(255, 255, 255, 0.15); 
+        border-radius: 8px; 
+    }
 
-            #timeline-nodes-wrapper {
-                top: 50%;
-                left: 15px;
-                transform: translateY(-50%);
-                width: calc(100% - 30px);
-                height: auto;
-                flex-direction: row; 
-            }
+    #navigasi li:hover a { 
+        color: rgb(0, 0, 0); 
+    }
 
-           
-            .timeline-node::before {
-                right: auto;
-                left: 50%;
-                top: -35px;
-                transform: translateX(-50%);
-            }
+    #btn-pass { 
+        margin: 20px 0 10px 0; 
+        width: 100%; 
+        text-align: center; 
+        display: block; 
+        padding: 10px 20px; 
+    }
 
-        }
+    #judul-container {
+        margin: 25px 15px;
+        padding: 20px 15px;
+        max-width: calc(100% - 30px);
+    }
+
+    #judulnav { 
+        font-size: 24px; 
+        line-height: 1.4; 
+    }
+
+    .content-box { 
+        margin: 0 15px; 
+        padding: 20px; 
+    }
+
+    h3 { 
+        font-size: 20px; 
+    }
+
+    p { 
+        text-align: justify; 
+        font-size: 12px; 
+    }
+
+
+}

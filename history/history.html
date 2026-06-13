@@ -3,21 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="historyJS.js"></script>
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous">
+        <title>History of Italy</title>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="historystyle.css">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Modern+Antiqua&family=Nova+Round&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=TASA+Explorer:wght@400..800&display=swap"
-            rel="stylesheet">
-        
+        <script src="historyJS.js" defer></script>
     </head>
     <body>
         <div id="transition-curtain">
@@ -26,41 +20,18 @@
             <div class="curtain-side right-side"></div>
         </div>
 
-        <div id="timeline-container">
-            <div id="timeline-base"></div>
-            <div id="timeline-progress"></div>
-            <div id="timeline-nodes-wrapper">
-                <a href="#RE" class="timeline-node" data-target="RE"
-                    title="Roman Empire"></a>
-                <a href="#Md" class="timeline-node" data-target="Md"
-                    title="Medieval Era"></a>
-                <a href="#Rn" class="timeline-node" data-target="Rn"
-                    title="Renaissance"></a>
-                <a href="#GC" class="timeline-node" data-target="GC"
-                    title="Global Conflict"></a>
-                <a href="#MR" class="timeline-node" data-target="MR"
-                    title="Modern Republic"></a>
-            </div>
-        </div>
-
         <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
-            <div
-                class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
+            <div class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
                 <div class="navbar-brand-mobile">
                     <a href="#">
-                        <img src="Italy Logo.png" alt="Italy Logo" id="logo">
+                        <img src="./pictures/Italy Logo.png" alt="Italy Logo" id="logo">
                     </a>
-                    <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#menuUtama"
-                        aria-controls="menuUtama" aria-expanded="false"
-                        aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama" aria-controls="menuUtama" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
 
-                <div
-                    class="collapse navbar-collapse justify-content-between w-100"
-                    id="menuUtama">
+                <div class="collapse navbar-collapse justify-content-between w-100" id="menuUtama">
                     <ul id="navigasi" class="navbar-nav mx-lg-auto">
                         <li><a href="../home.html">Home</a></li>
                         <li><a href="#">History</a></li>
@@ -68,279 +39,121 @@
                         <li><a href="../landmark/landmark.html">Landmarks</a></li>
                         <li><a href="../Cultures/Cultures.html">Cultures</a></li>
                     </ul>
-                    <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP"
-                        class="btn btn-outline-light d-lg-flex align-items-center"
-                        id="btn-pass">Get a Tourist Pass</a>
+                    <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP" class="btn btn-outline-light d-lg-flex align-items-center" id="btn-pass">Get a Tourist Pass</a>
                 </div>
             </div>
         </nav>
 
         <div id="judul-container" class="mx-auto mt-4 mb-5">
-            <h1 id="judulnav">⌛The Heritage of Italy: A Journey Through
-                Time</h1>
+            <h1 id="judulnav">⌛The Heritage of Italy: A Journey Through Time</h1>
         </div>
 
-        <!-- Bagian Era 1: Roman Empire -->
         <div class="era-section position-relative" id="RE">
-            <div id="carouselRoman"
-                class="carousel slide carousel-fade position-absolute w-100 h-100"
-                style="z-index: 1;" data-bs-ride="carousel">
+            <div id="carouselRoman" class="carousel slide carousel-fade position-absolute w-100 h-100" style="z-index: 1;" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
-                    <div class="carousel-item active h-100"
-                        data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Roman AD.png');"></div>
+                    <div class="carousel-item active h-100" data-bs-interval="3000">
+                        <div class="parallax-bg" style="background-image: url('./pictures/Roman AD.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Roman AD 2.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Roman AD 2.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Roman AD 3.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Roman AD 3.png');"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="container-sm position-relative py-5"
-                style="z-index: 2;">
+            <div class="container-sm position-relative py-5" style="z-index: 2;">
                 <div class="content-box p-4 p-lg-5 mx-auto">
-                    <h3 class="mb-3 text-center">The Roman Empire Era (27 BC to
-                        476 AD)</h3>
-                    <p class="mb-0">Step into the absolute genesis of Western
-                        civilization and explore the staggering legacy of the
-                        ancient world. The Roman Empire officially commenced in
-                        27 BC when Augustus Caesar rose to absolute power and
-                        transformed the sprawling city of Rome into the
-                        undisputed capital of the globe. For over five hundred
-                        years, this unstoppable civilization expanded its
-                        borders across the entirety of Europe, North Africa, and
-                        the Middle East. The Romans were unparalleled engineers
-                        and brilliant urban planners who constructed an
-                        intricate network of paved roads that connected distant
-                        provinces, massive stone aqueducts that delivered fresh
-                        water to millions, and monumental structures like the
-                        majestic Colosseum and the Pantheon which still command
-                        absolute awe today. Beyond their physical architecture,
-                        the Romans established complex legal systems and
-                        administrative frameworks that serve as the fundamental
-                        blueprint for modern Western governments. When your
-                        visitors walk through these impeccably preserved ruins,
-                        they are touching the very stones that shaped human
-                        history, right up until the western territories
-                        eventually succumbed to political shifts and outside
-                        invasions in 476 AD.</p>
+                    <h3 class="mb-3 text-center">The Roman Empire Era (27 BC to 476 AD)</h3>
+                    <p class="mb-0">Step into the absolute genesis of Western civilization and explore the staggering legacy of the ancient world. The Roman Empire officially commenced in 27 BC when Augustus Caesar rose to absolute power and transformed the sprawling city of Rome into the undisputed capital of the globe. For over five hundred years, this unstoppable civilization expanded its borders across the entirety of Europe, North Africa, and the Middle East. The Romans were unparalleled engineers and brilliant urban planners who constructed an intricate network of paved roads that connected distant provinces, massive stone aqueducts that delivered fresh water to millions, and monumental structures like the majestic Colosseum and the Pantheon which still command absolute awe today. Beyond their physical architecture, the Romans established complex legal systems and administrative frameworks that serve as the fundamental blueprint for modern Western governments. When your visitors walk through these impeccably preserved ruins, they are touching the very stones that shaped human history, right up until the western territories eventually succumbed to political shifts and outside invasions in 476 AD.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Bagian Era 2: Medieval -->
         <div class="era-section position-relative" id="Md">
-            <div id="carouselMedieval"
-                class="carousel slide carousel-fade position-absolute w-100 h-100"
-                style="z-index: 1;" data-bs-ride="carousel">
+            <div id="carouselMedieval" class="carousel slide carousel-fade position-absolute w-100 h-100" style="z-index: 1;" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
-                    <div class="carousel-item active h-100"
-                        data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Medieval.png');"></div>
+                    <div class="carousel-item active h-100" data-bs-interval="3000">
+                        <div class="parallax-bg" style="background-image: url('./pictures/Medieval.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Medieval 2.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Medieval 2.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Medieval 3.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Medieval 3.png');"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="container-sm position-relative py-5"
-                style="z-index: 2;">
+            <div class="container-sm position-relative py-5" style="z-index: 2;">
                 <div class="content-box p-4 p-lg-5 mx-auto">
-                    <h3 class="mb-3 text-center">The Medieval Maritime Era (476
-                        AD to 1350 AD)</h3>
-                    <p class="mb-0">Following the dramatic collapse of Rome,
-                        Italy transitioned into a deeply fragmented yet
-                        incredibly dynamic period characterized by towering
-                        stone fortresses and massive commercial expansion.
-                        Between the fifth and fourteenth centuries, the Italian
-                        peninsula evolved into a magnificent mosaic of
-                        independent territories lacking a single unified
-                        government. The central regions became the domain of the
-                        Papal States ruled directly from Rome, while the
-                        southern regions and the island of Sicily experienced a
-                        vibrant blending of cultures as they were conquered by
-                        Byzantine forces, Arab rulers, and eventually Norman
-                        warriors. However, the most spectacular economic
-                        development occurred in the north with the rise of the
-                        powerful maritime republics. Coastal cities like Venice,
-                        Genoa, Pisa, and Amalfi built massive naval fleets that
-                        completely dominated global trade routes across the
-                        Mediterranean Sea. They brought unimaginable wealth,
-                        exotic spices, and luxurious silks back to Italian
-                        shores, creating an era of wealthy merchant sailors that
-                        perfectly laid the economic groundwork for the
-                        breathtaking cultural explosion that was soon to
-                        follow.</p>
+                    <h3 class="mb-3 text-center">The Medieval Maritime Era (476 AD to 1350 AD)</h3>
+                    <p class="mb-0">Following the dramatic collapse of Rome, Italy transitioned into a deeply fragmented yet incredibly dynamic period characterized by towering stone fortresses and massive commercial expansion. Between the fifth and fourteenth centuries, the Italian peninsula evolved into a magnificent mosaic of independent territories lacking a single unified government. The central regions became the domain of the Papal States ruled directly from Rome, while the southern regions and the island of Sicily experienced a vibrant blending of cultures as they were conquered by Byzantine forces, Arab rulers, and eventually Norman warriors. However, the most spectacular economic development occurred in the north with the rise of the powerful maritime republics. Coastal cities like Venice, Genoa, Pisa, and Amalfi built massive naval fleets that completely dominated global trade routes across the Mediterranean Sea. They brought unimaginable wealth, exotic spices, and luxurious silks back to Italian shores, creating an era of wealthy merchant sailors that perfectly laid the economic groundwork for the breathtaking cultural explosion that was soon to follow.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Bagian Era 3: Renaissance -->
         <div class="era-section position-relative" id="Rn">
-            <div id="carouselRenaissance"
-                class="carousel slide carousel-fade position-absolute w-100 h-100"
-                style="z-index: 1;" data-bs-ride="carousel">
+            <div id="carouselRenaissance" class="carousel slide carousel-fade position-absolute w-100 h-100" style="z-index: 1;" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
-                    <div class="carousel-item active h-100"
-                        data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Renaisans.png');"></div>
+                    <div class="carousel-item active h-100" data-bs-interval="3000">
+                        <div class="parallax-bg" style="background-image: url('./pictures/Renaisans.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Renaisans 2.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Renaisans 2.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Renaisans 3.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Renaisans 3.png');"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="container-sm position-relative py-5"
-                style="z-index: 2;">
+            <div class="container-sm position-relative py-5" style="z-index: 2;">
                 <div class="content-box p-4 p-lg-5 mx-auto">
-                    <h3 class="mb-3 text-center">The Golden Renaissance Era
-                        (1350 AD to 1600 AD)</h3>
-                    <p class="mb-0">Welcome to the most dazzling and
-                        intellectually profound chapter of human history, where
-                        the immense wealth of the merchant classes birthed a
-                        spectacular cultural awakening that forever changed the
-                        world. Originating in the vibrant heart of Florence
-                        during the late fourteenth century, the Renaissance was
-                        championed by visionary patrons like the powerful Medici
-                        family who funded brilliant scholars to revive classical
-                        Greek and Roman knowledge. Throughout the fifteenth and
-                        sixteenth centuries, this explosive intellectual revival
-                        spread rapidly to other major cultural epicenters like
-                        Rome, Milan, and Venice. It was an unparalleled golden
-                        age of artistic perfection and scientific discovery that
-                        produced legendary visionary polymaths such as Leonardo
-                        da Vinci, magnificent artists like Michelangelo, and
-                        brilliant political thinkers like Niccolo Machiavelli.
-                        The Renaissance decisively pulled European society out
-                        of medieval stagnation by introducing groundbreaking
-                        techniques in painting, revolutionary architectural
-                        designs, and a profound new focus on human potential,
-                        turning Italy into the ultimate gallery of human
-                        triumph.</p>
+                    <h3 class="mb-3 text-center">The Golden Renaissance Era (1350 AD to 1600 AD)</h3>
+                    <p class="mb-0">Welcome to the most dazzling and intellectually profound chapter of human history, where the immense wealth of the merchant classes birthed a spectacular cultural awakening that forever changed the world. Originating in the vibrant heart of Florence during the late fourteenth century, the Renaissance was championed by visionary patrons like the powerful Medici family who funded brilliant scholars to revive classical Greek and Roman knowledge. Throughout the fifteenth and sixteenth centuries, this explosive intellectual revival spread rapidly to other major cultural epicenters like Rome, Milan, and Venice. It was an unparalleled golden age of artistic perfection and scientific discovery that produced legendary visionary polymaths such as Leonardo da Vinci, magnificent artists like Michelangelo, and brilliant political thinkers like Niccolo Machiavelli. The Renaissance decisively pulled European society out of medieval stagnation by introducing groundbreaking techniques in painting, revolutionary architectural designs, and a profound new focus on human potential, turning Italy into the ultimate gallery of human triumph.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Bagian Era 4: Global Conflict -->
         <div class="era-section position-relative" id="GC">
-            <div id="carouselGlobal"
-                class="carousel slide carousel-fade position-absolute w-100 h-100"
-                style="z-index: 1;" data-bs-ride="carousel">
+            <div id="carouselGlobal" class="carousel slide carousel-fade position-absolute w-100 h-100" style="z-index: 1;" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
-                    <div class="carousel-item active h-100"
-                        data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('World War.png');"></div>
+                    <div class="carousel-item active h-100" data-bs-interval="3000">
+                        <div class="parallax-bg" style="background-image: url('./pictures/World War.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('World War 2.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/World War 2.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('World War 3.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/World War 3.png');"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="container-sm position-relative py-5"
-                style="z-index: 2;">
+            <div class="container-sm position-relative py-5" style="z-index: 2;">
                 <div class="content-box p-4 p-lg-5 mx-auto">
-                    <h3 class="mb-3 text-center">The Global Conflict Era (1914
-                        AD to 1945 AD)</h3>
-                    <p class="mb-0">The dawn of the twentieth century brought
-                        unprecedented challenges and profound transformation to
-                        a newly unified Italian nation, testing the
-                        extraordinary resilience of its people. During the First
-                        World War from 1915 to 1918, Italian forces engaged in
-                        grueling and brutal combat against the Austro Hungarian
-                        Empire high in the freezing and treacherous peaks of the
-                        Alps. The severe economic devastation and deep social
-                        unrest that followed the war paved the way for Benito
-                        Mussolini to seize control and establish a totalitarian
-                        fascist dictatorship in 1922. This disastrous political
-                        shift eventually dragged the beautiful peninsula into
-                        the immense suffering of the Second World War alongside
-                        the Axis powers. However, the tide turned significantly
-                        in 1943 with the massive Allied invasion of Sicily and
-                        the southern regions. This military push, combined with
-                        a fiercely courageous civilian resistance movement in
-                        the north, ultimately led to the absolute defeat of the
-                        fascist regime in 1945, proving the unbreakable courage
-                        and deeply rooted love for freedom held by the Italian
-                        citizens.</p>
+                    <h3 class="mb-3 text-center">The Global Conflict Era (1914 AD to 1945 AD)</h3>
+                    <p class="mb-0">The dawn of the twentieth century brought unprecedented challenges and profound transformation to a newly unified Italian nation, testing the extraordinary resilience of its people. During the First World War from 1915 to 1918, Italian forces engaged in grueling and brutal combat against the Austro Hungarian Empire high in the freezing and treacherous peaks of the Alps. The severe economic devastation and deep social unrest that followed the war paved the way for Benito Mussolini to seize control and establish a totalitarian fascist dictatorship in 1922. This disastrous political shift eventually dragged the beautiful peninsula into the immense suffering of the Second World War alongside the Axis powers. However, the tide turned significantly in 1943 with the massive Allied invasion of Sicily and the southern regions. This military push, combined with a fiercely courageous civilian resistance movement in the north, ultimately led to the absolute defeat of the fascist regime in 1945, proving the unbreakable courage and deeply rooted love for freedom held by the Italian citizens.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Bagian Era 5: Modern Republic -->
         <div class="era-section position-relative" id="MR">
-            <div id="carouselModern"
-                class="carousel slide carousel-fade position-absolute w-100 h-100"
-                style="z-index: 1;" data-bs-ride="carousel">
+            <div id="carouselModern" class="carousel slide carousel-fade position-absolute w-100 h-100" style="z-index: 1;" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
-                    <div class="carousel-item active h-100"
-                        data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Modern.png');"></div>
+                    <div class="carousel-item active h-100" data-bs-interval="3000">
+                        <div class="parallax-bg" style="background-image: url('./pictures/Modern.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Modern 2.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Modern 2.png');"></div>
                     </div>
                     <div class="carousel-item h-100" data-bs-interval="3000">
-                        <div class="parallax-bg"
-                            style="background-image: url('Modern 3.png');"></div>
+                        <div class="parallax-bg" style="background-image: url('./pictures/Modern 3.png');"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="container-sm position-relative py-5"
-                style="z-index: 2;">
+            <div class="container-sm position-relative py-5" style="z-index: 2;">
                 <div class="content-box p-4 p-lg-5 mx-auto">
-                    <h3 class="mb-3 text-center">The Modern Republic Era (1946
-                        AD to Present)</h3>
-                    <p class="mb-0">Emerging from the devastating ashes of
-                        global conflict, the Italian people made a historic and
-                        empowering decision in 1946 to officially abolish the
-                        monarchy and establish the modern, democratic Italian
-                        Republic. The decades that followed witnessed an
-                        incredible period of rapid industrial growth and
-                        sweeping social transformation known globally as the
-                        economic miracle. Northern cities like Milan and Turin
-                        transformed into booming manufacturing hubs, producing
-                        iconic automobiles and highly coveted luxury goods.
-                        Today, this modern era represents the absolute pinnacle
-                        of contemporary elegance, positioning Italy proudly as a
-                        founding member of the European Union and a dominant
-                        global cultural superpower. It is a nation that
-                        perfectly balances its profound, carefully preserved
-                        historical heritage with a vibrant, forward looking
-                        economy. Modern visitors are drawn to a breathtaking
-                        country that leads the entire world in high fashion,
-                        unparalleled culinary artistry, cutting edge design, and
-                        a uniquely passionate lifestyle that invites everyone to
-                        experience the true meaning of the sweet life.</p>
+                    <h3 class="mb-3 text-center">The Modern Republic Era (1946 AD to Present)</h3>
+                    <p class="mb-0">Emerging from the devastating ashes of global conflict, the Italian people made a historic and empowering decision in 1946 to officially abolish the monarchy and establish the modern, democratic Italian Republic. The decades that followed witnessed an incredible period of rapid industrial growth and sweeping social transformation known globally as the economic miracle. Northern cities like Milan and Turin transformed into booming manufacturing hubs, producing iconic automobiles and highly coveted luxury goods. Today, this modern era represents the absolute pinnacle of contemporary elegance, positioning Italy proudly as a founding member of the European Union and a dominant global cultural superpower. It is a nation that perfectly balances its profound, carefully preserved historical heritage with a vibrant, forward looking economy. Modern visitors are drawn to a breathtaking country that leads the entire world in high fashion, unparalleled culinary artistry, cutting edge design, and a uniquely passionate lifestyle that invites everyone to experience the true meaning of the sweet life.</p>
                 </div>
             </div>
         </div>
