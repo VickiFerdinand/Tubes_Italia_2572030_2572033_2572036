@@ -172,7 +172,7 @@ body.page-loaded .right-side {
 
 
 .bg-warna-zaitun { 
-    background-color: #6A7D45; 
+    background-color: #198754; 
 }
 
 
@@ -201,9 +201,9 @@ body.page-loaded .right-side {
 
 /* ini biar gambarnya keliatan gelap biar teks aslinya kebaca jelas */
 .gambar-gelap {
-    height: 90vh; 
+    height: 95vh; 
     object-fit: cover; 
-    opacity: 0.5; 
+    opacity: 0.65; 
 }
 
 
@@ -225,6 +225,114 @@ body.page-loaded .right-side {
     object-fit: cover;
 }
 
+#Home-Food .food-bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: 1.4fr 1fr 1fr 1fr;
+    grid-template-areas:
+        "big big small extra"
+        "big big text text"
+        "mid mid text text"
+        "bottom1 bottom2 bottom3 bottom4";
+    gap: 12px;
+    height: 520px;
+    max-height: 520px;
+    overflow: hidden;
+}
+
+#Home-Food .food-bento-item,
+#Home-Food .food-bento-text {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    min-height: 0;
+}
+
+#Home-Food .food-bento-text {
+    grid-area: text;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: transparent;
+}
+
+#Home-Food .food-bento-text-card {
+    width: min(100%, 560px);
+    height: 100%;
+    padding: 2rem 1.75rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.11);
+    border-radius: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+#Home-Food .food-bento-text-card h3 {
+    font-size: clamp(1.9rem, 2.4vw, 2.5rem);
+    margin-bottom: 0;
+}
+
+#Home-Food .food-bento-text-card p {
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+    max-width: 32rem;
+}
+
+#Home-Food .food-bento-text-card a {
+    align-self: center;
+}
+
+#Home-Food .food-bento-item img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.gambar-makanan-grid {
+    width: 100%;
+    height: 30vh; 
+    object-fit: cover;
+    border-radius: 8px;
+    
+}
+
+#Home-Food .item-big { grid-area: big; }
+#Home-Food .item-small { grid-area: small; }
+#Home-Food .item-extra { grid-area: extra; }
+#Home-Food .item-mid { grid-area: mid; }
+#Home-Food .item-bottom1 { grid-area: bottom1; }
+#Home-Food .item-bottom2 { grid-area: bottom2; }
+#Home-Food .item-bottom3 { grid-area: bottom3; }
+#Home-Food .item-bottom4 { grid-area: bottom4; }
+
+@media (max-width: 991px) {
+    #Home-Food .food-bento-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(6, minmax(120px, 1fr));
+        grid-template-areas:
+            "big big"
+            "small extra"
+            "text text"
+            "mid mid"
+            "bottom1 bottom2"
+            "bottom3 bottom4";
+        height: auto;
+        max-height: none;
+    }
+
+    #Home-Food .food-bento-text-card {
+        padding: 1.5rem;
+    }
+}
 
 .card {
     transition: transform 0.3s ease;

@@ -199,10 +199,6 @@ nav {
     cursor: pointer; 
 }
 
-.filter-nav .nav-link.active { 
-    background-color: #800020; 
-    color: #F5E6D3; 
-}
 
 .filter-nav .nav-link:hover:not(.active) { 
     background-color: #D4A373; 
@@ -296,17 +292,6 @@ nav {
     transition: opacity 0.5s ease, transform 0.5s ease; 
 }
 
-.reveal-up { 
-    opacity: 0; 
-    transform: translateY(50px); 
-    transition: all 0.9s ease; 
-}
-
-.reveal-up.tampil { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
-
 div.navbar-collapse.collapsing { 
     transition: height 0.3s ease; 
 }
@@ -390,6 +375,7 @@ div.navbar-collapse.collapsing {
         padding: 10px 20px; 
     }
 
+    
     #herolandmark { 
         height: 40vh; 
         min-height: 250px; 
