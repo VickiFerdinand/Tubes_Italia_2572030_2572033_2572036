@@ -8,7 +8,6 @@ body {
     scroll-behavior: smooth; 
 }
 
-/* === BAGIAN NAVBAR & TIRAI === */
 #transition-curtain {
     position: fixed;
     top: 0;
@@ -117,7 +116,7 @@ nav {
 }
 
 #navigasi li:hover a {
-    color: #000000;
+    color: black;
 }
 
 #btn-pass {
@@ -134,10 +133,9 @@ nav {
 
 #btn-pass:hover {
     background-color: white;
-    color: #188D47;
+    color: black;
 }
 
-/* === KONTEN FOOD === */
 #herofood { 
     position: relative; 
     height: 50vh; 
@@ -484,7 +482,7 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     }
 
     #navigasi li:hover a { 
-        color: white; 
+        color: rgb(255, 255, 255); 
     }
 
     #btn-pass { 

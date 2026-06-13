@@ -1,57 +1,39 @@
-$(document).ready(function () {
-
+window.addEventListener("load", function () {
+    // ini buat ngilangin loading awal
     setTimeout(function () {
-        $("body").addClass("page-loaded");
+        document.body.classList.add("page-loaded");
+
+        // ini biar gambarnya langsung tampil semua
+        var elemenMuncul = document.getElementsByClassName("elemenMuncul");
+        for (var kebawah = 0; kebawah < elemenMuncul.length; kebawah++) {
+            elemenMuncul[kebawah].classList.add("tampil");
+        }
     }, 800);
 
-    $("a").on("click", function (e) {
-        let destination = $(this).attr("href");
+    var semuaLink = document.getElementsByTagName("a");
 
-        if (destination && destination.startsWith("#")) {
-            e.preventDefault();
-            let trg = $(destination);
-            if (trg.length) {
-                $('html, body').animate({
-                    scrollTop: trg.offset().top - 120
-                }, 500);
-            }
-            return;
-        }
+    for (var kebawah = 0; kebawah < semuaLink.length; kebawah++) {
+        semuaLink[kebawah].addEventListener("click", function (e) {
+            var tujuan = this.getAttribute("href");
+            var classTombol = this.className || "";
 
-        if (destination && !destination.startsWith("javascript:") && !$(this).hasClass("navbar-toggler") && $(this).attr("target") !== "_blank") {
-            e.preventDefault();
-            $("body").removeClass("page-loaded");
-            setTimeout(function () {
-                window.location.href = destination;
-            }, 1000);
-        }
-    });
+            // ini kalo klik buat pindah halaman web
+            if (tujuan && tujuan.indexOf("#") !== 0 && tujuan.indexOf("javascript:") !== 0 && classTombol.indexOf("navbar-toggler") === -1 && this.getAttribute("target") !== "_blank") {
+                e.preventDefault();
+                document.body.classList.remove("page-loaded");
 
-    $(window).on("scroll", function () {
-        let scrollY = $(window).scrollTop();
-        let windowHeight = $(window).height();
-
-        let menuUtama = $("#menuUtama");
-        if (menuUtama.hasClass("show")) {
-            menuUtama.collapse('hide');
-        }
-
-        $(".bagianMakanan").each(function () {
-            let sectionTop = $(this).offset().top - 200;
-            if (scrollY >= sectionTop) {
-                let id = $(this).attr("id");
-                $("#menuSampingMakanan a").removeClass("kategoriAktif");
-                $("#menuSampingMakanan a[href='#" + id + "']").addClass("kategoriAktif");
+                setTimeout(function () {
+                    window.location.href = tujuan;
+                }, 1000);
             }
         });
+    }
 
-        $(".elemenMuncul").each(function () {
-            let position = $(this).offset().top;
-            if (scrollY > position - windowHeight + 100) {
-                $(this).addClass("tampil");
-            }
-        });
+    // ini buat mobile yh, nutup menu kalo di scroll
+    window.addEventListener("scroll", function () {
+        var menuUtama = document.getElementById("menuUtama");
+        if (menuUtama && menuUtama.classList.contains("show")) {
+            menuUtama.classList.remove("show");
+        }
     });
-
-    $(window).trigger("scroll");
 });

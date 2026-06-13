@@ -1,164 +1,78 @@
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
+window.addEventListener("load", function () {
+
+    // ini buat ngilangin loading awal layar
+    setTimeout(function () {
+
         document.body.classList.add("page-loaded");
+
+        // pancing semua elemen html kita supaya muncul pelan pelan pas beres loading
+        var kotakMuncul = document.getElementsByClassName("reveal-up");
+
+        for (var kebawah = 0; kebawah < kotakMuncul.length; kebawah++) {
+            kotakMuncul[kebawah].classList.add("tampil");
+        }
+
+
+        // ini mindahin z index tirainya biar navbar bisa dipencet pencet
+        setTimeout(function () {
+
+            var tirai = document.getElementById("transition-curtain");
+
+            if (tirai) {
+                tirai.style.zIndex = "-1";
+            }
+
+        }, 800);
+
+
     }, 800);
 
-    const navLinks = document.querySelectorAll("a");
-    navLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-            const destination = link.getAttribute("href");
-            if (
-                destination &&
-                !destination.startsWith("#") &&
-                !destination.startsWith("javascript:") &&
-                !link.classList.contains("navbar-toggler") &&
-                link.target !== "_blank"
-            ) {
+
+
+    // ini logika buat kalo kita klik navbar buat pindah halaman web
+    var semuaLink = document.getElementsByTagName("a");
+
+    for (var kebawah = 0; kebawah < semuaLink.length; kebawah++) {
+
+        semuaLink[kebawah].addEventListener("click", function (e) {
+
+            var tujuan = this.getAttribute("href");
+            var classTombol = this.className || "";
+
+            // ini biar kode pindah halamannya cuma jalan kalo bukan hashtag
+            if (tujuan && tujuan.indexOf("#") !== 0 && tujuan.indexOf("javascript:") !== 0 && classTombol.indexOf("navbar-toggler") === -1 && this.getAttribute("target") !== "_blank") {
+
                 e.preventDefault();
+
+                var tirai = document.getElementById("transition-curtain");
+
+                if (tirai) {
+                    tirai.style.zIndex = "99999";
+                }
+
                 document.body.classList.remove("page-loaded");
-                setTimeout(() => {
-                    window.location.href = destination;
+
+                // tunggu semenit eh 1 detik dlu baru lompat halamannya
+                setTimeout(function () {
+                    window.location.href = tujuan;
                 }, 1000);
+
             }
         });
-    });
 
-
-    const menuElement = document.getElementById('menuUtama');
-    const bsCollapse = new bootstrap.Collapse(menuElement, { toggle: false });
-
-    let isScrolling = false;
-
-    window.addEventListener('scroll', () => {
-
-        if (menuElement.classList.contains('show') && !isScrolling) {
-            isScrolling = true;
-
-            menuElement.style.opacity = '0';
-            menuElement.style.transform = 'translateY(-10px)';
-            menuElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-
-            setTimeout(() => {
-                bsCollapse.hide();
-            }, 50);
-        }
-    });
-
-
-    menuElement.addEventListener('hidden.bs.collapse', () => {
-        menuElement.style.opacity = '';
-        menuElement.style.transform = '';
-        menuElement.style.transition = '';
-        isScrolling = false;
-    });
-});
-
-
-const heroSlides = document.querySelectorAll('.hero-img .hero-slide');
-let heroIndex = 0;
-
-function showHeroSlide(index) {
-  heroSlides.forEach((slide, i) => {
-    slide.classList.toggle('active', i === index);
-  });
-}
-
-function nextHeroSlide() {
-  heroIndex = (heroIndex + 1) % heroSlides.length;
-  showHeroSlide(heroIndex);
-}
-
-showHeroSlide(heroIndex);
-setInterval(nextHeroSlide, 4500);
-
-const allLandmarks = [
-    { 
-        title: "Roman Colosseum", 
-        img: "https://images.unsplash.com/photo-1552832230-c0197dd311b5", 
-        desc: "A monumental silent witness to the glory of the ancient Roman Empire in the heart of Rome." 
-    },
-    { 
-        title: "Grand Canal of Venice", 
-        img: "https://cdn.britannica.com/63/153463-050-06B6270D/Grand-Canal-Venice.jpg", 
-        desc: "A unique water transportation network that winds through the romantic city of Venice." 
-    },
-    { 
-        title: "Milan Duomo", 
-        img: "https://cdn.britannica.com/41/250241-050-75947720/Milan-Duomo-in-Milan-Italy.jpg", 
-        desc: "A magnificent Gothic cathedral coated in white marble, located in the fashion capital of Milan." 
-    },
-    { 
-        title: "Leaning Tower of Pisa", 
-        img: "https://leaningtowerpisa.org/wp-content/uploads/2025/10/The-Leaning-Tower-of-Pisa.jpg", 
-        desc: "A cathedral bell tower in Tuscany, globally renowned for its unique tilt." 
-    },
-    { 
-        title: "Lake Como", 
-        img: "https://images.unsplash.com/photo-1534447677768-be436bb09401", 
-        desc: "An elite lakeside retreat set against the breathtaking panorama of the Alps." 
-    },
-    { 
-        title: "Trevi Fountain", 
-        img: "https://images.unsplash.com/photo-1525874684015-58379d421a52", 
-        desc: "A stunning Baroque fountain famous for the tradition of tossing in a coin for good luck." 
-    },
-    { 
-        title: "Ancient City of Pompeii", 
-        img: "https://cdn-imgix.headout.com/media/images/c77c4404fddb7b682df47383fa268bf8-1223-naples-003-naples-%7C-pompeii-01.jpg", 
-        desc: "An ancient Roman city perfectly preserved beneath the volcanic ash of Campania." 
     }
-];
-
-function renderAllCards() {
-    const container = document.getElementById('landmark-cards-container');
-    
-    container.innerHTML = allLandmarks.map(item => `
-        <div class="landmark-card">
-            <div class="card-img-wrapper">
-                <img src="${item.img}?auto=format&fit=crop&w=500&q=80" alt="${item.title}">
-            </div>
-            <div class="card-body">
-                <h4>${item.title}</h4>
-                <p>${item.desc}</p>
-            </div>
-        </div>
-    `).join('');
-}
 
 
-function slideRight() {
-    const slider = document.querySelector('.gallery-side');
-    // Geser sejauh 350px (lebar card 320px + gap 30px)
-    slider.scrollLeft += 350; 
-}
 
+    // ini buat mobile yh, biar menu garis tiganya nutup otomatis kalo user nge-scroll layar ke bawah
+    window.addEventListener("scroll", function () {
 
-function slideLeft() {
-    const slider = document.querySelector('.gallery-side');
-    slider.scrollLeft -= 350;
-}
+        var menuUtama = document.getElementById("menuUtama");
 
+        if (menuUtama && menuUtama.classList.contains("show")) {
+            menuUtama.classList.remove("show");
+        }
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderAllCards();
-});
-
-const socialSlides = document.querySelectorAll('.social-carousel .social-slide');
-let socialIndex = 0;
-
-function showSocialSlide(index) {
-    socialSlides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
     });
-}
 
-function nextSocialSlide() {
-    socialIndex = (socialIndex + 1) % socialSlides.length;
-    showSocialSlide(socialIndex);
-}
-
-
-if (socialSlides.length > 0) {
-    showSocialSlide(socialIndex);
-    setInterval(nextSocialSlide, 4500); 
-}
+});

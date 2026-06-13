@@ -1,48 +1,35 @@
-$(document).ready(function () {
-
-
+window.addEventListener("load", function () {
+    // ini buat ngilangin loading awal
     setTimeout(function () {
-        $("body").addClass("page-loaded");
+        document.body.classList.add("page-loaded");
     }, 800);
 
-  
-    $("a").on("click", function (e) {
-        var tujuan = $(this).attr("href");
+    var semuaLink = document.getElementsByTagName("a");
 
-        
-        if (tujuan && tujuan.startsWith("#")) {
-            e.preventDefault();
-            var elemenTujuan = $(tujuan);
+    for (var kebawah = 0; kebawah < semuaLink.length; kebawah++) {
+        semuaLink[kebawah].addEventListener("click", function (e) {
+            var tujuan = this.getAttribute("href");
+            var classTombol = this.className || "";
+            var targetTab = this.getAttribute("target");
 
-            if (elemenTujuan.length > 0) {
-                var kebawah = elemenTujuan.offset().top - 120;
+            // ini kalo klik buat pindah halaman web
+            if (tujuan && tujuan.indexOf("#") !== 0 && tujuan.indexOf("javascript:") !== 0 && classTombol.indexOf("navbar-toggler") === -1 && targetTab !== "_blank") {
+                e.preventDefault();
 
-                $('html, body').animate({
-                    scrollTop: kebawah
-                }, 500);
+                document.body.classList.remove("page-loaded");
+
+                setTimeout(function () {
+                    window.location.href = tujuan;
+                }, 1000);
             }
-            return;
-        }
+        });
+    }
 
-      
-        if (tujuan && !tujuan.startsWith("javascript:") && !$(this).hasClass("navbar-toggler") && $(this).attr("target") !== "_blank") {
-            e.preventDefault();
-
-        
-            $("body").removeClass("page-loaded");
-
-            setTimeout(function () {
-                window.location.href = tujuan;
-            }, 1000);
+    // ini buat mobile yh, nutup menu kalo di scroll
+    window.addEventListener("scroll", function () {
+        var menuUtama = document.getElementById("menuUtama");
+        if (menuUtama && menuUtama.classList.contains("show")) {
+            menuUtama.classList.remove("show");
         }
     });
-
-
-    $(window).on("scroll", function () {
-        var menuUtama = $("#menuUtama");
-        if (menuUtama.hasClass("show")) {
-            menuUtama.collapse('hide');
-        }
-    });
-
 });

@@ -1,264 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cultures</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cultures</title>
 
-        <link rel="stylesheet" href="stylecultures.css">
-        <script src="culturesJS.js"></script>
+    <link rel="stylesheet" href="stylecultures.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-            crossorigin="anonymous">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Modern+Antiqua&family=Nova+Round&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=TASA+Explorer:wght@400..800&display=swap"
-            rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap"
-            rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="culturesJS.js" defer></script>
+</head>
+<body>
+    <div id="transition-curtain">
+        <div id="page-loader">LOADING...</div>
+        <div class="curtain-side left-side"></div>
+        <div class="curtain-side right-side"></div>
+    </div>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        
+    <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
+        <div class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
+            <div class="navbar-brand-mobile">
+                <a href="#">
+                    <img src="../Italy Logo.png" alt="Italy Logo" id="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuUtama">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
 
-    </head>
-    <body>
-        <div id="transition-curtain">
-            <div id="page-loader">LOADING...</div>
-            <div class="curtain-side left-side"></div>
-            <div class="curtain-side right-side"></div>
+            <div class="collapse navbar-collapse justify-content-between w-100" id="menuUtama">
+                <ul id="navigasi" class="navbar-nav mx-lg-auto">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../history/history.html">History</a></li>
+                    <li><a href="../food/food.html">Foods</a></li>
+                    <li><a href="../landmark/landmark.html">Landmarks</a></li>
+                    <li><a href="#">Cultures</a></li>
+                </ul>
+                <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP" target="_blank" class="btn btn-outline-light d-lg-flex align-items-center" id="btn-pass">Get a Tourist Pass</a>
+            </div>
         </div>
+    </nav>
 
-        <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top">
-            <div
-                class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
-                <div class="navbar-brand-mobile">
-                    <a href="#">
-                        <img src="../Italy Logo.png" alt="Italy Logo" id="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#menuUtama"
-                        aria-controls="menuUtama" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
+    <main class="cultures-container">
+        <section class="culture-hero reveal-up">
+            <div class="ch-content">
+                <h1 class="title-italiana" id="bannertitle">The Italian<br>Masterpiece</h1>
+                <p class="ch-desc">Immerse yourself in a country where life itself is celebrated as an art form. From the vibrant masks of the Venetian Carnival to the timeless strokes of the Renaissance.</p>
+            </div>
+            <div class="ch-image-wrapper">
+                <img src="https://plus.unsplash.com/premium_photo-1677354136477-6c9f75f65038?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Venice Carnival Mask" class="ch-img">
+            </div>
+        </section>
 
-                <div
-                    class="collapse navbar-collapse justify-content-between w-100"
-                    id="menuUtama">
-                    <ul id="navigasi" class="navbar-nav mx-lg-auto">
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="../history/history.html">History</a></li>
-                        <li><a href="../food/food.html">Foods</a></li>
-                        <li><a
-                                href="../landmark/landmark.html">Landmarks</a></li>
-                        <li><a href="#">Cultures</a></li>
-                    </ul>
-                    <a href="https://youtu.be/QDia3e12czc?si=Nk9ryk9EImWdiEaP"
-                        class="btn btn-outline-light d-lg-flex align-items-center"
-                        id="btn-pass">Get a Tourist Pass</a>
+        <section class="arts-spotlight reveal-up">
+            <div class="arts-intro">
+                <h2 class="title-italiana text-gold">The Pillars of Italian Art</h2>
+                <p>Step into the gallery of human genius. Explore the eras that shaped the visual history of the world in grand scale.</p>
+            </div>
+
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="art-card large-card">
+                            <img src="https://images.unsplash.com/photo-1604741948035-aa4c9ef0fcec?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Roman Sculpture">
+                            <div class="art-card-overlay">
+                                <h3 class="title-italiana">Classical Antiquity</h3>
+                                <p>Ancient Roman sculptors captured the perfect human form and the intensity of gods, leaving a legacy in stone that has survived millennia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="art-card large-card">
+                            <img src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Renaissance Painting">
+                            <div class="art-card-overlay">
+                                <h3 class="title-italiana">High Renaissance</h3>
+                                <p>The rebirth of culture in Florence and Venice. Visionaries like Leonardo da Vinci and Michelangelo blended science, perspective, and divine beauty.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </section>
 
-        <main class="cultures-container">
-            <main class="cultures-container">
-                <section class="culture-hero">
-                    <div class="ch-content">
-                        <h1 class="title-italiana" id="bannertitle">The
-                            Italian<br>Masterpiece</h1>
-                        <p class="ch-desc">Immerse yourself in a country where
-                            life itself is celebrated as an art form. From the
-                            vibrant masks of the Venetian Carnival to the
-                            timeless strokes of the Renaissance, discover the
-                            beating heart of Italy.</p>
-                    </div>
-                    <div class="ch-image-wrapper">
-                        <img
-                            src="https://plus.unsplash.com/premium_photo-1677354136477-6c9f75f65038?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            alt="Venice Carnival Mask" class="ch-img">
-                    </div>
-                </section>
+        <section class="culture-stories">
+            
+            <div class="story-row reveal-up">
+                <div class="story-text-box bg-white">
+                    <h2 class="title-italiana">Italian Fashion Capital</h2>
+                    <p>Milan is globally recognized as one of the fashion capitals of the world. Italian design is synonymous with luxury, elegance, and impeccable tailoring, producing legendary houses like Prada, Armani, and Gucci.</p>
+                </div>
+                <div class="story-img-box">
+                    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=800&auto=format&fit=crop" alt="Milan Fashion">
+                </div>
+            </div>
 
-                <section class="culture-stories">
+            <div class="story-row reverse reveal-up">
+                <div class="story-img-box">
+                    <img src="https://plus.unsplash.com/premium_photo-1677327622389-2032326bf7c1?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Italian Cafe Lifestyle">
+                </div>
+                <div class="story-text-box bg-olive text-white">
+                    <h2 class="title-italiana">La Dolce Vita</h2>
+                    <p>Translated as "The Sweet Life", it is the Italian art of living in the moment. Whether it's enjoying a slow espresso at a street cafe or taking an evening passeggiata (stroll) with family.</p>
+                </div>
+            </div>
 
-                    <section class="arts-spotlight">
-                        <div class="arts-intro">
-                            <h2 class="title-italiana text-gold">The Pillars of
-                                Italian Art</h2>
-                            <p>Step into the gallery of human genius. From the
-                                divine marble of Rome to the dramatic
-                                brushstrokes of Florence, explore the eras that
-                                shaped the visual history of the world.</p>
-                        </div>
+            <div class="story-row reveal-up">
+                <div class="story-text-box bg-beige">
+                    <h2 class="title-italiana">Festivals & Traditions</h2>
+                    <p>Italy thrives on historic celebrations. From the intense bareback horse race of the Palio di Siena to the historical regattas, traditional festivals keep ancient local rivalries and community spirit alive.</p>
+                </div>
+                <div class="story-img-box">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" alt="Italian Festivals">
+                </div>
+            </div>
 
-                        <div class="art-gallery-container">
-                            <div class="art-card">
-                                <img
-                                    src="https://images.unsplash.com/photo-1604741948035-aa4c9ef0fcec?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Roman Sculpture">
-                                <div class="art-card-overlay">
-                                    <h3 class="title-italiana">Classical
-                                        Antiquity</h3>
-                                    <p>The mastery of marble. Ancient Roman
-                                        sculptors captured the perfect human
-                                        form and the intensity of gods, leaving
-                                        a legacy in stone that has survived
-                                        millennia.</p>
-                                </div>
-                            </div>
+            <div class="story-row reverse reveal-up">
+                <div class="story-img-box">
+                    <img src="https://images.unsplash.com/photo-1607998803461-4e9aef3be418?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Italian Opera">
+                </div>
+                <div class="story-text-box bg-white">
+                    <h2 class="title-italiana">The Birth of Opera</h2>
+                    <p>Music flows through the veins of Italy. As the birthplace of opera in the 16th century, theaters like La Scala in Milan continue to echo with the passionate arias of Verdi and Puccini.</p>
+                </div>
+            </div>
 
-                            <div class="art-card staggered">
-                                <img
-                                    src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Renaissance Painting">
-                                <div class="art-card-overlay">
-                                    <h3 class="title-italiana">High
-                                        Renaissance</h3>
-                                    <p>The rebirth of culture in Florence and
-                                        Venice. Visionaries like Leonardo da
-                                        Vinci and Michelangelo blended science,
-                                        perspective, and divine beauty onto the
-                                        canvas.</p>
-                                </div>
-                            </div>
+            <section class="tech-automotive reveal-up">
+                <div class="tech-header">
+                    <h2 class="title-italiana">The Symphony of Speed</h2>
+                    <p>In Italy, engineering is pursued with the same passion as painting. Witness the evolution of Italian automotive mastery, an art form in motion.</p>
+                </div>
 
-                            <div class="art-card">
-                                <img
-                                    src="https://images.unsplash.com/photo-1601546993085-fdfb6c5f76a9?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                    alt="Baroque Architecture and Art">
-                                <div class="art-card-overlay">
-                                    <h3 class="title-italiana">The Baroque
-                                        Era</h3>
-                                    <p>Characterized by intense emotion, grand
-                                        grandeur, and extreme contrast between
-                                        light and dark (chiaroscuro) pioneered
-                                        by the legendary Caravaggio.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <div class="story-row reverse">
-                        <div class="story-img-box">
-                            <img
-                                src="https://plus.unsplash.com/premium_photo-1677327622389-2032326bf7c1?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Italian Cafe Lifestyle">
-                        </div>
-                        <div class="story-text-box bg-olive text-white">
-                            <h2 class="title-italiana">La Dolce Vita</h2>
-                            <p>Translated as "The Sweet Life", it is the Italian
-                                art of living in the moment. Whether it's
-                                enjoying a slow espresso at a street cafe or
-                                taking an evening passeggiata (stroll) with
-                                family.</p>
-                        </div>
-                    </div>
-
-                    <div class="story-row">
-                        <div class="story-text-box bg-white">
-                            <h2 class="title-italiana">The Birth of Opera</h2>
-                            <p>Music flows through the veins of Italy. As the
-                                birthplace of opera in the 16th century,
-                                theaters like La Scala in Milan continue to echo
-                                with the passionate arias of Verdi and
-                                Puccini.</p>
-                        </div>
-                        <div class="story-img-box">
-                            <img
-                                src="https://images.unsplash.com/photo-1607998803461-4e9aef3be418?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Italian Architecture and Music">
-                        </div>
-                    </div>
-
-
-                    <section class="tech-automotive">
-                        <div class="tech-header">
-                            <h2 class="title-italiana">The Symphony of
-                                Speed</h2>
-                            <p>In Italy, engineering is pursued with the same
-                                passion as painting or sculpture. Witness the
-                                evolution of Italian automotive mastery, from
-                                the pioneering days of Grand Prix to the fierce
-                                rivalry of the raging bull and the prancing
-                                horse.</p>
-                        </div>
-
-                        <div class="timeline-container">
-                
+                <div class="container">
+                    <div class="row g-4">
+                        <div class="col-12 col-md-4">
                             <div class="timeline-card">
                                 <div class="timeline-img-box">
-                                    <img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/c/cc/1940_Alfa_Romeo_6C_2500_SS_Torpedino_Brescia_Giuseppe_Farina.jpg"
-                                        alt="Vintage Alfa Romeo" id="timeline-img-1">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/1940_Alfa_Romeo_6C_2500_SS_Torpedino_Brescia_Giuseppe_Farina.jpg" alt="Vintage Alfa Romeo">
                                 </div>
                                 <div class="timeline-text">
-                                    <span class="racing-year">1920s -
-                                        1940s</span>
-                                    <h3 class="title-italiana">The Racing
-                                        Pioneers</h3>
-                                    <p>Brands like Alfa Romeo and Maserati
-                                        dominated the early European racing
-                                        circuits. They established Italy's
-                                        reputation for aerodynamic
-                                        experimentation and raw mechanical
-                                        passion.</p>
+                                    <span class="racing-year">1920s - 1940s</span>
+                                    <h3 class="title-italiana">The Racing Pioneers</h3>
+                                    <p>Brands like Alfa Romeo and Maserati established Italy's reputation for aerodynamic experimentation and raw mechanical passion.</p>
                                 </div>
                             </div>
+                        </div>
 
-                          
+                        <div class="col-12 col-md-4">
                             <div class="timeline-card">
                                 <div class="timeline-img-box">
-                                    <img
-                                        src="https://upload.wikimedia.org/wikipedia/commons/5/50/Lamborghini_Countach_LP500S.jpg"
-                                        alt="Countach" id="timeline-img-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Lamborghini_Countach_LP500S.jpg" alt="Countach">
                                 </div>
                                 <div class="timeline-text">
-                                    <span class="racing-year">1950s -
-                                        1980s</span>
-                                    <h3 class="title-italiana">The Golden
-                                        Age</h3>
-                                    <p>Enzo Ferrari created the ultimate status
-                                        symbol with his V12 engines. Challenged
-                                        by Ferruccio Lamborghini out of spite,
-                                        this legendary rivalry birthed the
-                                        world's first true supercars like the
-                                        Miura and Countach.</p>
+                                    <span class="racing-year">1950s - 1980s</span>
+                                    <h3 class="title-italiana">The Golden Age</h3>
+                                    <p>The legendary rivalry between Ferrari and Lamborghini birthed the world's first true supercars like the Miura and Countach.</p>
                                 </div>
                             </div>
+                        </div>
 
-                 
+                        <div class="col-12 col-md-4">
                             <div class="timeline-card">
                                 <div class="timeline-img-box">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1597687154732-9b205f4f5c1c?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                        alt="Ferrari">
+                                    <img src="https://images.unsplash.com/photo-1597687154732-9b205f4f5c1c?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Ferrari">
                                 </div>
                                 <div class="timeline-text">
                                     <span class="racing-year">Modern Era</span>
-                                    <h3 class="title-italiana">Hypercars &
-                                        Beyond</h3>
-                                    <p>Today, automakers like Pagani, Ferrari,
-                                        and Lamborghini blend aerospace-grade
-                                        carbon fiber with hybrid
-                                        electrification, keeping the fierce soul
-                                        of Italian combustion alive in a modern
-                                        world.</p>
+                                    <h3 class="title-italiana">Hypercars</h3>
+                                    <p>Today, automakers blend aerospace-grade carbon fiber with hybrid electrification, keeping the fierce soul of Italy alive.</p>
                                 </div>
                             </div>
                         </div>
-                    </section>
-
-                </section>
-
-                <footer>
-
-                </footer>
-            </body>
-        </html>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

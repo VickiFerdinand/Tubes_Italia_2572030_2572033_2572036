@@ -1,79 +1,82 @@
-$(document).ready(function () {
-
+window.addEventListener("load", function () {
+    // ini buat ngilangin loading awal
     setTimeout(function () {
-        $("body").addClass("page-loaded");
+        document.body.classList.add("page-loaded");
+
+        setTimeout(function () {
+            var tirai = document.getElementById("transition-curtain");
+            if (tirai) {
+                tirai.style.zIndex = "-1";
+            }
+        }, 800);
+
+        // ini biar gambarnya langsung tampil semua
+        var kartuMuncu = document.getElementsByClassName("reveal-up");
+        for (var kebawah = 0; kebawah < kartuMuncu.length; kebawah++) {
+            kartuMuncu[kebawah].classList.add("tampil");
+        }
     }, 800);
 
-    $("a").on("click", function (e) {
-        var tujuan = $(this).attr("href");
+    var semuaLink = document.getElementsByTagName("a");
 
-        if (tujuan && tujuan.startsWith("#")) {
-            e.preventDefault();
-            var targetElemen = $(tujuan);
-            if (targetElemen.length > 0) {
-                $('html, body').animate({
-                    scrollTop: targetElemen.offset().top - 120
-                }, 500);
-            }
-            return;
-        }
+    for (var kebawah = 0; kebawah < semuaLink.length; kebawah++) {
+        semuaLink[kebawah].addEventListener("click", function (e) {
+            var tujuan = this.getAttribute("href");
+            var classTombol = this.className || "";
 
-        if (tujuan && !tujuan.startsWith("javascript:") && !$(this).hasClass("navbar-toggler") && $(this).attr("target") !== "_blank") {
-            e.preventDefault();
-            $("body").removeClass("page-loaded");
+            // ini kalo klik buat pindah halaman web
+            if (tujuan && tujuan.indexOf("#") !== 0 && tujuan.indexOf("javascript:") !== 0 && classTombol.indexOf("navbar-toggler") === -1 && this.getAttribute("target") !== "_blank") {
+                e.preventDefault();
 
-            setTimeout(function () {
-                window.location.href = tujuan;
-            }, 1000);
-        }
-    });
+                var tirai = document.getElementById("transition-curtain");
+                if (tirai) {
+                    tirai.style.zIndex = "99999";
+                }
 
-    $(window).on("scroll", function () {
-        var tinggiScroll = $(window).scrollTop();
-        var tinggiLayar = $(window).height();
+                document.body.classList.remove("page-loaded");
 
-        var menuUtama = $("#menuUtama");
-        if (menuUtama.hasClass("show")) {
-            menuUtama.collapse('hide');
-        }
-
-    
-        $(".reveal-up").each(function () {
-            var posisiElemen = $(this).offset().top;
-
-            if (tinggiScroll > posisiElemen - tinggiLayar + 100) {
-                $(this).addClass("tampil");
+                setTimeout(function () {
+                    window.location.href = tujuan;
+                }, 1000);
             }
         });
-    });
+    }
 
-    $(window).trigger("scroll");
-
-
-    $(".filter-nav .nav-link").on("click", function () {
-
-    
-        $(".filter-nav .nav-link").removeClass("active");
-
-    
-        $(this).addClass("active");
-
-    
-        var kategori = $(this).attr("data-filter");
-
-        
-        if (kategori == "all") {
-            $(".item").show();
-        } else {
-            $(".item").hide();
-            $("." + kategori).show();
+    // ini buat mobile yh, nutup menu kalo di scroll
+    window.addEventListener("scroll", function () {
+        var menuUtama = document.getElementById("menuUtama");
+        if (menuUtama && menuUtama.classList.contains("show")) {
+            menuUtama.classList.remove("show");
         }
-
-       
-        $(".reveal-up").removeClass("tampil");
-        setTimeout(function () {
-            $(window).trigger("scroll");
-        }, 50);
     });
 
+    var tombolFilter = document.querySelectorAll(".filter-nav .nav-link");
+    var semuaItem = document.getElementsByClassName("item");
+
+    // ini kalo tombol filter di klik
+    for (var kesamping = 0; kesamping < tombolFilter.length; kesamping++) {
+        tombolFilter[kesamping].addEventListener("click", function () {
+
+            for (var hapus = 0; hapus < tombolFilter.length; hapus++) {
+                tombolFilter[hapus].classList.remove("active");
+            }
+
+            this.classList.add("active");
+
+            var kategori = this.getAttribute("data-filter");
+
+            // ini buat nampilin atau nyembunyiin card
+            for (var kebawah = 0; kebawah < semuaItem.length; kebawah++) {
+                if (kategori === "all") {
+                    semuaItem[kebawah].style.display = "block";
+                } else {
+                    if (semuaItem[kebawah].classList.contains(kategori)) {
+                        semuaItem[kebawah].style.display = "block";
+                    } else {
+                        semuaItem[kebawah].style.display = "none";
+                    }
+                }
+            }
+        });
+    }
 });
