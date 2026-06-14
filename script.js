@@ -28,7 +28,6 @@ window.addEventListener("load", function () {
     }, 800);
 
 
-
     // ini logika buat kalo kita klik navbar buat pindah halaman web
     var semuaLink = document.getElementsByTagName("a");
 
@@ -61,7 +60,6 @@ window.addEventListener("load", function () {
         });
 
     }
-
 
 
     // ini buat mobile yh, biar menu garis tiganya nutup otomatis kalo user nge-scroll layar ke bawah
