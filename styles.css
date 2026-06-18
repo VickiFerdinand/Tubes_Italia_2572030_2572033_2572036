@@ -71,7 +71,6 @@ nav {
     height: 100%;
 }
 
-
 /* ini kalo dia disentuh mouse warnanya berubah terang */
 #navigasi li:hover {
     background-color: white;
@@ -184,18 +183,18 @@ body.page-loaded .right-side {
 
 #judul {
     font-family: "Italiana", sans-serif;
-    font-size: clamp(35px, 6vw, 70px);
+    font-size: clamp(50px, 8vw, 80px);
 }
 
-
-/* posisi hero yang pas di tengah tanpa harus pake kode penting-pentingan */
+/* ini biar teksnya kesamping dikit */
 .teks-hero {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 1%; 
     transform: translateY(-50%);
     max-width: 600px;
     z-index: 10;
+    margin-top: -20px;
 }
 
 
@@ -203,7 +202,7 @@ body.page-loaded .right-side {
 .gambar-gelap {
     height: 95vh; 
     object-fit: cover; 
-    opacity: 0.65; 
+    opacity: 0.45; 
 }
 
 

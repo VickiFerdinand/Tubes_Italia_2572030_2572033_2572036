@@ -27,6 +27,25 @@ window.addEventListener("load", function () {
 
     }, 800);
 
+    
+    window.addEventListener("pageshow", function (event) {
+
+        if (event.persisted) {
+            var tirai = document.getElementById("transition-curtain");
+
+            if (tirai) {
+                tirai.style.zIndex = "99999";
+            }
+
+            document.body.classList.add("page-loaded");
+
+            setTimeout(function () {
+                if (tirai) {
+                    tirai.style.zIndex = "-1";
+                }
+            }, 800);
+        }
+    });
 
     // ini logika buat kalo kita klik navbar buat pindah halaman web
     var semuaLink = document.getElementsByTagName("a");
@@ -62,13 +81,19 @@ window.addEventListener("load", function () {
     }
 
 
-    // ini buat mobile yh, biar menu garis tiganya nutup otomatis kalo user nge-scroll layar ke bawah
+    // ini buat mobile yh, nutup menu hape otomatis kalo di scroll ga ngejut
     window.addEventListener("scroll", function () {
 
         var menuUtama = document.getElementById("menuUtama");
 
-        if (menuUtama && menuUtama.classList.contains("show")) {
-            menuUtama.classList.remove("show");
+        // rahasianya ada di "collapsing" biar ga dipanggil bertubi-tubi pas lagi animasi
+        if (menuUtama && menuUtama.classList.contains("show") && !menuUtama.classList.contains("collapsing")) {
+            var bsCollapse = bootstrap.Collapse.getInstance(menuUtama);
+            if (bsCollapse) {
+                bsCollapse.hide();
+            } else {
+                menuUtama.classList.remove("show");
+            }
         }
 
     });

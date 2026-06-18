@@ -25,11 +25,48 @@ window.addEventListener("load", function () {
         });
     }
 
-    // ini buat mobile yh, nutup menu kalo di scroll
+    window.addEventListener("pageshow", function (event) {
+
+        if (event.persisted) {
+            var tirai = document.getElementById("transition-curtain");
+
+            if (tirai) {
+                tirai.style.zIndex = "99999";
+            }
+
+            document.body.classList.add("page-loaded");
+
+            setTimeout(function () {
+                if (tirai) {
+                    tirai.style.zIndex = "-1";
+                }
+            }, 800);
+        }
+    });
+
+    // ini buat mobile yh, nutup menu hape otomatis kalo di scroll ga ngejut
     window.addEventListener("scroll", function () {
+
         var menuUtama = document.getElementById("menuUtama");
-        if (menuUtama && menuUtama.classList.contains("show")) {
-            menuUtama.classList.remove("show");
+
+        // rahasianya ada di "collapsing" biar ga dipanggil bertubi-tubi pas lagi animasi
+        if (menuUtama && menuUtama.classList.contains("show") && !menuUtama.classList.contains("collapsing")) {
+            var bsCollapse = bootstrap.Collapse.getInstance(menuUtama);
+            if (bsCollapse) {
+                bsCollapse.hide();
+            } else {
+                menuUtama.classList.remove("show");
+            }
+        }
+
+        // ini untuk tombol pencet ke atas (khusus halaman food)
+        var btnTop = document.getElementById("btn-back-to-top");
+        if (btnTop) {
+            if (window.scrollY > 300) {
+                btnTop.style.display = "block";
+            } else {
+                btnTop.style.display = "none";
+            }
         }
     });
 });

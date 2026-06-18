@@ -1,13 +1,12 @@
 body { 
     margin: 0; 
     padding: 0; 
-    background-color: #F5E6D3; 
+    background-color: #ffffff; 
     color: #310F10; 
     font-family: "Elms Sans", sans-serif; 
     overflow-x: hidden; 
     scroll-behavior: smooth; 
 }
-
 
 #transition-curtain {
     position: fixed;
@@ -19,12 +18,10 @@ body {
     display: flex;
 }
 
-
 body.page-loaded #transition-curtain {
     visibility: hidden;
     transition: visibility 0s 0.8s;
 }
-
 
 .curtain-side {
     width: 50%;
@@ -32,7 +29,6 @@ body.page-loaded #transition-curtain {
     background-color: #188D47; 
     transition: transform 0.8s ease;
 }
-
 
 #page-loader {
     position: absolute;
@@ -48,46 +44,39 @@ body.page-loaded #transition-curtain {
     transition: opacity 0.4s ease;
 }
 
-
 body.page-loaded #page-loader { 
     opacity: 0; 
 }
-
 
 .left-side { 
     transform: translateX(0); 
 }
 
-
 .right-side { 
     transform: translateX(0); 
 }
-
 
 body.page-loaded .left-side { 
     transform: translateX(-100%); 
 }
 
-
 body.page-loaded .right-side { 
     transform: translateX(100%); 
 }
 
-
-/* ini bagian navbar yh */
 nav {
     height: auto;
     background-color: #188D47;
     font-family: "Google Sans Flex", sans-serif;
+    z-index: 1020;
 }
 
-
+/* dibalikin persis aslinya */
 .navbar-brand-mobile {
-    padding: 0;
+    padding: 0; 
     display: flex;
     align-items: center;
 }
-
 
 #logo {
     height: 60px;      
@@ -97,14 +86,12 @@ nav {
     flex-shrink: 0;
 }
 
-
 #navigasi {
     display: flex;
     list-style: none;
     margin-bottom: 0;
     padding-left: 0;
 }
-
 
 #navigasi li {
     width: 100px;
@@ -116,7 +103,6 @@ nav {
     transition: background-color 0.3s ease;
 }
 
-
 #navigasi li a {
     text-decoration: none;
     color: white;
@@ -127,16 +113,13 @@ nav {
     height: 100%;
 } 
 
-
 #navigasi li:hover {
     background-color: white;
 }
 
-
 #navigasi li:hover a {
     color: black;
 }
-
 
 #btn-pass {
     white-space: nowrap;
@@ -150,12 +133,10 @@ nav {
     transition: 0.3s ease;
 }
 
-
 #btn-pass:hover {
     background-color: white;
     color: black;
 }
-
 
 #herofood { 
     position: relative; 
@@ -169,7 +150,6 @@ nav {
     background-color: #310F10; 
 }
 
-
 .hero-bg { 
     position: absolute; 
     top: -15%; 
@@ -181,7 +161,6 @@ nav {
     background-color: #000;
 }
 
-
 .hero-overlay { 
     position: absolute; 
     inset: 0; 
@@ -189,13 +168,11 @@ nav {
     z-index: 1; 
 }
 
-
 .hero-content { 
     position: relative; 
     z-index: 2; 
     text-align: center; 
 }
-
 
 .hero-subtitle { 
     font-family: "Qwigley", cursive; 
@@ -207,7 +184,6 @@ nav {
     text-shadow: 0 4px 10px rgba(0,0,0,0.5); 
 }
 
-
 #bannertext { 
     font-family: "Italiana", serif; 
     font-size: 70px; 
@@ -217,28 +193,40 @@ nav {
     text-shadow: 0 10px 30px rgba(0,0,0,0.8); 
 }
 
+#btn-back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; 
+    z-index: 9999;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: none;
+    background-color: #188D47;
+    color: white;
+}
+
+#btn-back-to-top:hover {
+    transform: translateY(-5px);
+    background-color: #116833;
+}
 
 .food-sidebar { 
+    position: sticky;
+    top: 120px;
     background: #FFFFFF; 
     padding: 30px 25px; 
     border-radius: 25px; 
     box-shadow: 0 20px 40px rgba(49,15,16,0.06); 
-}
-
-
-aside .food-sidebar.sticky-top { 
-    top: 120px; 
     max-height: calc(100vh - 140px); 
     overflow-y: auto; 
-    z-index: 1020; 
+    z-index: 1010; 
 }
-
-
-aside .food-sidebar.sticky-top::-webkit-scrollbar { 
-    width: 0; 
-    background: transparent; 
-}
-
 
 .food-sidebar h3 { 
     font-family: "Italiana", serif; 
@@ -250,8 +238,6 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     padding-bottom: 15px; 
 }
 
-
-/* ini menu di samping kiri */
 #menuSampingMakanan { 
     list-style: none; 
     padding: 0; 
@@ -260,7 +246,6 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     flex-direction: column; 
     gap: 10px; 
 }
-
 
 #menuSampingMakanan a { 
     text-decoration: none; 
@@ -278,30 +263,24 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     border: 1px solid transparent; 
 }
 
-
-/* ini kalo menu disamping disentuh mouse jadi merah dan tulisannya putih yh */
 #menuSampingMakanan a:hover { 
     background-color: #800020; 
     color: white; 
 }
 
-
 #menuSampingMakanan a span { 
     font-size: 22px; 
 }
-
 
 .bagianMakanan { 
     scroll-margin-top: 100px; 
     margin-bottom: 100px; 
 }
 
-
 .section-header { 
     text-align: center; 
     margin-bottom: 60px; 
 }
-
 
 .judulMakanan { 
     font-family: "Qwigley", cursive; 
@@ -310,7 +289,6 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     margin-bottom: 0; 
     line-height: 0.8; 
 }
-
 
 .introMakanan { 
     font-family: "Google Sans Flex", sans-serif; 
@@ -321,7 +299,6 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     font-weight: 500; 
 }
 
-
 .elegan-card { 
     display: flex; 
     align-items: center; 
@@ -329,11 +306,9 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     margin-bottom: 80px; 
 }
 
-
 .elegan-card.reverse { 
     flex-direction: row-reverse; 
 }
-
 
 .wadahGambarMakanan { 
     flex: 1; 
@@ -341,20 +316,18 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     padding: 20px; 
 }
 
-
-.blob-bg { 
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    right: 20px; 
-    bottom: 20px; 
-    background: #D4A373; 
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; 
-    z-index: 0; 
-    opacity: 0.4; 
-    transition: all 0.8s ease; 
+.blob-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 20px;
+    bottom: 20px;
+    background: #D4A373;
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    z-index: 0;
+    opacity: 0.4;
+    transition: all 0.8s ease;   
 }
-
 
 .blob-bg.alt { 
     background: #6A7D45; 
@@ -363,11 +336,9 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     right: 0; 
 }
 
-
 .elegan-card:hover .blob-bg { 
     transform: scale(1.05); 
 }
-
 
 .wadahGambarMakanan img { 
     position: relative; 
@@ -380,11 +351,9 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     transition: transform 0.6s ease; 
 }
 
-
 .elegan-card:hover .wadahGambarMakanan img { 
     transform: translateY(-10px); 
 }
-
 
 .infoMakanan { 
     flex: 1; 
@@ -398,12 +367,10 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     border: 1px solid rgba(212, 163, 115, 0.3); 
 }
 
-
 .elegan-card.reverse .infoMakanan { 
     margin-left: 0; 
     margin-right: -80px; 
 }
-
 
 .infoMakanan .asal { 
     font-family: "Google Sans Flex", sans-serif; 
@@ -416,14 +383,12 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     margin-bottom: 10px; 
 }
 
-
 .infoMakanan h2 { 
     font-family: "Italiana", serif; 
     font-size: 40px; 
     color: #310F10; 
     margin-bottom: 15px; 
 }
-
 
 .infoMakanan p { 
     font-size: 17px; 
@@ -432,13 +397,11 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     margin-bottom: 25px; 
 }
 
-
 .tagBahan { 
     display: flex; 
     flex-wrap: wrap; 
     gap: 10px; 
 }
-
 
 .tagBahan span { 
     background: #fdfbf7; 
@@ -452,20 +415,16 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     box-shadow: 0 2px 5px rgba(0,0,0,0.02); 
 }
 
-
-/* ini animasi muncul dari bawah manual css */
 .elemenMuncul { 
     opacity: 0; 
     transform: translateY(60px); 
     transition: all 1s ease; 
 }
 
-
 .elemenMuncul.tampil { 
     opacity: 1; 
     transform: translateY(0); 
 }
-
 
 @media (min-width: 992px) {
     #navigasi { 
@@ -473,8 +432,6 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
     }
 }
 
-
-/* ini buat hape yh */
 @media (max-width: 991px) {
     
     .navbar-brand-mobile {
@@ -487,17 +444,14 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         background-color: #188D47;
     }
 
-
     #logo { 
         height: 60px; 
         margin-left: 0; 
     }
 
-
     .navbar-toggler { 
         margin-right: 15px; 
     }
-
 
     .navbar-collapse {
         background-color: #188D47;
@@ -508,12 +462,10 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         transition: all 0.3s ease;
     }
 
-
     .navbar-collapse.show {
         opacity: 1;
         transform: translateY(0);
     }
-
 
     #navigasi {
         flex-direction: column;
@@ -523,14 +475,12 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         gap: 8px;
     }
 
-
     #navigasi li {
         width: 100%;
         height: auto;
         margin-bottom: 6px;
         align-items: flex-start;
     }
-
 
     #navigasi li a {
         justify-content: flex-start;
@@ -539,17 +489,14 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         width: 100%;
     }
 
-
     #navigasi li:hover { 
         background-color: rgba(255, 255, 255, 0.15); 
         border-radius: 8px; 
     }
 
-
     #navigasi li:hover a { 
         color: rgb(255, 255, 255); 
     }
-
 
     #btn-pass { 
         margin: 20px 0 10px 0; 
@@ -559,24 +506,20 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         padding: 10px 20px; 
     }
 
-
     #herofood { 
         height: 50vh; 
         min-height: 250px; 
     }
-
 
     #bannertext { 
         font-size: 45px; 
         padding: 0 20px; 
     }
 
-
     .hero-subtitle { 
         font-size: 40px; 
     }
     
-
     .food-sidebar-container { 
         padding: 0; 
         margin-bottom: 40px; 
@@ -584,30 +527,22 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         width: 100%; 
     }
 
-
     .food-sidebar { 
+        position: relative; 
+        top: 0; 
         background: transparent; 
         padding: 0; 
         border: none; 
         box-shadow: none; 
-        border-radius: 0; 
         width: 100%; 
-    }
-
-
-    aside .food-sidebar.sticky-top { 
-        position: relative; 
-        top: 0; 
-        max-height: none; 
-        overflow-y: visible; 
         z-index: 1; 
+        overflow-y: visible;
+        max-height: none;
     }
-
 
     .food-sidebar h3 { 
         display: none; 
     }
-
 
     #menuSampingMakanan { 
         display: flex; 
@@ -619,14 +554,13 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         margin: 0; 
     }
 
-
     #menuSampingMakanan a { 
         white-space: normal; 
-        padding: 8px 15px; 
-        background: transparent; 
-        border: 2px solid #188D47; 
-        border-radius: 30px; 
-        color: #188D47; 
+        padding: 10px 24px; 
+        background: #FFFFFF; 
+        border: 1px solid rgba(212, 163, 115, 0.4); 
+        border-radius: 50px; 
+        color: #46462A; 
         display: flex; 
         align-items: center; 
         gap: 6px; 
@@ -634,17 +568,11 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         flex-shrink: 0; 
     }
 
-
-    #menuSampingMakanan a:hover { 
+    #menuSampingMakanan a.kategoriAktif { 
         background: #800020; 
         color: #FFFDF9; 
+        border-color: #800020;
     }
-    
-    #menuSampingMakanan a:hover,
-    #menuSampingMakanan a.kategoriAktif { 
-        background-color: #800020; 
-        color: white; 
-}
 
     .elegan-card, 
     .elegan-card.reverse { 
@@ -659,7 +587,6 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         overflow: hidden; 
     }
 
-
     .wadahGambarMakanan { 
         padding: 0; 
         width: 100%; 
@@ -667,18 +594,15 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         border-radius: 20px 20px 0 0; 
     }
 
-
     .wadahGambarMakanan img { 
         height: 100%; 
         border-radius: 20px 20px 0 0; 
         box-shadow: none; 
     }
 
-
     .blob-bg { 
         display: none; 
     }
-
 
     .infoMakanan, 
     .elegan-card.reverse .infoMakanan { 
@@ -691,13 +615,19 @@ aside .food-sidebar.sticky-top::-webkit-scrollbar {
         border-radius: 0 0 20px 20px; 
     }
 
-
     .tagBahan { 
         justify-content: flex-start; 
     }
 
-
     .section-header { 
         text-align: center; 
+    }
+
+    #btn-back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: 20px;
+        right: 20px;
     }
 }

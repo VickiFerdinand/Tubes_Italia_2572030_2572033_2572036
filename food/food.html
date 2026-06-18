@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foods</title>
 
-    <link rel="stylesheet" href="stylefood.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stylefood.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Italiana&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Qwigley&display=swap" rel="stylesheet">
@@ -23,6 +24,7 @@
         <div class="curtain-side right-side"></div>
     </div>
 
+    <!-- navbar dibalikin kaya semula yang nempel kiri -->
     <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-top" style="background-color: #188D47;">
         <div class="container-fluid p-0 d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center">
             
@@ -37,7 +39,6 @@
             </div>
 
             <div class="collapse navbar-collapse justify-content-between w-100" id="menuUtama" style="background-color: #188D47;">
-                
                 <ul id="navigasi" class="navbar-nav mx-lg-auto">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../history/history.html">History</a></li>
@@ -46,15 +47,13 @@
                     <li><a href="../Cultures/Cultures.html">Cultures</a></li>
                 </ul>
                 
-                <a href="https://youtu.be/QDia3e12czc?si=zCrpumUtN7S01V4D" class="btn btn-outline-light d-lg-flex align-items-center" id="btn-pass">Get a Tourist Pass</a>
-            
+                <a href="https://youtu.be/QDia3e12czc?si=zCrpumUtN7S01V4D" target="_blank" class="btn btn-outline-light d-lg-flex align-items-center" id="btn-pass">Get a Tourist Pass</a>
             </div>
         </div>
     </nav>
 
     <header id="herofood">
         <div class="hero-overlay"></div>
-        
         <div class="hero-content">
             <span class="hero-subtitle">La Dolce Vita</span>
             <h2 id="bannertext">Exquisite Italian Taste</h2>
@@ -65,19 +64,18 @@
         <div class="row gx-lg-5">
             
             <aside class="col-lg-3 col-12 food-sidebar-container">
-                <div class="food-sidebar sticky-top">
-                    
+                <div class="food-sidebar">
                     <h3 class="d-none d-lg-block">Italian Menu</h3>
                     
                     <ul id="menuSampingMakanan">
-                        <li><a href="#pizza"><span>🍕</span> Pizza</a></li>
-                        <li><a href="#pasta"><span>🍝</span> Pasta</a></li>
-                        <li><a href="#risotto"><span>🍚</span> Risotto</a></li>
-                        <li><a href="#gelato"><span>🍨</span> Gelato</a></li>
-                        <li><a href="#desserts"><span>🍰</span> Desserts</a></li>
-                        <li><a href="#coffee"><span>☕</span> Coffee</a></li>
+                        <li class="d-lg-none"><a href="#all" data-filter="all"><span>🍽️</span> All Menu</a></li>
+                        <li><a href="#pizza" data-filter="pizza"><span>🍕</span> Pizza</a></li>
+                        <li><a href="#pasta" data-filter="pasta"><span>🍝</span> Pasta</a></li>
+                        <li><a href="#risotto" data-filter="risotto"><span>🍚</span> Risotto</a></li>
+                        <li><a href="#gelato" data-filter="gelato"><span>🍨</span> Gelato</a></li>
+                        <li><a href="#desserts" data-filter="desserts"><span>🍰</span> Desserts</a></li>
+                        <li><a href="#coffee" data-filter="coffee"><span>☕</span> Coffee</a></li>
                     </ul>
-
                 </div>
             </aside>
 
@@ -398,5 +396,20 @@
             </section>
         </div>
     </main>
+
+    <button id="btn-back-to-top" title="Go to top">&#8679;</button>
+
+    <footer class="bg-dark text-white text-center p-5">
+            <h5 class="mb-2">Developed By: Timothy Karawang Investment Company Ltd</h5>
+            <h6 class="text-secondary mb-4">Honored Investor: PT Tan Berjaya Makmur Tbk, PT Youth Naon Sia Tbk</h6>
+
+            <div class="d-flex justify-content-center flex-wrap gap-3 text-light opacity-75">
+                <span>Vicki Ferdinand (2572030)</span>
+                <span>|</span>
+                <span>Joseph Xavier Tan (2572033)</span>
+                <span>|</span>
+                <span>Timothy Suharli (2572036)</span>
+            </div>
+    </footer>
 </body>
 </html>
